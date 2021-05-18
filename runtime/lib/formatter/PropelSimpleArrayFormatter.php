@@ -19,7 +19,7 @@
  */
 class PropelSimpleArrayFormatter extends PropelFormatter
 {
-    protected $collectionName = 'PropelArrayCollection';
+    protected string $collectionName = 'PropelArrayCollection';
 
     public function format(PDOStatement $stmt)
     {

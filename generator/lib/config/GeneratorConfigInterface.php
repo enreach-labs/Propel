@@ -16,9 +16,7 @@ interface GeneratorConfigInterface
     /**
      * Gets a configured data model builder class for specified table and based on type.
      *
-     * @param Table  $table
      * @param string $type  The type of builder ('ddl', 'sql', etc.)
-     *
      * @return DataModelBuilder
      */
     public function getConfiguredBuilder(Table $table, $type);

@@ -28,8 +28,8 @@ class XmlToAppData
     /** enables debug output */
     const DEBUG = false;
 
-    private $app;
-    private $currDB;
+    private \AppData $app;
+    private ?\Database $currDB;
     private $currTable;
     private $currColumn;
     private $currFK;
@@ -39,21 +39,17 @@ class XmlToAppData
     private $currBehavior;
     private $currVendorObject;
 
-    private $isForReferenceOnly;
-    private $currentPackage;
-    private $currentXmlFile;
-    private $defaultPackage;
-
-    private $encoding;
+    private ?bool $isForReferenceOnly;
+    private ?string $currentPackage;
+    private ?string $currentXmlFile;
+    private ?string $defaultPackage;
 
     /**
      * two-dimensional array,
      * first dimension is for schemas(key is the path to the schema file),
      * second is for tags within the schema
-     *
-     * @var array
      */
-    private $schemasTagsStack = array();
+    private array $schemasTagsStack = array();
 
     /**
      * Creates a new instance for the specified database type.
@@ -62,18 +58,15 @@ class XmlToAppData
      * @param string                  $defaultPackage  the default PHP package used for the om
      * @param string                  $encoding        The database encoding.
      */
-    public function __construct(PropelPlatformInterface $defaultPlatform = null, $defaultPackage = null, $encoding = 'iso-8859-1')
+    public function __construct(PropelPlatformInterface $defaultPlatform = null, $defaultPackage = null)
     {
         $this->app = new AppData($defaultPlatform);
         $this->defaultPackage = $defaultPackage;
         $this->firstPass = true;
-        $this->encoding = $encoding;
     }
 
     /**
      * Set the AppData generator configuration
-     *
-     * @param GeneratorConfigInterface $generatorConfig
      */
     public function setGeneratorConfig(GeneratorConfigInterface $generatorConfig)
     {

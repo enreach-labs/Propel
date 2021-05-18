@@ -21,11 +21,11 @@ require_once dirname(__FILE__) . '/XMLElement.php';
 class Rule extends XMLElement
 {
 
-    private $name;
-    private $value;
-    private $message;
-    private $validator;
-    private $classname;
+    private ?string $name;
+    private ?string $value;
+    private ?string $message;
+    private ?\Validator $validator;
+    private ?string $classname;
 
     /**
      * Sets up the Rule object based on the attributes that were passed to loadFromXML().
@@ -63,7 +63,6 @@ class Rule extends XMLElement
     /**
      * Sets the owning validator for this rule.
      *
-     * @param Validator $validator
      *
      * @see        Validator::addRule()
      */
@@ -181,9 +180,7 @@ class Rule extends XMLElement
      */
     public function getMessage()
     {
-        $message = str_replace('${value}', $this->getValue(), $this->message);
-
-        return $message;
+        return str_replace('${value}', $this->getValue(), $this->message);
     }
 
     /**

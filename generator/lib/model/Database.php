@@ -29,60 +29,55 @@ require_once dirname(__FILE__) . '/Behavior.php';
 class Database extends ScopedElement
 {
 
-    private $platform;
+    private ?\PropelPlatformInterface $platform;
 
     /**
      * @var Table[]
      */
-    private $tableList = array();
+    private array $tableList = array();
 
-    private $name;
+    private ?string $name;
 
-    private $baseClass;
-    private $basePeer;
-    private $defaultIdMethod;
-    private $defaultPhpNamingMethod;
-    private $defaultTranslateMethod;
+    private ?string $baseClass;
+    private ?string $basePeer;
+    private ?string $defaultIdMethod;
+    private ?string $defaultPhpNamingMethod;
+    private ?string $defaultTranslateMethod;
 
-    /**
-     * @var AppData
-     */
-    private $dbParent;
+    private ?\AppData $dbParent;
 
     /**
      * @var Table[]
      */
-    private $tablesByName = array();
+    private array $tablesByName = array();
 
     /**
      * @var Table[]
      */
-    private $tablesByLowercaseName = array();
+    private array $tablesByLowercaseName = array();
 
     /**
      * @var Table[]
      */
-    private $tablesByPhpName = array();
+    private array $tablesByPhpName = array();
 
-    private $heavyIndexing;
-    protected $tablePrefix = '';
+    private ?bool $heavyIndexing;
+    protected string $tablePrefix = '';
 
     /**
      * The default string format for objects based on this database
      * (e.g. 'XML', 'YAML', 'CSV', 'JSON')
-     *
-     * @var       string
      */
-    protected $defaultStringFormat;
+    protected ?string $defaultStringFormat;
 
-    private $domainMap = array();
+    private array $domainMap = array();
 
     /**
      * List of behaviors registered for this table
      *
      * @var Behavior[]
      */
-    protected $behaviors = array();
+    protected array $behaviors = array();
 
     /**
      * Constructs a new Database object.
@@ -301,7 +296,7 @@ class Database extends ScopedElement
      */
     public function setHeavyIndexing($v)
     {
-        $this->heavyIndexing = (boolean) $v;
+        $this->heavyIndexing = (boolean) (boolean) $v;
     }
 
     /**

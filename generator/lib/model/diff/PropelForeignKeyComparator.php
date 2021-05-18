@@ -22,8 +22,6 @@ class PropelForeignKeyComparator
     /**
      * Compute the difference between two Foreign key objects
      *
-     * @param ForeignKey $fromFk
-     * @param ForeignKey $toFk
      *
      * @param boolean $caseInsensitive Whether the comparison is case insensitive.
      *                                 False by default.

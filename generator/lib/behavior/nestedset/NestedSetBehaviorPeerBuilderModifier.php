@@ -418,7 +418,7 @@ public static function updateLoadedNodes(\$prune = null, PropelPDO \$con = null)
             \$criteria->add(" . $this->builder->getColumnConstant($col) . ", \$keys, Criteria::IN);";
         } else {
             $fields = array();
-            foreach ($this->table->getPrimaryKey() as $k => $col) {
+            foreach ($this->table->getPrimaryKey() as $col) {
                 $fields[] = $this->builder->getColumnConstant($col);
             };
             $script .= "

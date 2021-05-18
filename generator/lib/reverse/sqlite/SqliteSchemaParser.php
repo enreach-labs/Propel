@@ -25,10 +25,8 @@ class SqliteSchemaParser extends BaseSchemaParser
      *
      * There really aren't any SQLite native types, so we're just
      * using the MySQL ones here.
-     *
-     * @var        array
      */
-    private static $sqliteTypeMap = array(
+    private static array $sqliteTypeMap = array(
         'tinyint' => PropelTypes::TINYINT,
         'smallint' => PropelTypes::SMALLINT,
         'mediumint' => PropelTypes::SMALLINT,

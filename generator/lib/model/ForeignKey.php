@@ -23,36 +23,31 @@ require_once dirname(__FILE__) . '/XMLElement.php';
 class ForeignKey extends XMLElement
 {
 
-    protected $foreignTableCommonName;
+    protected ?string $foreignTableCommonName;
     protected $foreignSchemaName;
-    protected $name;
-    protected $phpName;
-    protected $refPhpName;
-    protected $defaultJoin;
-    protected $onUpdate = '';
-    protected $onDelete = '';
+    protected ?string $name;
+    protected ?string $phpName;
+    protected ?string $refPhpName;
+    protected string $defaultJoin;
+    protected string $onUpdate = '';
+    protected string $onDelete = '';
 
-    /**
-     * @var Table
-     */
-    protected $parentTable;
+    protected ?\Table $parentTable;
 
     /**
      * @var Column[]
      */
-    protected $localColumns = array();
+    protected array $localColumns = array();
 
     /**
      * @var Column[]
      */
-    protected $foreignColumns = array();
+    protected array $foreignColumns = array();
 
     /**
      * Whether to skip generation of SQL for this foreign key.
-     *
-     * @var       boolean
      */
-    protected $skipSql = false;
+    protected bool $skipSql = false;
 
     // the uppercase equivalent of the onDelete/onUpdate values in the dtd
     const NONE = ""; // No "ON [ DELETE | UPDATE]" behaviour specified.

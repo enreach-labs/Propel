@@ -23,13 +23,11 @@ class GeneratorConfig implements GeneratorConfigInterface
 
     /**
      * The build properties.
-     *
-     * @var        array
      */
-    private $buildProperties = array();
+    private array $buildProperties = array();
 
-    protected $buildConnections = null;
-    protected $defaultBuildConnection = null;
+    protected ?array $buildConnections;
+    protected ?string $defaultBuildConnection;
 
     /**
      * Construct a new GeneratorConfig.
@@ -134,9 +132,7 @@ class GeneratorConfig implements GeneratorConfigInterface
             throw new BuildException("Unable to find class path for '$propname' property.");
         }
 
-        $clazz = Phing::import($classpath);
-
-        return $clazz;
+        return Phing::import($classpath);
     }
 
     /**
@@ -156,7 +152,6 @@ class GeneratorConfig implements GeneratorConfigInterface
     /**
      * Creates and configures a new Platform class.
      *
-     * @param PDO $con
      *
      * @return Platform
      * @throws BuildException
@@ -193,7 +188,6 @@ class GeneratorConfig implements GeneratorConfigInterface
     /**
      * Creates and configures a new SchemaParser class for specified platform.
      *
-     * @param PDO $con
      *
      * @return SchemaParser
      * @throws BuildException
@@ -215,9 +209,7 @@ class GeneratorConfig implements GeneratorConfigInterface
     /**
      * Gets a configured data model builder class for specified table and based on type.
      *
-     * @param Table  $table
      * @param string $type  The type of builder ('ddl', 'sql', etc.)
-     *
      * @return DataModelBuilder
      */
     public function getConfiguredBuilder(Table $table, $type, $cache = true)
@@ -237,9 +229,8 @@ class GeneratorConfig implements GeneratorConfigInterface
     public function getConfiguredPluralizer()
     {
         $classname = $this->getBuilderClassname('pluralizer');
-        $pluralizer = new $classname();
 
-        return $pluralizer;
+        return new $classname();
     }
 
     /**

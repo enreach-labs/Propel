@@ -24,12 +24,12 @@ class Domain extends XMLElement
     /**
      * @var        string The name of this domain
      */
-    private $name;
+    private ?string $name;
 
     /**
      * @var        string Description for this domain.
      */
-    private $description;
+    private ?string $description;
 
     /**
      * @var        int Size
@@ -49,17 +49,14 @@ class Domain extends XMLElement
     /**
      * @var        string The SQL type to use for this column
      */
-    private $sqlType;
+    private ?string $sqlType;
 
     /**
      * @var        ColumnDefaultValue A default value
      */
-    private $defaultValue;
+    private ?\ColumnDefaultValue $defaultValue;
 
-    /**
-     * @var        Database
-     */
-    private $database;
+    private ?\Database $database;
 
     /**
      * Creates a new Domain object.
@@ -122,8 +119,6 @@ class Domain extends XMLElement
 
     /**
      * Sets the owning database object (if this domain is being setup via XML).
-     *
-     * @param Database $database
      */
     public function setDatabase(Database $database)
     {

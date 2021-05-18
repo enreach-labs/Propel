@@ -21,10 +21,6 @@ class PropelOnDemandCollection extends PropelCollection
      */
     protected $iterator;
 
-    /**
-     * @param PropelFormatter $formatter
-     * @param PDOStatement    $stmt
-     */
     public function initIterator(PropelFormatter $formatter, PDOStatement $stmt)
     {
         $this->iterator = new PropelOnDemandIterator($formatter, $stmt);

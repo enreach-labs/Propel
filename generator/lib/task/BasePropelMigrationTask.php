@@ -27,17 +27,13 @@ abstract class BasePropelMigrationTask extends AbstractPropelTask
 
     /**
      * An initialized GeneratorConfig object containing the converted Phing props.
-     *
-     * @var        GeneratorConfig
      */
-    protected $generatorConfig;
+    protected ?\GeneratorConfig $generatorConfig;
 
     /**
      * The migration table name
-     *
-     * @var string
      */
-    protected $migrationTable = 'propel_migration';
+    protected string $migrationTable = 'propel_migration';
 
     /**
      * Set the migration Table name
@@ -63,7 +59,6 @@ abstract class BasePropelMigrationTask extends AbstractPropelTask
      * [REQUIRED] Set the output directory. It will be
      * created if it doesn't exist.
      *
-     * @param PhingFile $outputDirectory
      *
      * @return void
      * @throws BuildException

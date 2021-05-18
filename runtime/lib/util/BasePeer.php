@@ -30,11 +30,8 @@
 class BasePeer
 {
 
-    /** Array (hash) that contains the cached mapBuilders. */
-    private static $mapBuilders = array();
-
     /** Array (hash) that contains cached validators */
-    private static $validatorMap = array();
+    private static array $validatorMap = array();
 
     /**
      * phpname type
@@ -744,57 +741,54 @@ class BasePeer
             $havingString = $sb;
         }
 
-        if (!empty($orderBy)) {
+        foreach ($orderBy as $orderByColumn) {
 
-            foreach ($orderBy as $orderByColumn) {
+            // Add function expression as-is.
 
-                // Add function expression as-is.
+            if (strpos($orderByColumn, '(') !== false) {
+                $orderByClause[] = $orderByColumn;
+                continue;
+            }
 
-                if (strpos($orderByColumn, '(') !== false) {
-                    $orderByClause[] = $orderByColumn;
-                    continue;
-                }
+            // Split orderByColumn (i.e. "table.column DESC")
 
-                // Split orderByColumn (i.e. "table.column DESC")
+            $dotPos = strrpos($orderByColumn, '.');
 
-                $dotPos = strrpos($orderByColumn, '.');
+            if ($dotPos !== false) {
+                $tableName = substr($orderByColumn, 0, $dotPos);
+                $columnName = substr($orderByColumn, $dotPos + 1);
+            } else {
+                $tableName = '';
+                $columnName = $orderByColumn;
+            }
 
-                if ($dotPos !== false) {
-                    $tableName = substr($orderByColumn, 0, $dotPos);
-                    $columnName = substr($orderByColumn, $dotPos + 1);
-                } else {
-                    $tableName = '';
-                    $columnName = $orderByColumn;
-                }
+            $spacePos = strpos($columnName, ' ');
 
-                $spacePos = strpos($columnName, ' ');
+            if ($spacePos !== false) {
+                $direction = substr($columnName, $spacePos);
+                $columnName = substr($columnName, 0, $spacePos);
+            } else {
+                $direction = '';
+            }
 
-                if ($spacePos !== false) {
-                    $direction = substr($columnName, $spacePos);
-                    $columnName = substr($columnName, 0, $spacePos);
-                } else {
-                    $direction = '';
-                }
+            $tableAlias = $tableName;
+            if ($aliasTableName = $criteria->getTableForAlias($tableName)) {
+                $tableName = $aliasTableName;
+            }
 
-                $tableAlias = $tableName;
-                if ($aliasTableName = $criteria->getTableForAlias($tableName)) {
-                    $tableName = $aliasTableName;
-                }
+            $columnAlias = $columnName;
+            if ($asColumnName = $criteria->getColumnForAs($columnName)) {
+                $columnName = $asColumnName;
+            }
 
-                $columnAlias = $columnName;
-                if ($asColumnName = $criteria->getColumnForAs($columnName)) {
-                    $columnName = $asColumnName;
-                }
+            $column = $tableName ? $dbMap->getTable($tableName)->getColumn($columnName) : null;
 
-                $column = $tableName ? $dbMap->getTable($tableName)->getColumn($columnName) : null;
-
-                if ($criteria->isIgnoreCase() && $column && $column->isText()) {
-                    $ignoreCaseColumn = $db->ignoreCaseInOrderBy("$tableAlias.$columnAlias");
-                    $orderByClause[] = $ignoreCaseColumn . $direction;
-                    $selectSql .= ', ' . $ignoreCaseColumn;
-                } else {
-                    $orderByClause[] = $orderByColumn;
-                }
+            if ($criteria->isIgnoreCase() && $column && $column->isText()) {
+                $ignoreCaseColumn = $db->ignoreCaseInOrderBy("$tableAlias.$columnAlias");
+                $orderByClause[] = $ignoreCaseColumn . $direction;
+                $selectSql .= ', ' . $ignoreCaseColumn;
+            } else {
+                $orderByClause[] = $orderByColumn;
             }
         }
 
@@ -858,7 +852,6 @@ class BasePeer
      * This is useful for building an array even when it is not using the appendPsTo() method.
      *
      * @param array    $columns
-     * @param Criteria $values
      *
      * @return array params array('column' => ..., 'table' => ..., 'value' => ...)
      */

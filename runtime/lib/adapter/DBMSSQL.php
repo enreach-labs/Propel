@@ -22,7 +22,6 @@ class DBMSSQL extends DBAdapter
      *
      * @see       DBAdapter::setCharset()
      *
-     * @param PDO    $con
      * @param string $charset
      */
     public function setCharset(PDO $con, $charset)
@@ -290,9 +289,6 @@ class DBMSSQL extends DBAdapter
      * @see       parent::cleanupSQL()
      *
      * @param string      $sql
-     * @param array       $params
-     * @param Criteria    $values
-     * @param DatabaseMap $dbMap
      */
     public function cleanupSQL(&$sql, array &$params, Criteria $values, DatabaseMap $dbMap)
     {

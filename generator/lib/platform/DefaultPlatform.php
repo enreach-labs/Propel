@@ -26,15 +26,13 @@ class DefaultPlatform implements PropelPlatformInterface
 
     /**
      * Mapping from Propel types to Domain objects.
-     *
-     * @var        array
      */
-    protected $schemaDomainMap;
+    protected ?array $schemaDomainMap;
 
     /**
      * @var        PDO Database connection.
      */
-    protected $con;
+    protected ?\PDO $con;
 
     /**
      * @var        boolean whether the identifier quoting is enabled
@@ -76,8 +74,6 @@ class DefaultPlatform implements PropelPlatformInterface
 
     /**
      * Sets the GeneratorConfig to use in the parsing.
-     *
-     * @param GeneratorConfigInterface $config
      */
     public function setGeneratorConfig(GeneratorConfigInterface $config)
     {
@@ -119,8 +115,6 @@ class DefaultPlatform implements PropelPlatformInterface
 
     /**
      * Adds a mapping entry for specified Domain.
-     *
-     * @param Domain $domain
      */
     protected function setSchemaDomainMapping(Domain $domain)
     {
@@ -206,7 +200,6 @@ class DefaultPlatform implements PropelPlatformInterface
      * This will create a new name or use one specified in an id-method-parameter
      * tag, if specified.
      *
-     * @param Table $table
      *
      * @return string Sequence name for this table.
      */
@@ -250,7 +243,6 @@ class DefaultPlatform implements PropelPlatformInterface
             $ret .= $this->getAddIndicesDDL($table);
             $ret .= $this->getAddForeignKeysDDL($table);
         }
-        $ret .= $this->getEndDDL();
 
         return $ret;
     }
@@ -445,7 +437,6 @@ DROP TABLE " . $this->quoteIdentifier($table->getName()) . ";
     /**
      * Builds the DDL SQL to drop the primary key of a table.
      *
-     * @param Table $table
      *
      * @return string
      */
@@ -464,7 +455,6 @@ ALTER TABLE %s DROP CONSTRAINT %s;
     /**
      * Builds the DDL SQL to add the primary key of a table.
      *
-     * @param Table $table
      *
      * @return string
      */
@@ -483,7 +473,6 @@ ALTER TABLE %s ADD %s;
     /**
      * Builds the DDL SQL to add the indices of a table.
      *
-     * @param Table $table
      *
      * @return string
      */
@@ -500,7 +489,6 @@ ALTER TABLE %s ADD %s;
     /**
      * Builds the DDL SQL to add an Index.
      *
-     * @param Index $index
      *
      * @return string
      */
@@ -521,7 +509,6 @@ CREATE %sINDEX %s ON %s (%s);
     /**
      * Builds the DDL SQL to drop an Index.
      *
-     * @param Index $index
      *
      * @return string
      */
@@ -537,7 +524,6 @@ DROP INDEX %s;
     /**
      * Builds the DDL SQL for an Index object.
      *
-     * @param Index $index
      *
      * @return string
      */
@@ -549,7 +535,6 @@ DROP INDEX %s;
     /**
      * Builds the DDL SQL for a Unique constraint object.
      *
-     * @param Unique $unique
      *
      * @return string
      */
@@ -561,7 +546,6 @@ DROP INDEX %s;
     /**
      * Builds the DDL SQL to add the foreign keys of a table.
      *
-     * @param Table $table
      *
      * @return string
      */
@@ -578,7 +562,6 @@ DROP INDEX %s;
     /**
      * Builds the DDL SQL to add a foreign key.
      *
-     * @param ForeignKey $fk
      *
      * @return string
      */
@@ -600,7 +583,6 @@ ALTER TABLE %s ADD %s;
     /**
      * Builds the DDL SQL to drop a foreign key.
      *
-     * @param ForeignKey $fk
      *
      * @return string
      */
@@ -700,8 +682,6 @@ ALTER TABLE %s DROP CONSTRAINT %s;
             $ret .= $this->getAddForeignKeysDDL($table);
         }
 
-        $ret .= $this->getEndDDL();
-
         return $ret;
     }
 
@@ -739,14 +719,14 @@ ALTER TABLE %s RENAME TO %s;
         foreach ($tableDiff->getRemovedFks() as $fk) {
             $ret .= $this->getDropForeignKeyDDL($fk);
         }
-        foreach ($tableDiff->getModifiedFks() as $fkName => $fkModification) {
+        foreach ($tableDiff->getModifiedFks() as $fkModification) {
             list($fromFk, $toFk) = $fkModification;
             $ret .= $this->getDropForeignKeyDDL($fromFk);
         }
         foreach ($tableDiff->getRemovedIndices() as $index) {
             $ret .= $this->getDropIndexDDL($index);
         }
-        foreach ($tableDiff->getModifiedIndices() as $indexName => $indexModification) {
+        foreach ($tableDiff->getModifiedIndices() as $indexModification) {
             list($fromIndex, $toIndex) = $indexModification;
             $ret .= $this->getDropIndexDDL($fromIndex);
         }
@@ -769,14 +749,14 @@ ALTER TABLE %s RENAME TO %s;
         if ($tableDiff->hasModifiedPk()) {
             $ret .= $this->getAddPrimaryKeyDDL($tableDiff->getToTable());
         }
-        foreach ($tableDiff->getModifiedIndices() as $indexName => $indexModification) {
+        foreach ($tableDiff->getModifiedIndices() as $indexModification) {
             list($fromIndex, $toIndex) = $indexModification;
             $ret .= $this->getAddIndexDDL($toIndex);
         }
         foreach ($tableDiff->getAddedIndices() as $index) {
             $ret .= $this->getAddIndexDDL($index);
         }
-        foreach ($tableDiff->getModifiedFks() as $fkName => $fkModification) {
+        foreach ($tableDiff->getModifiedFks() as $fkModification) {
             list($fromFk, $toFk) = $fkModification;
             $ret .= $this->getAddForeignKeyDDL($toFk);
         }
@@ -852,7 +832,7 @@ ALTER TABLE %s RENAME TO %s;
             $ret .= $this->getAddIndexDDL($index);
         }
 
-        foreach ($tableDiff->getModifiedIndices() as $indexName => $indexModification) {
+        foreach ($tableDiff->getModifiedIndices() as $indexModification) {
             list($fromIndex, $toIndex) = $indexModification;
             $ret .= $this->getDropIndexDDL($fromIndex);
             $ret .= $this->getAddIndexDDL($toIndex);
@@ -879,7 +859,7 @@ ALTER TABLE %s RENAME TO %s;
             $ret .= $this->getAddForeignKeyDDL($fk);
         }
 
-        foreach ($tableDiff->getModifiedFks() as $fkName => $fkModification) {
+        foreach ($tableDiff->getModifiedFks() as $fkModification) {
             list($fromFk, $toFk) = $fkModification;
             $ret .= $this->getDropForeignKeyDDL($fromFk);
             $ret .= $this->getAddForeignKeyDDL($toFk);

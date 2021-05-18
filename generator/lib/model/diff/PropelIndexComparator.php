@@ -22,8 +22,6 @@ class PropelIndexComparator
     /**
      * Compute the difference between two index objects
      *
-     * @param Index   $fromIndex
-     * @param Index   $toIndex
      * @param boolean $caseInsensitive Whether the comparison is case insensitive.
      *                                 False by default.
      *

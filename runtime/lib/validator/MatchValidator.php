@@ -63,9 +63,7 @@ class MatchValidator implements BasicValidator
     /**
      * Whether the passed string matches regular expression.
      *
-     * @param ValidatorMap $map
      * @param string       $str
-     *
      * @return boolean
      */
     public function isValid(ValidatorMap $map, $str)

@@ -31,65 +31,63 @@ class TableMap
      *
      * @var ColumnMap[]
      */
-    protected $columns = array();
+    protected array $columns = array();
 
     /**
      * Columns in the table, using table phpName as key
      *
      * @var ColumnMap[]
      */
-    protected $columnsByPhpName = array();
+    protected array $columnsByPhpName = array();
 
     /**
      * Columns in the table, using  as key
      *
      * @var ColumnMap[]
      */
-    protected $columnsByInsensitiveCase = array();
+    protected array $columnsByInsensitiveCase = array();
 
     /**
      * The database this table belongs to
-     *
-     * @var DatabaseMap
      */
-    protected $dbMap;
+    protected ?\DatabaseMap $dbMap;
 
     // The name of the table
-    protected $tableName;
+    protected ?string $tableName;
 
     // The PHP name of the table
-    protected $phpName;
+    protected ?string $phpName;
 
     // The Classname for this table
-    protected $classname;
+    protected ?string $classname;
 
     // The Package for this table
-    protected $package;
+    protected ?string $package;
 
     // Whether to use an id generator for pkey
-    protected $useIdGenerator;
+    protected ?bool $useIdGenerator;
 
     // Whether the table uses single table inheritance
-    protected $isSingleTableInheritance = false;
+    protected bool $isSingleTableInheritance = false;
 
     // Whether the table is a Many to Many table
-    protected $isCrossRef = false;
+    protected bool $isCrossRef = false;
 
     // The primary key columns in the table
-    protected $primaryKeys = array();
+    protected array $primaryKeys = array();
 
     // The foreign key columns in the table
-    protected $foreignKeys = array();
+    protected array $foreignKeys = array();
 
     /**
      * The relationships in the table
      *
      * @var RelationMap[]
      */
-    protected $relations = array();
+    protected array $relations = array();
 
     // Relations are lazy loaded. This property tells if the relations are loaded or not
-    protected $relationsBuilt = false;
+    protected bool $relationsBuilt = false;
 
     // Object to store information that is needed if the for generating primary keys
     protected $pkInfo;
@@ -747,7 +745,7 @@ class TableMap
      *
      * @deprecated Not used anywhere in Propel
      */
-    private $prefix;
+    private ?string $prefix;
 
     /**
      * Get table prefix name.
@@ -830,19 +828,5 @@ class TableMap
         }
 
         return $out;
-    }
-
-    /**
-     * Makes the first letter caps and the rest lowercase.
-     *
-     * @deprecated Not used anywhere in Propel.
-     *
-     * @param string $data A String.
-     *
-     * @return string A String with data processed.
-     */
-    private function firstLetterCaps($data)
-    {
-        return (ucfirst(strtolower($data)));
     }
 }

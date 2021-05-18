@@ -464,12 +464,10 @@ class PHP5ObjectNoCollectionBuilder extends PHP5ObjectBuilder
     }
 ";
     } // addReload()
-
     /**
      * Gets variable name for the Criteria which was used to fetch the objects which
      * referencing current table by specified foreign key.
      *
-     * @param ForeignKey $fk
      *
      * @return string
      */

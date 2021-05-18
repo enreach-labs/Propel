@@ -18,7 +18,7 @@ require_once dirname(__FILE__) . '/../platform/SqlitePlatform.php';
  */
 class QuickGeneratorConfig implements GeneratorConfigInterface
 {
-    protected $builders = array(
+    protected array $builders = array(
         'peer'					=> 'PHP5PeerBuilder',
         'object'				=> 'PHP5ObjectBuilder',
         'objectstub'		    => 'PHP5ExtensionObjectBuilder',
@@ -38,11 +38,11 @@ class QuickGeneratorConfig implements GeneratorConfigInterface
         'nestedsetpeer'         => 'PHP5NestedSetPeerBuilder',
     );
 
-    protected $buildProperties  = array();
+    protected array $buildProperties  = array();
 
-    private $generatorConfig    = null;
+    private ?\GeneratorConfig $generatorConfig;
 
-    private $configuredPlatform = null;
+    private ?\PropelPlatformInterface $configuredPlatform;
 
     public function __construct(PropelPlatformInterface $platform = null)
     {
@@ -80,14 +80,12 @@ class QuickGeneratorConfig implements GeneratorConfigInterface
     }
 
     /**
-     * Gets a configured data model builder class for specified table and based on type.
-     *
-     * @param Table  $table
-     * @param string $type  The type of builder ('ddl', 'sql', etc.)
-     *
-     * @return DataModelBuilder
-     */
-    public function getConfiguredBuilder(Table $table, $type)
+				 * Gets a configured data model builder class for specified table and based on type.
+				 *
+				 * @param string $type  The type of builder ('ddl', 'sql', etc.)
+				 * @return DataModelBuilder
+				 */
+				public function getConfiguredBuilder(Table $table, $type)
     {
         $class = $this->builders[$type];
         require_once dirname(__FILE__) . '/../builder/om/' . $class . '.php';

@@ -104,12 +104,10 @@ protected \$aNestedSetParent = null;
             $script .= "'A root node already exists in this tree. To allow multiple root nodes, add the `use_scope` parameter in the nested_set behavior tag.'";
         }
 
-        $script .= ");
+        return $script . ");
     }
 }
 \$this->processNestedSetQueries(\$con);";
-
-        return $script;
     }
 
     public function preDelete($builder)

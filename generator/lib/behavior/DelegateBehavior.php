@@ -24,7 +24,7 @@ class DelegateBehavior extends Behavior
         'to' => ''
     );
 
-    protected $delegates = array();
+    protected array $delegates = array();
 
     /**
      * Lists the delegates and checks that the behavior can use them,

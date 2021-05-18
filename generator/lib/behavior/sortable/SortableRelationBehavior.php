@@ -38,10 +38,8 @@ class SortableRelationBehavior extends Behavior
     {
         $this->builder = $builder;
 
-        $script = "\$this->{$this->getObjectMoveRelatedToNullScopeMethodName()}(\$con);
+        return "\$this->{$this->getObjectMoveRelatedToNullScopeMethodName()}(\$con);
 ";
-
-        return $script;
     }
 
     protected function getForeignTable()
@@ -71,7 +69,7 @@ class SortableRelationBehavior extends Behavior
         $peerClass = $this->builder->getNewStubPeerBuilder($this->getForeignTable())->getClassname();
         $queryClass = $this->builder->getNewStubQueryBuilder($this->getForeignTable())->getClassname();
 
-        $script .= "
+        return $script . "
 /**
  * Moves related {$this->getRelatedClassPluralForm()} to null scope
  * @param PropelPDO \$con A connection object
@@ -84,7 +82,5 @@ public function {$this->getObjectMoveRelatedToNullScopeMethodName()}(PropelPDO \
     }
 }
 ";
-
-        return $script;
     }
 }

@@ -22,17 +22,15 @@ abstract class BaseSchemaParser implements SchemaParser
 
     /**
      * The database connection.
-     *
-     * @var        PDO
      */
-    protected $dbh;
+    protected ?\PDO $dbh;
 
     /**
      * Stack of warnings.
      *
      * @var        array string[]
      */
-    protected $warnings = array();
+    protected array $warnings = array();
 
     /**
      * GeneratorConfig object holding build properties.
@@ -44,24 +42,18 @@ abstract class BaseSchemaParser implements SchemaParser
     /**
      * Map native DB types to Propel types.
      * (Override in subclasses.)
-     *
-     * @var        array
      */
-    protected $nativeToPropelTypeMap;
+    protected ?array $nativeToPropelTypeMap;
 
     /**
      * Map to hold reverse type mapping (initialized on-demand).
-     *
-     * @var        array
      */
-    protected $reverseTypeMap;
+    protected ?array $reverseTypeMap;
 
     /**
      * Name of the propel migration table - to be ignored in reverse
-     *
-     * @var string
      */
-    protected $migrationTable = 'propel_migration';
+    protected string $migrationTable = 'propel_migration';
 
     protected $platform;
 
@@ -77,8 +69,6 @@ abstract class BaseSchemaParser implements SchemaParser
 
     /**
      * Sets the database connection.
-     *
-     * @param PDO $dbh
      */
     public function setConnection(PDO $dbh)
     {
@@ -137,8 +127,6 @@ abstract class BaseSchemaParser implements SchemaParser
 
     /**
      * Sets the GeneratorConfig to use in the parsing.
-     *
-     * @param GeneratorConfigInterface $config
      */
     public function setGeneratorConfig(GeneratorConfigInterface $config)
     {
@@ -216,7 +204,6 @@ abstract class BaseSchemaParser implements SchemaParser
     /**
      * Gets a new VendorInfo object for this platform with specified params.
      *
-     * @param array $params
      *
      * @return VendorInfo
      */

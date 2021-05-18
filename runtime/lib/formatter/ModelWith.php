@@ -17,15 +17,15 @@
  */
 class ModelWith
 {
-    protected $modelName = '';
-    protected $modelPeerName = '';
-    protected $isSingleTableInheritance = false;
-    protected $isAdd = false;
-    protected $isWithOneToMany = false;
-    protected $relationName = '';
-    protected $relationMethod = '';
-    protected $initMethod = '';
-    protected $resetPartialMethod = '';
+    protected string $modelName = '';
+    protected string $modelPeerName = '';
+    protected bool $isSingleTableInheritance = false;
+    protected bool $isAdd = false;
+    protected bool $isWithOneToMany = false;
+    protected string $relationName = '';
+    protected string $relationMethod = '';
+    protected string $initMethod = '';
+    protected string $resetPartialMethod = '';
     protected $leftPhpName;
     protected $rightPhpName;
 
@@ -39,8 +39,6 @@ class ModelWith
     /**
      * Define the joined hydration schema based on a join object.
      * Fills the ModelWith properties using a ModelJoin as source
-     *
-     * @param ModelJoin $join
      */
     public function init(ModelJoin $join)
     {

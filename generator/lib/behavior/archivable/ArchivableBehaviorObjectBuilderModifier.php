@@ -32,7 +32,6 @@ class ArchivableBehaviorObjectBuilderModifier
     /**
      * Add object attributes to the built class.
      *
-     * @param PHP5ObjectBuilder $builder
      *
      * @return string The PHP code to be added to the builder.
      */
@@ -62,7 +61,6 @@ class ArchivableBehaviorObjectBuilderModifier
     /**
      * Add code to the postInsert hook.
      *
-     * @param PHP5ObjectBuilder $builder
      *
      * @return string The PHP code to be added to the builder.
      */

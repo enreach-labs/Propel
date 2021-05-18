@@ -39,45 +39,38 @@ class PropelDataDumpTask extends AbstractPropelDataModelTask
      * Database URL used for Propel connection.
      * This is a PEAR-compatible (loosely) DSN URL.
      */
-    private $databaseUrl;
+    private ?string $databaseUrl;
 
     /**
      * Database driver used for Propel connection.
      * This should normally be left blank so that default (Propel built-in) driver for database type is used.
      */
-    private $databaseDriver;
+    private ?string $databaseDriver;
 
     /**
      * Database user used for Propel connection.
      *
      * @deprecated Put username in databaseUrl.
      */
-    private $databaseUser;
+    private ?string $databaseUser;
 
     /**
      * Database password used for Propel connection.
      *
      * @deprecated Put password in databaseUrl.
      */
-    private $databasePassword;
+    private ?string $databasePassword;
 
     /**
      * Properties file that maps a data XML file to a particular database.
-     *
-     * @var        PhingFile
      */
-    private $datadbmap;
+    private ?\PhingFile $datadbmap;
 
     /**
      * The database connection used to retrieve the data to dump.
      * Needs to be public so that the TableInfo class can access it.
      */
     public $conn;
-
-    /**
-     * The statement used to acquire the data to dump.
-     */
-    private $stmt;
 
     /**
      * Set the file that maps between data XML files and databases.
@@ -298,7 +291,6 @@ class PropelDataDumpTask extends AbstractPropelDataModelTask
      * Gets PDOStatement of query to fetch all data from a table.
      *
      * @param string                  $tableName
-     * @param PropelPlatformInterface $platform
      *
      * @return PDOStatement
      */
@@ -310,7 +302,6 @@ class PropelDataDumpTask extends AbstractPropelDataModelTask
     /**
      * Creates a DOM document containing data for specified database.
      *
-     * @param Database $database
      *
      * @return DOMDocument
      */

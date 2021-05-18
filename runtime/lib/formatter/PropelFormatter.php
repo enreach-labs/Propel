@@ -37,7 +37,6 @@ abstract class PropelFormatter
      * Define the hydration schema based on a query object.
      * Fills the Formatter's properties using a Criteria as source
      *
-     * @param ModelCriteria $criteria
      *
      * @return PropelFormatter The current formatter object
      */

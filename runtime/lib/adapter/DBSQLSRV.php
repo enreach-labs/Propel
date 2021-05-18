@@ -19,9 +19,6 @@ class DBSQLSRV extends DBMSSQL
 {
     /**
      * @see       parent::initConnection()
-     *
-     * @param PDO   $con
-     * @param array $settings
      */
     public function initConnection(PDO $con, array $settings)
     {
@@ -34,9 +31,7 @@ class DBSQLSRV extends DBMSSQL
     /**
      * @see       parent::setCharset()
      *
-     * @param PDO    $con
      * @param string $charset
-     *
      * @throws PropelException
      */
     public function setCharset(PDO $con, $charset)
@@ -57,9 +52,6 @@ class DBSQLSRV extends DBMSSQL
      * @see       parent::cleanupSQL()
      *
      * @param string      $sql
-     * @param array       $params
-     * @param Criteria    $values
-     * @param DatabaseMap $dbMap
      */
     public function cleanupSQL(&$sql, array &$params, Criteria $values, DatabaseMap $dbMap)
     {
@@ -84,10 +76,8 @@ class DBSQLSRV extends DBMSSQL
     /**
      * @see       DBAdapter::bindValue()
      *
-     * @param PDOStatement $stmt
      * @param string       $parameter
      * @param mixed        $value
-     * @param ColumnMap    $cMap
      * @param null|integer $position
      *
      * @return boolean

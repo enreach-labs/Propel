@@ -50,7 +50,7 @@ class PropelColumnTypes
         PHP_ARRAY = "ARRAY",
         ENUM = "ENUM";
 
-    private static $propelToPdoMap = array(
+    private static array $propelToPdoMap = array(
         self::CHAR        => PDO::PARAM_STR,
         self::VARCHAR     => PDO::PARAM_STR,
         self::LONGVARCHAR => PDO::PARAM_STR,

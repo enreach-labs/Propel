@@ -209,11 +209,10 @@ protected function createRawSlug()
         } else {
             $script .= "return \$this->cleanupSlugPart(\$this->__toString());";
         }
-        $script .= "
+
+        return $script . "
 }
 ";
-
-        return $script;
     }
 
     public function addCleanupSlugPart(&$script)

@@ -33,75 +33,63 @@ class Column extends XMLElement
 
     const DEFAULT_TYPE = "VARCHAR";
     const DEFAULT_VISIBILITY = 'public';
-    public static $valid_visibilities = array('public', 'protected', 'private');
+    public static array $valid_visibilities = array('public', 'protected', 'private');
 
-    private $name;
+    private ?string $name;
     private $description;
-    private $phpName = null;
+    private ?string $phpName;
     private $phpNamingMethod;
-    private $isNotNull = false;
-    private $size;
-    private $namePrefix;
-    private $accessorVisibility;
-    private $mutatorVisibility;
+    private bool $isNotNull = false;
+    private ?string $namePrefix;
+    private ?string $accessorVisibility;
+    private ?string $mutatorVisibility;
 
     /**
      * The name to use for the Peer constant that identifies this column.
      * (Will be converted to all-uppercase in the templates.)
-     *
-     * @var string
      */
-    private $peerName;
+    private string $peerName;
 
     /**
      * Native PHP type (scalar or class name)
      *
      * @var string "string", "boolean", "int", "double"
      */
-    private $phpType;
+    private string $phpType;
 
-    /**
-     * @var Table
-     */
-    private $parentTable;
+    private ?\Table $parentTable;
 
-    private $position;
-    private $isPrimaryKey = false;
-    private $isNodeKey = false;
-    private $nodeKeySep;
-    private $isNestedSetLeftKey = false;
-    private $isNestedSetRightKey = false;
-    private $isTreeScopeKey = false;
-    private $isUnique = false;
-    private $isAutoIncrement = false;
-    private $isLazyLoad = false;
-    private $defaultValue;
-    private $referrers;
-    private $isPrimaryString = false;
+    private ?int $position;
+    private bool $isPrimaryKey = false;
+    private bool $isNodeKey = false;
+    private ?string $nodeKeySep;
+    private bool $isNestedSetLeftKey = false;
+    private bool $isNestedSetRightKey = false;
+    private bool $isTreeScopeKey = false;
+    private bool $isUnique = false;
+    private bool $isAutoIncrement = false;
+    private bool $isLazyLoad = false;
+    private ?array $referrers;
+    private bool $isPrimaryString = false;
 
     // only one type is supported currently, which assumes the
     // column either contains the classnames or a key to
     // classnames specified in the schema.  Others may be
     // supported later.
     private $inheritanceType;
-    private $isInheritance;
-    private $isEnumeratedClasses;
-    private $inheritanceList;
-    private $needsTransactionInPostgres; //maybe this can be retrieved from vendorSpecificInfo
-
+    private ?bool $isInheritance;
+    private ?bool $isEnumeratedClasses;
+    private ?array $inheritanceList;
+    private ?bool $needsTransactionInPostgres; //maybe this can be retrieved from vendorSpecificInfo
     /**
      * Stores the possible values of an ENUM column.
-     *
-     * @var array
      */
-    protected $valueSet = array();
+    protected array $valueSet = array();
 
     /**
      * The domain object associated with this Column.
-     *
-     * @var Domain
      */
-    private $domain;
+    private ?\Domain $domain;
 
     /**
      * Creates a new column and set the name
@@ -239,24 +227,11 @@ class Column extends XMLElement
             }
 
             if ($this->getAttribute('valueSet', null) !== null) {
-                if (version_compare(PHP_VERSION, '5.3.0', '>=')) {
-                    $valueSet = str_getcsv($this->getAttribute("valueSet"));
-                } else {
-                    // unfortunately, no good fallback for PHP 5.2
-                    $valueSet = explode(',', $this->getAttribute("valueSet"));
-                }
+                $valueSet = str_getcsv($this->getAttribute("valueSet"));
                 $valueSet = array_map('trim', $valueSet);
                 $this->valueSet = $valueSet;
             } elseif (preg_match('/enum\((.*?)\)/i', $this->getAttribute('sqlType', ''), $matches)) {
-                if (version_compare(PHP_VERSION, '5.3.0', '>=')) {
-                    $valueSet = str_getcsv($matches['1'], ',', '\'');
-                } else {
-                    // unfortunately, no good fallback for PHP 5.2
-                    $valueSet = array();
-                    foreach (explode(',', $matches['1']) as $value) {
-                        $valueSet[] = trim($value, " '");
-                    }
-                }
+                $valueSet = str_getcsv($matches['1'], ',', '\'');
                 $this->valueSet = $valueSet;
             }
 
@@ -286,8 +261,6 @@ class Column extends XMLElement
 
     /**
      * Sets domain for this column
-     *
-     * @param Domain $domain
      */
     public function setDomain(Domain $domain)
     {
@@ -650,7 +623,7 @@ class Column extends XMLElement
      */
     public function setPrimaryString($v)
     {
-        $this->isPrimaryString = (boolean) $v;
+        $this->isPrimaryString = (boolean) (boolean) $v;
     }
 
     /**
@@ -669,7 +642,7 @@ class Column extends XMLElement
      */
     public function setPrimaryKey($v)
     {
-        $this->isPrimaryKey = (boolean) $v;
+        $this->isPrimaryKey = (boolean) (boolean) $v;
     }
 
     /**
@@ -1283,7 +1256,6 @@ class Column extends XMLElement
         $this->setType($tn);
 
         if ($size !== null) {
-            $this->size = $size;
         }
 
         if (strpos($tn, "CHAR") !== false) {

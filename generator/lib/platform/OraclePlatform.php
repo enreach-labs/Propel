@@ -96,9 +96,8 @@ ALTER SESSION SET NLS_TIMESTAMP_FORMAT='YYYY-MM-DD HH24:MI:SS';
         if ($ret2) {
             $ret .= $this->getCommentBlockDDL('Foreign Keys') . $ret2;
         }
-        $ret .= $this->getEndDDL();
 
-        return $ret;
+        return $ret . $this->getEndDDL();
     }
 
     public function getAddTableDDL(Table $table)
@@ -316,7 +315,6 @@ USING INDEX
     /**
      * Builds the DDL SQL to add an Index.
      *
-     * @param Index $index
      *
      * @return string
      */

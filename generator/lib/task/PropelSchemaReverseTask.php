@@ -60,97 +60,71 @@ class PropelSchemaReverseTask extends PDOTask
 
     /**
      * File to contain XML database schema.
-     *
-     * @var        PhingFIle
      */
-    protected $xmlSchema;
+    protected ?\PhingFile $xmlSchema;
 
     /**
      * DB encoding to use
-     *
-     * @var        string
      */
-    protected $dbEncoding = 'iso-8859-1';
+    protected string $dbEncoding = 'iso-8859-1';
 
     /**
      * DB schema to use.
-     *
-     * @var        string
      */
-    protected $dbSchema;
+    protected ?string $dbSchema;
 
     /**
      * The datasource name (used for <database name=""> in schema.xml)
-     *
-     * @var        string
      */
-    protected $databaseName;
+    protected ?string $databaseName;
 
     /**
      * DOM document produced.
-     *
-     * @var        DOMDocument
      */
-    protected $doc;
+    protected ?\DOMDocument $doc;
 
     /**
      * The document root element.
-     *
-     * @var        DOMElement
      */
-    protected $databaseNode;
+    protected \DOMElement $databaseNode;
 
     /**
      * Hashtable of columns that have primary keys.
-     *
-     * @var        array
      */
-    protected $primaryKeys;
+    protected array $primaryKeys;
 
     /**
      * Whether to use same name for phpName or not.
-     *
-     * @var        boolean
      */
-    protected $samePhpName;
+    protected ?bool $samePhpName;
 
     /**
      * whether to add vendor info or not
-     *
-     * @var        boolean
      */
-    protected $addVendorInfo;
+    protected ?bool $addVendorInfo;
 
     /**
      * Bitfield to switch on/off which validators will be created.
-     *
-     * @var        int
      */
-    protected $validatorBits = PropelSchemaReverseTask::VALIDATORS_NONE;
+    protected int $validatorBits = PropelSchemaReverseTask::VALIDATORS_NONE;
 
     /**
      * Collect validatorInfos to create validators.
-     *
-     * @var        int
      */
-    protected $validatorInfos;
+    protected int $validatorInfos;
 
     /**
      * An initialized GeneratorConfig object containing the converted Phing props.
-     *
-     * @var        GeneratorConfig
      */
-    private $generatorConfig;
+    private ?\GeneratorConfig $generatorConfig;
 
     /**
      * Maps validator type tokens to bits
      *
      * The tokens are used in the propel.addValidators property to define
      * which validators are to be added
-     *
-     * @var        array
      */
-    protected static $validatorBitMap = array (
+    protected static array $validatorBitMap = array (
         'none' => PropelSchemaReverseTask::VALIDATORS_NONE,
         'maxlength' => PropelSchemaReverseTask::VALIDATORS_MAXLENGTH,
         'maxvalue' => PropelSchemaReverseTask::VALIDATORS_MAXVALUE,
@@ -162,10 +136,8 @@ class PropelSchemaReverseTask extends PDOTask
 
     /**
      * Defines messages that are added to validators
-     *
-     * @var        array
      */
-    protected static $validatorMessages = array (
+    protected static array $validatorMessages = array (
         'maxlength' => array (
             'msg' => 'The field %s must be not longer than %s characters.',
             'var' => array('colName', 'value')
@@ -252,8 +224,6 @@ class PropelSchemaReverseTask extends PDOTask
 
     /**
      * Sets the output name for the XML file.
-     *
-     * @param PhingFile $v
      */
     public function setOutputFile(PhingFile $v)
     {
@@ -267,7 +237,7 @@ class PropelSchemaReverseTask extends PDOTask
      */
     public function setSamePhpName($v)
     {
-        $this->samePhpName = (boolean) $v;
+        $this->samePhpName = (boolean) (boolean) $v;
     }
 
     /**
@@ -277,7 +247,7 @@ class PropelSchemaReverseTask extends PDOTask
      */
     public function setAddVendorInfo($v)
     {
-        $this->addVendorInfo = (boolean) $v;
+        $this->addVendorInfo = (boolean) (boolean) $v;
     }
 
     /**
@@ -504,10 +474,8 @@ class PropelSchemaReverseTask extends PDOTask
     /**
      * Gets the message for a specified rule.
      *
-     * @param Column $column
      * @param string $type
      * @param mixed  $value
-     *
      * @return string
      */
     protected function getRuleMessage(Column $column, $type, $value)
@@ -518,9 +486,8 @@ class PropelSchemaReverseTask extends PDOTask
         $msg = self::$validatorMessages[strtolower($type)];
         $tmp = compact($msg['var']);
         array_unshift($tmp, $msg['msg']);
-        $msg = call_user_func_array('sprintf', $tmp);
 
-        return $msg;
+        return call_user_func_array('sprintf', $tmp);
     }
 }
 
@@ -537,12 +504,11 @@ class PropelSchemaReverse_ValidatorSet
      *
      * @var        array Validator[]
      */
-    private $validators = array();
+    private array $validators = array();
 
     /**
      * Gets a single validator for specified column name.
      *
-     * @param Column $column
      *
      * @return Validator
      */

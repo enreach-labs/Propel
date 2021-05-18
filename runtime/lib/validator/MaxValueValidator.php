@@ -31,9 +31,7 @@ class MaxValueValidator implements BasicValidator
     /**
      * @see       BasicValidator::isValid()
      *
-     * @param ValidatorMap $map
      * @param mixed        $value
-     *
      * @return boolean
      */
     public function isValid(ValidatorMap $map, $value)

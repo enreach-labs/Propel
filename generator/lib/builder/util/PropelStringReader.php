@@ -19,20 +19,11 @@ include_once 'phing/system/io/Reader.php';
  */
 class PropelStringReader extends Reader
 {
-    /**
-     * @var string
-     */
-    protected $_string;
+    protected string $_string;
 
-    /**
-     * @var int
-     */
-    protected $mark = 0;
+    protected int $mark = 0;
 
-    /**
-     * @var int
-     */
-    protected $currPos = 0;
+    protected int $currPos = 0;
 
     public function __construct($string)
     {

@@ -95,7 +95,6 @@ class PgsqlPlatform extends DefaultPlatform
      * Override to provide sequence names that conform to postgres' standard when
      * no id-method-parameter specified.
      *
-     * @param Table $table
      *
      * @return string
      */
@@ -211,9 +210,8 @@ SET search_path TO public;
         foreach ($database->getTablesForSql() as $table) {
             $ret .= $this->getAddForeignKeysDDL($table);
         }
-        $ret .= $this->getEndDDL();
 
-        return $ret;
+        return $ret . $this->getEndDDL();
     }
 
     public function getAddTableDDL(Table $table)

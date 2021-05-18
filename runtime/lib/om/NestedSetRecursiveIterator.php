@@ -17,9 +17,9 @@
  */
 class NestedSetRecursiveIterator implements RecursiveIterator
 {
-    protected $topNode = null;
+    protected $topNode;
 
-    protected $curNode = null;
+    protected $curNode;
 
     public function __construct($node)
     {

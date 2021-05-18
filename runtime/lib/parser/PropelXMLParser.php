@@ -154,8 +154,6 @@ class PropelXMLParser extends PropelParser
     }
 
     /**
-     * @param DOMNode $data
-     *
      * @return array
      */
     protected function convertDOMElementToArray(DOMNode $data)
@@ -194,8 +192,6 @@ class PropelXMLParser extends PropelParser
     }
 
     /**
-     * @param DomNode $node
-     *
      * @return boolean
      */
     protected function hasOnlyTextNodes(DomNode $node)

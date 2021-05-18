@@ -22,9 +22,6 @@ class DBNone extends DBAdapter
 
     /**
      * @see        DBAdapter::initConnection()
-     *
-     * @param PDO   $con
-     * @param array $settings
      */
     public function initConnection(PDO $con, array $settings)
     {

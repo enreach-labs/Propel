@@ -25,10 +25,7 @@ class IdMethodParameter extends XMLElement
     private $name;
     private $value;
 
-    /**
-     * @var Table
-     */
-    private $parentTable;
+    private ?\Table $parentTable;
 
     /**
      * Sets up the IdMethodParameter object based on the attributes that were passed to loadFromXML().

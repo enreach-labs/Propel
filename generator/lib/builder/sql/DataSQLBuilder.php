@@ -110,7 +110,6 @@ abstract class DataSQLBuilder extends DataModelBuilder
     /**
      * Gets the property escaped (and quoted) value for a column.
      *
-     * @param ColumnValue $colValue
      *
      * @return mixed The proper value to be added to the string.
      */
@@ -190,7 +189,7 @@ abstract class DataSQLBuilder extends DataModelBuilder
      */
     protected function getDecimalSql($value)
     {
-        return (float) $value;
+        return $value;
     }
 
     /**
@@ -202,7 +201,7 @@ abstract class DataSQLBuilder extends DataModelBuilder
      */
     protected function getDoubleSql($value)
     {
-        return (double) $value;
+        return $value;
     }
 
     /**
@@ -214,7 +213,7 @@ abstract class DataSQLBuilder extends DataModelBuilder
      */
     protected function getFloatSql($value)
     {
-        return (float) $value;
+        return $value;
     }
 
     /**
@@ -226,7 +225,7 @@ abstract class DataSQLBuilder extends DataModelBuilder
      */
     protected function getIntSql($value)
     {
-        return (int) $value;
+        return $value;
     }
 
     /**

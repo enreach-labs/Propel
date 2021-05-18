@@ -27,20 +27,14 @@
  */
 class PropelCollection extends ArrayObject implements Serializable
 {
-    /**
-     * @var       string
-     */
-    protected $model = '';
+    protected string $model = '';
 
     /**
      * @var       ArrayIterator
      */
     protected $iterator;
 
-    /**
-     * @var       PropelFormatter
-     */
-    protected $formatter;
+    protected ?\PropelFormatter $formatter;
 
     // Generic Collection methods
 
@@ -464,9 +458,6 @@ class PropelCollection extends ArrayObject implements Serializable
         return constant($this->getModel() . '::PEER');
     }
 
-    /**
-     * @param PropelFormatter $formatter
-     */
     public function setFormatter(PropelFormatter $formatter)
     {
         $this->formatter = $formatter;
@@ -582,7 +573,7 @@ class PropelCollection extends ArrayObject implements Serializable
      */
     public function __toString()
     {
-        return (string) $this->exportTo(constant($this->getPeerClass() . '::DEFAULT_STRING_FORMAT'));
+        return $this->exportTo(constant($this->getPeerClass() . '::DEFAULT_STRING_FORMAT'));
     }
 
     /**

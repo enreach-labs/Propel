@@ -16,20 +16,11 @@
  */
 class VersionableBehaviorObjectBuilderModifier
 {
-    /**
-     * @var VersionableBehavior
-     */
-    protected $behavior;
+    protected \VersionableBehavior $behavior;
 
-    /**
-     * @var Table
-     */
-    protected $table;
+    protected \Table $table;
 
-    /**
-     * @var PHP5ObjectBuilder
-     */
-    protected $builder;
+    protected ?\PHP5ObjectBuilder $builder;
 
     /**
      * @var string
@@ -119,11 +110,9 @@ class VersionableBehaviorObjectBuilderModifier
     }";
         }
 
-        $script .= "
+        return $script . "
     \$createVersion = true; // for postSave hook
 }";
-
-        return $script;
     }
 
     public function postSave(PHP5ObjectBuilder $builder)
@@ -137,12 +126,10 @@ class VersionableBehaviorObjectBuilderModifier
     {
         $this->builder = $builder;
         if (!$builder->getPlatform()->supportsNativeDeleteTrigger() && !$builder->getBuildProperty('emulateForeignKeyConstraints')) {
-            $script = "// emulate delete cascade
+            return "// emulate delete cascade
 {$this->getVersionQueryClassName()}::create()
     ->filterBy{$this->table->getPhpName()}(\$this)
     ->delete(\$con);";
-
-            return $script;
         }
     }
 

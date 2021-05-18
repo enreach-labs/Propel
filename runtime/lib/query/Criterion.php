@@ -27,43 +27,41 @@ class Criterion
     protected $value;
 
     /** Comparison value.
-     *
-     * @var string
      */
-    protected $comparison;
+    protected string $comparison;
 
     /** Table name. */
-    protected $table;
+    protected ?string $table;
 
     /** Real table name */
     protected $realtable;
 
     /** Column name. */
-    protected $column;
+    protected ?string $column;
 
     /**
      * Binding type to be used for Criteria::RAW comparison
      *
      * @var string any of the PDO::PARAM_ constant values
      */
-    protected $type;
+    protected ?string $type;
 
     /** flag to ignore case in comparison */
-    protected $ignoreStringCase = false;
+    protected bool $ignoreStringCase = false;
 
     /**
      * The DBAdaptor which might be used to get db specific
      * variations of sql.
      */
-    protected $db;
+    protected ?\DBAdapter $db;
 
     /**
      * other connected criteria and their conjunctions.
      *
      * @var Criterion[]
      */
-    protected $clauses = array();
-    protected $conjunctions = array();
+    protected array $clauses = array();
+    protected array $conjunctions = array();
 
     /** "Parent" Criteria class */
     protected $parent;
@@ -205,7 +203,7 @@ class Criterion
      */
     public function setIgnoreCase($b)
     {
-        $this->ignoreStringCase = (boolean) $b;
+        $this->ignoreStringCase = (boolean) (boolean) $b;
 
         return $this;
     }
@@ -254,7 +252,6 @@ class Criterion
     /**
      * Append an OR Criterion onto this Criterion's list.
      *
-     * @param Criterion $criterion
      *
      * @return Criterion
      */
@@ -561,9 +558,7 @@ class Criterion
      * method supporting recursion through all criterions to give
      * us a string array of tables from each criterion
      *
-     * @param Criterion $c
      * @param array     &$s
-     *
      * @return void
      */
     private function addCriterionTable(Criterion $c, array &$s)

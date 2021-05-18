@@ -23,7 +23,7 @@ require_once dirname(__FILE__) . '/Pluralizer.php';
  */
 class StandardEnglishPluralizer implements Pluralizer
 {
-    protected $_plural = array(
+    protected array $_plural = array(
         '(matr|vert|ind)(ix|ex)' => '\1ices',
         '(alumn|bacill|cact|foc|fung|nucle|radi|stimul|syllab|termin|vir)us' => '\1i',
         '(buffal|tomat)o' => '\1oes',
@@ -74,7 +74,7 @@ class StandardEnglishPluralizer implements Pluralizer
         'life' => 'lives'
     );
 
-    protected $_irregular = array(
+    protected array $_irregular = array(
         'leaf'   => 'leaves',
         'loaf'   => 'loaves',
         'move'   => 'moves',
@@ -95,7 +95,7 @@ class StandardEnglishPluralizer implements Pluralizer
         'alias' => 'aliases',
     );
 
-    private $_uncountable = array(
+    private array $_uncountable = array(
         'sheep',
         'fish',
         'deer',

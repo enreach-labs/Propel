@@ -45,261 +45,210 @@ class Table extends ScopedElement implements IDMethod
      *
      * @var Column[]
      */
-    private $columnList = array();
+    private array $columnList = array();
 
     /**
      * Validators for this table.
      *
      * @var Validator[]
      */
-    private $validatorList = array();
+    private array $validatorList = array();
 
     /**
      * Foreign keys for this table.
      *
      * @var ForeignKey[]
      */
-    private $foreignKeys = array();
+    private array $foreignKeys = array();
 
     /**
      * Indexes for this table.
      *
      * @var Index[]
      */
-    private $indices = array();
+    private array $indices = array();
 
     /**
      * Unique indexes for this table.
      *
      * @var Unique[]
      */
-    private $unices = array();
+    private array $unices = array();
 
     /**
      * Any parameters for the ID method (currently supports changing sequence name).
-     *
-     * @var array
      */
-    private $idMethodParameters = array();
+    private array $idMethodParameters = array();
 
     /**
      * Table name (with prefix if it has one).
-     *
-     * @var string
      */
-    private $commonName;
+    private ?string $commonName;
 
     /**
      * Table name without prefix.  Only used for phpName generation.
-     *
-     * @var string
      */
-    private $nonPrefixedName;
+    private ?string $nonPrefixedName;
 
     /**
      * Table description.
-     *
-     * @var string
      */
-    private $description;
+    private string $description;
 
     /**
      * phpName for the table.
-     *
-     * @var string
      */
-    private $phpName;
+    private ?string $phpName;
 
     /**
      * ID method for the table (e.g. IDMethod::NATIVE, IDMethod::NONE).
-     *
-     * @var string
      */
-    private $idMethod;
+    private string $idMethod;
 
     /**
      * Whether an INSERT with set PK is allowed on tables with IDMethod::NATIVE
-     *
-     * @var boolean
      */
-    private $allowPkInsert;
+    private ?bool $allowPkInsert;
 
     /**
      * Strategy to use for converting column name to phpName.
-     *
-     * @var string
      */
-    private $phpNamingMethod;
+    private string $phpNamingMethod;
 
     /**
      * The Database that this table belongs to.
-     *
-     * @var Database
      */
-    private $database;
+    private ?\Database $database;
 
     /**
      * Foreign Keys that refer to this table.
      *
      * @var ForeignKey[]
      */
-    private $referrers = array();
+    private array $referrers = array();
 
     /**
      * Names of foreign tables.
      *
      * @var string[]
      */
-    private $foreignTableNames;
+    private ?array $foreignTableNames;
 
     /**
      * Whether this table contains a foreign primary key.
-     *
-     * @var boolean
      */
-    private $containsForeignPK;
+    private ?bool $containsForeignPK;
 
     /**
      * The inheritance column for this table (if any).
-     *
-     * @var Column
      */
-    private $inheritanceColumn;
+    private ?\Column $inheritanceColumn;
 
     /**
      * Whether to skip generation of SQL for this table.
-     *
-     * @var boolean
      */
-    private $skipSql;
+    private ?bool $skipSql;
 
     /**
      * Whether this table is "read-only".
-     *
-     * @var boolean
      */
-    private $readOnly;
+    private ?bool $readOnly;
 
     /**
      * Whether this table should result in abstract OM classes.
-     *
-     * @var boolean
      */
-    private $abstractValue;
+    private ?bool $abstractValue;
 
     /**
      * Whether this table is an alias for another table.
-     *
-     * @var string
      */
-    private $alias;
+    private ?string $alias;
 
     /**
      * The interface that the generated "object" class should implement.
-     *
-     * @var string
      */
-    private $interface;
+    private ?string $interface;
 
     /**
      * The base class to extend for the generated "object" class.
-     *
-     * @var string
      */
-    private $baseClass;
+    private string $baseClass;
 
     /**
      * The base peer class to extend for generated "peer" class.
-     *
-     * @var string
      */
-    private $basePeer;
+    private string $basePeer;
 
     /**
      * Map of columns by name.
      *
      * @var Column[]
      */
-    private $columnsByName = array();
+    private array $columnsByName = array();
 
     /**
      * Map of columns by lowercase name.
      *
      * @var Column[]
      */
-    private $columnsByLowercaseName = array();
+    private array $columnsByLowercaseName = array();
 
     /**
      * Map of columns by phpName.
      *
      * @var Column[]
      */
-    private $columnsByPhpName = array();
+    private array $columnsByPhpName = array();
 
     /**
      * Whether this table needs to use transactions in Postgres.
      *
-     * @var string
      * @deprecated
      */
-    private $needsTransactionInPostgres;
+    private string $needsTransactionInPostgres;
 
     /**
      * Whether to perform additional indexing on this table.
-     *
-     * @var boolean
      */
-    private $heavyIndexing;
+    private ?bool $heavyIndexing;
 
     /**
      * Whether this table is for reference only.
-     *
-     * @var boolean
      */
-    private $forReferenceOnly;
+    private ?bool $forReferenceOnly;
 
     /**
      * The tree mode (nested set, etc.) implemented by this table.
-     *
-     * @var string
      */
-    private $treeMode;
+    private ?string $treeMode;
 
     /**
      * Whether to reload the rows in this table after insert.
-     *
-     * @var boolean
      */
-    private $reloadOnInsert;
+    private ?bool $reloadOnInsert;
 
     /**
      * Whether to reload the rows in this table after update.
-     *
-     * @var boolean
      */
-    private $reloadOnUpdate;
+    private ?bool $reloadOnUpdate;
 
     /**
      * List of behaviors registered for this table
      *
      * @var Behavior[]
      */
-    protected $behaviors = array();
+    protected array $behaviors = array();
 
     /**
      * Whether this table is a cross-reference table for a many-to-many relationship
-     *
-     * @var boolean
      */
-    protected $isCrossRef = false;
+    protected bool $isCrossRef = false;
 
     /**
      * The default string format for objects based on this table
      * (e.g. 'XML', 'YAML', 'CSV', 'JSON')
-     *
-     * @var string
      */
-    protected $defaultStringFormat;
+    protected ?string $defaultStringFormat;
 
     /**
      * Constructs a table object with a name
@@ -1543,7 +1492,7 @@ class Table extends ScopedElement implements IDMethod
      */
     public function setAbstract($v)
     {
-        $this->abstractValue = (boolean) $v;
+        $this->abstractValue = (boolean) (boolean) $v;
     }
 
     /**
@@ -1753,8 +1702,6 @@ class Table extends ScopedElement implements IDMethod
 
     /**
      * Set the database that contains this table.
-     *
-     * @param Database $db
      */
     public function setDatabase(Database $db)
     {
@@ -1790,7 +1737,7 @@ class Table extends ScopedElement implements IDMethod
      */
     public function setForReferenceOnly($v)
     {
-        $this->forReferenceOnly = (boolean) $v;
+        $this->forReferenceOnly = (boolean) (boolean) $v;
     }
 
     /**
@@ -1815,8 +1762,6 @@ class Table extends ScopedElement implements IDMethod
 
     /**
      * Appends XML nodes to passed-in DOMNode.
-     *
-     * @param DOMNode $node
      */
     public function appendXml(DOMNode $node)
     {
@@ -2039,7 +1984,7 @@ class Table extends ScopedElement implements IDMethod
      */
     public function setIsCrossRef($isCrossRef)
     {
-        $this->isCrossRef = (bool) $isCrossRef;
+        $this->isCrossRef = (bool) (bool) $isCrossRef;
     }
 
     /**

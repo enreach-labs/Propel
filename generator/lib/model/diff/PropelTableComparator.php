@@ -38,8 +38,6 @@ class PropelTableComparator
 
     /**
      * Set the table the comparator starts from
-     *
-     * @param Table $fromTable
      */
     public function setFromTable(Table $fromTable)
     {
@@ -58,8 +56,6 @@ class PropelTableComparator
 
     /**
      * Set the table the comparator goes to
-     *
-     * @param Table $toTable
      */
     public function setToTable(Table $toTable)
     {
@@ -79,8 +75,6 @@ class PropelTableComparator
     /**
      * Compute and return the difference between two table objects
      *
-     * @param Table   $fromTable
-     * @param Table   $toTable
      * @param boolean $caseInsensitive Whether the comparison is case insensitive.
      *                                 False by default.
      *
@@ -248,12 +242,12 @@ class PropelTableComparator
             }
         }
 
-        foreach ($fromTableIndices as $fromTableIndexPos => $fromTableIndex) {
+        foreach ($fromTableIndices as $fromTableIndex) {
             $this->tableDiff->addRemovedIndex($fromTableIndex->getName(), $fromTableIndex);
             $indexDifferences++;
         }
 
-        foreach ($toTableIndices as $toTableIndexPos => $toTableIndex) {
+        foreach ($toTableIndices as $toTableIndex) {
             $this->tableDiff->addAddedIndex($toTableIndex->getName(), $toTableIndex);
             $indexDifferences++;
         }
@@ -297,14 +291,14 @@ class PropelTableComparator
             }
         }
 
-        foreach ($fromTableFks as $fromTableFkPos => $fromTableFk) {
+        foreach ($fromTableFks as $fromTableFk) {
             if (!$fromTableFk->isSkipSql() && !in_array($fromTableFk, $toTableFks)) {
                 $this->tableDiff->addRemovedFk($fromTableFk->getName(), $fromTableFk);
                 $fkDifferences++;
             }
         }
 
-        foreach ($toTableFks as $toTableFkPos => $toTableFk) {
+        foreach ($toTableFks as $toTableFk) {
             if (!$toTableFk->isSkipSql() && !in_array($toTableFk, $fromTableFks)) {
                 $this->tableDiff->addAddedFk($toTableFk->getName(), $toTableFk);
                 $fkDifferences++;

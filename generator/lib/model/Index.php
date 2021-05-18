@@ -25,18 +25,15 @@ class Index extends XMLElement
     /** enables debug output */
     const DEBUG = false;
 
-    private $indexName;
+    private ?string $indexName;
 
-    /**
-     * @var Table
-     */
-    private $parentTable;
+    private ?\Table $parentTable;
 
     /** @var string[] */
-    private $indexColumns;
+    private ?array $indexColumns;
 
     /** @var int[] */
-    private $indexColumnSizes = array();
+    private array $indexColumnSizes = array();
 
     /**
      * Creates a new Index instance.

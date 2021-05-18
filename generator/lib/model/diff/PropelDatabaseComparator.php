@@ -22,8 +22,8 @@ require_once dirname(__FILE__) . '/PropelTableComparator.php';
 class PropelDatabaseComparator
 {
     protected $databaseDiff;
-    protected $fromDatabase;
-    protected $toDatabase;
+    protected ?\Database $fromDatabase;
+    protected ?\Database $toDatabase;
 
     public function __construct($databaseDiff = null)
     {
@@ -37,8 +37,6 @@ class PropelDatabaseComparator
 
     /**
      * Setter for the fromDatabase property
-     *
-     * @param Database $fromDatabase
      */
     public function setFromDatabase(Database $fromDatabase)
     {
@@ -57,8 +55,6 @@ class PropelDatabaseComparator
 
     /**
      * Setter for the toDatabase property
-     *
-     * @param Database $toDatabase
      */
     public function setToDatabase(Database $toDatabase)
     {
@@ -78,8 +74,6 @@ class PropelDatabaseComparator
     /**
      * Compute and return the difference between two database objects
      *
-     * @param Database $fromDatabase
-     * @param Database $toDatabase
      * @param boolean  $caseInsensitive Whether the comparison is case insensitive.
      *                                  False by default.
      *

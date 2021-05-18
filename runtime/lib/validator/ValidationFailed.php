@@ -25,13 +25,13 @@
 class ValidationFailed
 {
     /** Column name in tablename.COLUMN_NAME format */
-    private $colname;
+    private string $colname;
 
     /** Message to display to user. */
-    private $message;
+    private string $message;
 
     /** Validator object that caused this to fail. */
-    private $validator;
+    private ?object $validator;
 
     /**
      * Construct a new ValidationFailed object.

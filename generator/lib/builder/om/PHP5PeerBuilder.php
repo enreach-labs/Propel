@@ -887,7 +887,7 @@ abstract class " . $this->getClassname() . $extendingPeerClass . "
      */
     public function getInstancePoolKeySnippet($pkphp)
     {
-        $pkphp = (array) $pkphp; // make it an array if it is not.
+        $pkphp = (array) (array) $pkphp; // make it an array if it is not.
         $script = "";
         if (count($pkphp) > 1) {
             $script .= "serialize(array(";
@@ -1421,18 +1421,9 @@ abstract class " . $this->getClassname() . $extendingPeerClass . "
      * " . $this->getObjectClassname() . " is declared abstract in the schema.
      */";
 
-        if (version_compare(PHP_VERSION, '5.3.0', '>=')) {
-            $script .= "
+        $script .= "
     abstract public static function getOMClass(\$row = 0, \$colnum = 0);
 ";
-        } else {
-            $script .= "
-    public static function getOMClass(\$row = 0, \$colnum = 0)
-    {
-        throw new LogicException(\"You can't get OMClass for an abstract Peer class.\");
-    }
-";
-        }
     }
 
     /**
@@ -2200,7 +2191,6 @@ abstract class " . $this->getClassname() . $extendingPeerClass . "
     /**
      * Get the column offsets of the primary key(s) for specified table.
      *
-     * @param Table $tbl
      *
      * @return array int[] The column offsets of the primary key(s).
      */

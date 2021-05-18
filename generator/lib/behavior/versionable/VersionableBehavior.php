@@ -33,10 +33,7 @@ class VersionableBehavior extends Behavior
         'version_comment_column' => 'version_comment'
     );
 
-    /**
-     * @var Table
-     */
-    protected $versionTable;
+    protected ?\Table $versionTable;
 
     protected $objectBuilderModifier, $queryBuilderModifier, $peerBuilderModifier;
 

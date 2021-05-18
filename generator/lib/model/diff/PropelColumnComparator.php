@@ -23,8 +23,6 @@ class PropelColumnComparator
     /**
      * Compute and return the difference between two column objects
      *
-     * @param Column $fromColumn
-     * @param Column $toColumn
      *
      * @return PropelColumnDiff|boolean return false if the two columns are similar
      */

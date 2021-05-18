@@ -30,17 +30,13 @@ class PropelConfigurationIterator extends RecursiveIteratorIterator
 
     /**
      * Namespace stack when recursively iterating the configuration tree
-     *
-     * @var       array
      */
-    protected $namespaceStack = array();
+    protected array $namespaceStack = array();
 
     /**
      * Current node type. Possible values: null (undefined), self::NODE_PARENT or self::NODE_ITEM
-     *
-     * @var       integer
      */
-    protected $nodeType = null;
+    protected ?int $nodeType;
 
     /**
      * Get current namespace

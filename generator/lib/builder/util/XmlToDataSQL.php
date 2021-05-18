@@ -22,43 +22,33 @@ class XmlToDataSQL extends AbstractHandler
 
     /**
      * The GeneratorConfig associated with the build.
-     *
-     * @var        GeneratorConfig
      */
-    private $generatorConfig;
+    private \GeneratorConfig $generatorConfig;
 
     /**
      * The database.
-     *
-     * @var        Database
      */
-    private $database;
+    private \Database $database;
 
     /**
      * The output writer for the SQL file.
-     *
-     * @var        Writer
      */
-    private $sqlWriter;
+    private ?\Writer $sqlWriter;
 
     /**
      * The database (and output SQL file) encoding.
      *
      * Values will be converted to this encoding in the output file.
-     *
-     * @var        string
      */
-    private $encoding;
+    private string $encoding;
 
     /**
      * The classname of the static class that will perform the building.
      *
      * This is needed because there are some pre/post methods that get called
      * on the static class.
-     *
-     * @var        string
      */
-    private $builderClazz;
+    private ?string $builderClazz;
 
     /**
      * The name of the current table being processed.
@@ -69,10 +59,8 @@ class XmlToDataSQL extends AbstractHandler
 
     /**
      * The DataSQLBuilder for the current table.
-     *
-     * @var        DataSQLBuilder
      */
-    private $currBuilder;
+    private ?\DataModelBuilder $currBuilder;
 
     /**
      * Expat Parser.
@@ -92,8 +80,6 @@ class XmlToDataSQL extends AbstractHandler
      * This class is passed the Database object so that it knows what to expect from
      * the XML file.
      *
-     * @param Database        $database
-     * @param GeneratorConfig $config
      * @param string          $encoding Database encoding
      */
     public function __construct(Database $database, GeneratorConfig $config, $encoding = 'iso-8859-1')
@@ -106,8 +92,6 @@ class XmlToDataSQL extends AbstractHandler
     /**
      * Transform the data dump input file into SQL and writes it to the output stream.
      *
-     * @param PhingFile $xmlFile
-     * @param Writer    $out
      *
      * @throws BuildException
      */
@@ -218,7 +202,7 @@ class XmlToDataSQL extends AbstractHandler
  */
 class DataRow
 {
-    private $table;
+    private \Table $table;
     private $columnValues;
 
     public function __construct(Table $table, $columnValues)
@@ -245,7 +229,7 @@ class DataRow
  */
 class ColumnValue
 {
-    private $col;
+    private \Column $col;
     private $val;
 
     public function __construct(Column $col, $val)

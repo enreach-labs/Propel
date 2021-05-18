@@ -20,10 +20,10 @@
 class CriterionIterator implements Iterator
 {
 
-    private $idx = 0;
-    private $criteria;
-    private $criteriaKeys;
-    private $criteriaSize;
+    private int $idx = 0;
+    private \Criteria $criteria;
+    private array $criteriaKeys;
+    private int $criteriaSize;
 
     public function __construct(Criteria $criteria)
     {

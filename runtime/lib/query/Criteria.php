@@ -135,118 +135,96 @@ class Criteria implements IteratorAggregate
     /** logical AND operator */
     const LOGICAL_AND = "AND";
 
-    protected $ignoreCase = false;
-    protected $singleRecord = false;
+    protected bool $ignoreCase = false;
+    protected bool $singleRecord = false;
 
     /**
      * Storage of select data. Collection of column names.
-     *
-     * @var        array
      */
-    protected $selectColumns = array();
+    protected array $selectColumns = array();
 
     /**
      * Storage of aliased select data. Collection of column names.
-     *
-     * @var        array
      */
-    protected $asColumns = array();
+    protected array $asColumns = array();
 
     /**
      * Storage of select modifiers data. Collection of modifier names.
-     *
-     * @var        array
      */
-    protected $selectModifiers = array();
+    protected array $selectModifiers = array();
 
     /**
      * Storage of conditions data. Collection of Criterion objects.
      *
      * @var        Criterion[]
      */
-    protected $map = array();
+    protected array $map = array();
 
     /**
      * Storage of ordering data. Collection of column names.
-     *
-     * @var        array
      */
-    protected $orderByColumns = array();
+    protected array $orderByColumns = array();
 
     /**
      * Storage of grouping data. Collection of column names.
-     *
-     * @var        array
      */
-    protected $groupByColumns = array();
+    protected array $groupByColumns = array();
 
     /**
      * Storage of having data.
-     *
-     * @var        Criterion
      */
-    protected $having = null;
+    protected ?\Criterion $having;
 
     /**
      * Storage of join data. collection of Join objects.
-     *
-     * @var        array
      */
-    protected $joins = array();
+    protected array $joins = array();
 
     /**
      * @var        Criteria[]
      */
-    protected $selectQueries = array();
+    protected array $selectQueries = array();
 
     /**
      * The name of the database.
-     *
-     * @var        string
      */
-    protected $dbName;
+    protected ?string $dbName;
 
     /**
      * The primary table for this Criteria.
      * Useful in cases where there are no select or where
      * columns.
-     *
-     * @var        string
      */
-    protected $primaryTableName = null;
+    protected ?string $primaryTableName;
 
     /** The name of the database as given in the constructor. */
-    protected $originalDbName;
+    protected ?string $originalDbName;
 
     /**
      * To limit the number of rows to return.  <code>0</code> means return all
      * rows.
      */
-    protected $limit = 0;
+    protected int $limit = 0;
 
     /** To start the results at a row other than the first one. */
-    protected $offset = 0;
+    protected int $offset = 0;
 
     /**
      * Comment to add to the SQL query
-     *
-     * @var        string
      */
-    protected $queryComment = null;
+    protected ?string $queryComment;
 
     // flag to note that the criteria involves a blob.
-    protected $blobFlag = null;
+    protected $blobFlag;
 
-    protected $aliases = array();
+    protected array $aliases = array();
 
-    protected $useTransaction = false;
+    protected bool $useTransaction = false;
 
     /**
      * Storage for Criterions expected to be combined
-     *
-     * @var        array
      */
-    protected $namedCriterions = array();
+    protected array $namedCriterions = array();
 
     /**
      * Default operator for combination of criterions
@@ -254,14 +232,12 @@ class Criteria implements IteratorAggregate
      * @see        addUsingOperator
      * @var        string Criteria::LOGICAL_AND or Criteria::LOGICAL_OR
      */
-    protected $defaultCombineOperator = Criteria::LOGICAL_AND;
+    protected string $defaultCombineOperator = Criteria::LOGICAL_AND;
 
     /**
      * Flags for boolean functions
-     *
-     * @var PropelConditionalProxy
      */
-    protected $conditionalProxy = null;
+    protected ?\PropelConditionalProxy $conditionalProxy;
 
     /**
      * Creates a new instance with the default capacity which corresponds to
@@ -518,7 +494,7 @@ class Criteria implements IteratorAggregate
      */
     public function setUseTransaction($v)
     {
-        $this->useTransaction = (boolean) $v;
+        $this->useTransaction = (boolean) (boolean) $v;
     }
 
     /**
@@ -1185,7 +1161,7 @@ class Criteria implements IteratorAggregate
      */
     public function setIgnoreCase($b)
     {
-        $this->ignoreCase = (boolean) $b;
+        $this->ignoreCase = (boolean) (boolean) $b;
 
         return $this;
     }
@@ -1215,7 +1191,7 @@ class Criteria implements IteratorAggregate
      */
     public function setSingleRecord($b)
     {
-        $this->singleRecord = (boolean) $b;
+        $this->singleRecord = (boolean) (boolean) $b;
 
         return $this;
     }
@@ -1239,7 +1215,7 @@ class Criteria implements IteratorAggregate
      */
     public function setLimit($limit)
     {
-        $this->limit = (int) $limit;
+        $this->limit = (int) (int) $limit;
 
         return $this;
     }
@@ -1263,7 +1239,7 @@ class Criteria implements IteratorAggregate
      */
     public function setOffset($offset)
     {
-        $this->offset = (int) $offset;
+        $this->offset = (int) (int) $offset;
 
         return $this;
     }
@@ -1470,9 +1446,7 @@ class Criteria implements IteratorAggregate
         if (isset($this->map[$key])) {
             $removed = $this->map[$key];
             unset($this->map[$key]);
-            if ($removed instanceof Criterion) {
-                return $removed->getValue();
-            }
+            return $removed->getValue();
 
             return $removed;
         }

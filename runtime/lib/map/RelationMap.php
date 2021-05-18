@@ -34,19 +34,19 @@ class RelationMap
     const LOCAL_TO_FOREIGN = 0;
     const LEFT_TO_RIGHT = 1;
 
-    protected $name;
+    protected string $name;
     protected $pluralName;
-    protected $type;
-    protected $localTable;
-    protected $foreignTable;
+    protected ?int $type;
+    protected ?\TableMap $localTable;
+    protected ?\TableMap $foreignTable;
     /**
      * @var ColumnMap[]
      */
-    protected $localColumns = array();
+    protected array $localColumns = array();
     /**
      * @var ColumnMap[]
      */
-    protected $foreignColumns = array();
+    protected array $foreignColumns = array();
     protected $onUpdate;
     protected $onDelete;
 

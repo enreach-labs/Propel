@@ -22,16 +22,16 @@ class BuildPropelPEARPackageTask extends MatchingTask
 {
 
     /** Base directory for reading files. */
-    private $dir;
+    private ?\PhingFile $dir;
 
-    private $version;
-    private $state = 'stable';
-    private $notes;
+    private ?string $version;
+    private string $state = 'stable';
+    private ?string $notes;
 
-    private $filesets = array();
+    private array $filesets = array();
 
     /** Package file */
-    private $packageFile;
+    private ?\PhingFile $packageFile;
 
     public function init()
     {
@@ -198,7 +198,6 @@ class BuildPropelPEARPackageTask extends MatchingTask
     /**
      * Sets "dir" property from XML.
      *
-     * @param PhingFile $f
      *
      * @return void
      */

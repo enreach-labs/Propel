@@ -38,12 +38,9 @@ abstract class DBAdapter
 
     /**
      * Propel driver to Propel adapter map.
-     *
-     * @var array
      */
-    private static $adapters = array(
+    private static array $adapters = array(
         'mysql'  => 'DBMySQL',
-        'mysqli' => 'DBMySQLi',
         'mssql'  => 'DBMSSQL',
         'sqlsrv' => 'DBSQLSRV',
         'oracle' => 'DBOracle',
@@ -67,9 +64,7 @@ abstract class DBAdapter
     {
         $adapterClass = isset(self::$adapters[$driver]) ? self::$adapters[$driver] : null;
         if ($adapterClass !== null) {
-            $a = new $adapterClass();
-
-            return $a;
+            return new $adapterClass();
         } else {
             throw new PropelException("Unsupported Propel driver: " . $driver . ": Check your configuration file");
         }
@@ -267,9 +262,7 @@ abstract class DBAdapter
      * Warning: duplicates logic from DefaultPlatform::getIdentifierPhp().
      * Any code modification here must be ported there.
      *
-     * @param PDO    $con
      * @param string $name
-     *
      * @return mixed
      */
     public function getId(PDO $con, $name = null)
@@ -361,8 +354,6 @@ abstract class DBAdapter
      *
      * @param string      $sql    The sql statement
      * @param array       $params array('column' => ..., 'table' => ..., 'value' => ...)
-     * @param Criteria    $values
-     * @param DatabaseMap $dbMap
      */
     public function cleanupSQL(&$sql, array &$params, Criteria $values, DatabaseMap $dbMap)
     {
@@ -418,10 +409,8 @@ abstract class DBAdapter
      * taking into account select columns and 'as' columns (i.e. columns aliases)
      * Move from BasePeer to DBAdapter and turn from static to non static
      *
-     * @param Criteria $criteria
      * @param array    $fromClause
      * @param boolean  $aliasAll
-     *
      * @return string
      */
     public function createSelectSqlPart(Criteria $criteria, &$fromClause, $aliasAll = false)
@@ -492,7 +481,6 @@ abstract class DBAdapter
      *
      * @see http://propel.phpdb.org/trac/ticket/795
      *
-     * @param Criteria $criteria
      *
      * @return Criteria The input, with Select columns replaced by aliases
      */
@@ -542,9 +530,7 @@ abstract class DBAdapter
      * $stmt->execute();
      * </code>
      *
-     * @param PDOStatement $stmt
      * @param array        $params array('column' => ..., 'table' => ..., 'value' => ...)
-     * @param DatabaseMap  $dbMap
      */
     public function bindValues(PDOStatement $stmt, array $params, DatabaseMap $dbMap)
     {

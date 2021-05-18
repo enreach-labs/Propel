@@ -25,10 +25,8 @@ abstract class OMBuilder extends DataModelBuilder
     /**
      * Declared fully qualified classnames, to build the 'namespace' statements
      * according to this table's namespace.
-     *
-     * @var array
      */
-    protected $declaredClasses = array();
+    protected array $declaredClasses = array();
 
     /**
      * Builds the PHP source for current class and returns it as a string.
@@ -368,7 +366,6 @@ abstract class OMBuilder extends DataModelBuilder
      * If the key is required, an INNER JOIN will be returned, else a LEFT JOIN will be suggested,
      * unless the schema is provided with the DefaultJoin attribute, which overrules the default Join Type
      *
-     * @param ForeignKey $fk
      *
      * @return string
      */

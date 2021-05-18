@@ -24,8 +24,8 @@ require_once dirname(__FILE__) . '/OMBuilder.php';
 abstract class PeerBuilder extends OMBuilder
 {
 
-    protected $basePeerClass;
-    protected $basePeerClassname;
+    protected ?string $basePeerClass;
+    protected string $basePeerClassname;
 
     /**
      * Constructs a new PeerBuilder subclass.

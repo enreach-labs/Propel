@@ -108,15 +108,13 @@ public function unDelete(PropelPDO \$con = null)
     \$this->postDelete(\$con);";
         }
 
-        $script .= "
+        return $script . "
     \$con->commit();
     {$builder->getStubPeerBuilder()->getClassname()}::removeInstanceFromPool(\$this);
 
     return;
 }
 ";
-
-        return $script;
     }
 
     public function queryAttributes()

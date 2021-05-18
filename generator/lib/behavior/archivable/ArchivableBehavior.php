@@ -32,9 +32,9 @@ class ArchivableBehavior extends Behavior
         'archive_on_delete'   => 'true',
     );
 
-    protected $archiveTable;
-    protected $objectBuilderModifier;
-    protected $queryBuilderModifier;
+    protected ?\Table $archiveTable;
+    protected ?\ArchivableBehaviorObjectBuilderModifier $objectBuilderModifier;
+    protected ?\ArchivableBehaviorQueryBuilderModifier $queryBuilderModifier;
 
     public function modifyDatabase()
     {

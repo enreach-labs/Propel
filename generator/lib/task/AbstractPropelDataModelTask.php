@@ -34,19 +34,17 @@ abstract class AbstractPropelDataModelTask extends AbstractPropelTask
      *
      * @var        array Fileset[]
      */
-    protected $schemaFilesets = array();
+    protected array $schemaFilesets = array();
 
     /**
      * Data models that we collect. One from each XML schema file.
      */
-    protected $dataModels = array();
+    protected array $dataModels = array();
 
     /**
      * Have datamodels been initialized?
-     *
-     * @var        boolean
      */
-    private $dataModelsLoaded = false;
+    private bool $dataModelsLoaded = false;
 
     /**
      * Map of data model name to database name.
@@ -62,22 +60,19 @@ abstract class AbstractPropelDataModelTask extends AbstractPropelTask
      * target, but we will support multiple targets
      * soon.
      */
-    protected $targetDatabase;
+    protected string $targetDatabase;
 
     /**
      * DB encoding to use for XmlToAppData object
      */
-    protected $dbEncoding = 'iso-8859-1';
+    protected string $dbEncoding = 'iso-8859-1';
 
     /**
      * Target PHP package to place the generated files in.
      */
-    protected $targetPackage;
+    protected ?string $targetPackage;
 
-    /**
-     * @var        Mapper
-     */
-    protected $mapperElement;
+    protected ?\Mapper $mapperElement;
 
     /**
      * Destination directory for results of template scripts.
@@ -88,52 +83,38 @@ abstract class AbstractPropelDataModelTask extends AbstractPropelTask
 
     /**
      * Whether to package the datamodels or not
-     *
-     * @var        PhingFile
      */
-    protected $packageObjectModel;
+    protected ?bool $packageObjectModel;
 
     /**
      * Whether to perform validation (XSD) on the schema.xml file(s).
-     *
-     * @var        boolean
      */
-    protected $validate;
+    protected ?bool $validate;
 
     /**
      * The XSD schema file to use for validation.
-     *
-     * @var        PhingFile
      */
-    protected $xsdFile;
+    protected ?\PhingFile $xsdFile;
 
     /**
      * XSL file to use to normalize (or otherwise transform) schema before validation.
-     *
-     * @var        PhingFile
      */
-    protected $xslFile;
+    protected ?\PhingFile $xslFile;
 
     /**
      * Optional database connection url.
-     *
-     * @var        string
      */
-    private $url = null;
+    private ?string $url;
 
     /**
      * Optional database connection user name.
-     *
-     * @var        string
      */
-    private $userId = null;
+    private ?string $userId;
 
     /**
      * Optional database connection password.
-     *
-     * @var        string
      */
-    private $password = null;
+    private ?string $password;
 
     /**
      * PDO Connection.
@@ -144,10 +125,8 @@ abstract class AbstractPropelDataModelTask extends AbstractPropelTask
 
     /**
      * An initialized GeneratorConfig object containing the converted Phing props.
-     *
-     * @var        GeneratorConfig
      */
-    private $generatorConfig;
+    private ?\GeneratorConfig $generatorConfig;
 
     /**
      * Return the data models that have been
@@ -236,7 +215,7 @@ abstract class AbstractPropelDataModelTask extends AbstractPropelTask
      */
     public function setPackageObjectModel($v)
     {
-        $this->packageObjectModel = (boolean) $v;
+        $this->packageObjectModel = (boolean) (boolean) $v;
     }
 
     /**
@@ -246,7 +225,7 @@ abstract class AbstractPropelDataModelTask extends AbstractPropelTask
      */
     public function setValidate($v)
     {
-        $this->validate = (boolean) $v;
+        $this->validate = (boolean) (boolean) $v;
     }
 
     /**
@@ -273,7 +252,6 @@ abstract class AbstractPropelDataModelTask extends AbstractPropelTask
      * [REQUIRED] Set the output directory. It will be
      * created if it doesn't exist.
      *
-     * @param PhingFile $outputDirectory
      *
      * @return void
      * @throws BuildException
@@ -381,9 +359,8 @@ abstract class AbstractPropelDataModelTask extends AbstractPropelTask
         }
         // Mappers always return arrays since it's possible for some mappers to map to multiple names.
         $outFilename = array_shift($mapped);
-        $outFile = new PhingFile($this->getOutputDirectory(), $outFilename);
 
-        return $outFile;
+        return new PhingFile($this->getOutputDirectory(), $outFilename);
     }
 
     /**
@@ -531,9 +508,7 @@ abstract class AbstractPropelDataModelTask extends AbstractPropelTask
      * Note: this function very much assumes at least a reasonable XML schema, maybe it'll proof
      * users don't have those and adding some more informative exceptions would be better
      *
-     * @param DomDocument $dom
      * @param string      $srcDir
-     *
      * @return void (objects, DomDocument, are references by default in PHP 5, so returning it is useless)
      **/
     protected function includeExternalSchemas(DomDocument $dom, $srcDir)

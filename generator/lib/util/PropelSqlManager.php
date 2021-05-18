@@ -20,26 +20,11 @@ require_once dirname(__FILE__) . '/../util/PropelSQLParser.php';
  */
 class PropelSqlManager
 {
-    /**
-     * @var array
-     */
-    protected $connections;
-    /**
-     * @var GeneratorConfigInterface
-     */
-    protected $generatorConfig;
-    /**
-     * @var array
-     */
-    protected $dataModels;
-    /**
-     * @var array
-     */
-    protected $databases = null;
-    /**
-     * @var string
-     */
-    protected $workingDirectory;
+    protected ?array $connections;
+    protected ?\GeneratorConfigInterface $generatorConfig;
+    protected ?array $dataModels;
+    protected ?array $databases;
+    protected ?string $workingDirectory;
 
     /**
      * Set the database connection settings
@@ -75,9 +60,6 @@ class PropelSqlManager
         return $this->connections[$datasource];
     }
 
-    /**
-     * @param GeneratorConfigInterface $generatorConfig
-     */
     public function setGeneratorConfig(GeneratorConfigInterface $generatorConfig)
     {
         $this->generatorConfig = $generatorConfig;
@@ -130,7 +112,7 @@ class PropelSqlManager
     {
         if (null === $this->databases) {
             $databases = array();
-            foreach ($this->getDataModels() as $package => $dataModel) {
+            foreach ($this->getDataModels() as $dataModel) {
                 foreach ($dataModel->getDatabases() as $database) {
                     if (!isset($databases[$database->getName()])) {
                         $databases[$database->getName()] = $database;

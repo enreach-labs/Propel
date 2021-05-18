@@ -47,23 +47,23 @@ class PropelTypes
     const PHP_ARRAY = "ARRAY";
     const ENUM = "ENUM";
 
-    private static $TEXT_TYPES = array(
+    private static array $TEXT_TYPES = array(
         self::CHAR, self::VARCHAR, self::LONGVARCHAR, self::CLOB, self::DATE, self::TIME, self::TIMESTAMP, self::BU_DATE, self::BU_TIMESTAMP
     );
 
-    private static $LOB_TYPES = array(
+    private static array $LOB_TYPES = array(
         self::VARBINARY, self::LONGVARBINARY, self::BLOB
     );
 
-    private static $TEMPORAL_TYPES = array(
+    private static array $TEMPORAL_TYPES = array(
         self::DATE, self::TIME, self::TIMESTAMP, self::BU_DATE, self::BU_TIMESTAMP
     );
 
-    private static $NUMERIC_TYPES = array(
+    private static array $NUMERIC_TYPES = array(
         self::SMALLINT, self::TINYINT, self::INTEGER, self::BIGINT, self::FLOAT, self::DOUBLE, self::NUMERIC, self::DECIMAL, self::REAL
     );
 
-    private static $BOOLEAN_TYPES = array(
+    private static array $BOOLEAN_TYPES = array(
         self::BOOLEAN, self::BOOLEAN_EMU
     );
 
@@ -98,10 +98,8 @@ class PropelTypes
 
     /**
      * Mapping between Propel types and PHP native types.
-     *
-     * @var        array
      */
-    private static $propelToPHPNativeMap = array(
+    private static array $propelToPHPNativeMap = array(
             self::CHAR => self::CHAR_NATIVE_TYPE,
             self::VARCHAR => self::VARCHAR_NATIVE_TYPE,
             self::LONGVARCHAR => self::LONGVARCHAR_NATIVE_TYPE,
@@ -134,10 +132,8 @@ class PropelTypes
 
     /**
      * Mapping between Propel types and Creole types (for rev-eng task)
-     *
-     * @var        array
      */
-    private static $propelTypeToCreoleTypeMap = array(
+    private static array $propelTypeToCreoleTypeMap = array(
 
             self::CHAR => self::CHAR,
             self::VARCHAR => self::VARCHAR,
@@ -174,10 +170,8 @@ class PropelTypes
 
     /**
      * Mapping between Propel types and PDO type constants (for prepared statement setting).
-     *
-     * @var        array
      */
-    private static $propelTypeToPDOTypeMap = array(
+    private static array $propelTypeToPDOTypeMap = array(
             self::CHAR => PDO::PARAM_STR,
             self::VARCHAR => PDO::PARAM_STR,
             self::LONGVARCHAR => PDO::PARAM_STR,
@@ -212,7 +206,7 @@ class PropelTypes
             self::BU_TIMESTAMP => PDO::PARAM_STR,
     );
 
-    private static $pdoTypeNames = array(
+    private static array $pdoTypeNames = array(
         PDO::PARAM_BOOL => 'PDO::PARAM_BOOL',
         PDO::PARAM_NULL => 'PDO::PARAM_NULL',
         PDO::PARAM_INT  => 'PDO::PARAM_INT',

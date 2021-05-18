@@ -41,7 +41,7 @@ class ConstraintNameGenerator implements NameGenerator
         $db = $inputs[0];
         $name = $inputs[1];
         $namePostfix = $inputs[2];
-        $constraintNbr = (string) $inputs[3];
+        $constraintNbr = (string) (string) $inputs[3];
 
         // Calculate maximum RDBMS-specific column character limit.
         $maxBodyLength = -1;
@@ -62,8 +62,6 @@ class ConstraintNameGenerator implements NameGenerator
             $name = substr($name, 0, $maxBodyLength);
         }
 
-        $name .= self::STD_SEPARATOR_CHAR . $namePostfix . self::STD_SEPARATOR_CHAR . $constraintNbr;
-
-        return $name;
+        return $name . (self::STD_SEPARATOR_CHAR . $namePostfix . self::STD_SEPARATOR_CHAR . $constraintNbr);
     }
 }

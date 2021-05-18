@@ -63,7 +63,6 @@ class TimestampableBehavior extends Behavior
      * Return the constant for a given column.
      *
      * @param string    $columnName
-     * @param OMBuilder $builder
      *
      * @return string
      */
@@ -75,7 +74,6 @@ class TimestampableBehavior extends Behavior
     /**
      * Add code in ObjectBuilder::preUpdate
      *
-     * @param PHP5ObjectBuilder $builder
      *
      * @return string The code to put at the hook
      */
@@ -93,7 +91,6 @@ class TimestampableBehavior extends Behavior
     /**
      * Add code in ObjectBuilder::preInsert
      *
-     * @param PHP5ObjectBuilder $builder
      *
      * @return string The code to put at the hook
      */
@@ -177,7 +174,7 @@ public function firstUpdatedFirst()
 ";
         }
 
-        $script .= "
+        return $script . "
 /**
  * Filter by the latest created
  *
@@ -209,8 +206,6 @@ public function firstCreatedFirst()
 {
     return \$this->addAscendingOrderByColumn($createColumnConstant);
 }";
-
-        return $script;
     }
 
     protected function withUpdatedAt()

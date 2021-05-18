@@ -20,10 +20,10 @@ require_once dirname(__FILE__) . '/PropelTableDiff.php';
  */
 class PropelDatabaseDiff
 {
-    protected $addedTables = array();
-    protected $removedTables = array();
-    protected $modifiedTables = array();
-    protected $renamedTables = array();
+    protected array $addedTables = array();
+    protected array $removedTables = array();
+    protected array $modifiedTables = array();
+    protected array $renamedTables = array();
 
     /**
      * Setter for the addedTables property
@@ -39,7 +39,6 @@ class PropelDatabaseDiff
      * Add an added table
      *
      * @param string $tableName
-     * @param Table  $addedTable
      */
     public function addAddedTable($tableName, Table $addedTable)
     {
@@ -102,7 +101,6 @@ class PropelDatabaseDiff
      * Add a removed table
      *
      * @param string $tableName
-     * @param Table  $removedTable
      */
     public function addRemovedTable($tableName, Table $removedTable)
     {
@@ -165,7 +163,6 @@ class PropelDatabaseDiff
      * Add a table difference
      *
      * @param string          $tableName
-     * @param PropelTableDiff $modifiedTable
      */
     public function addModifiedTable($tableName, PropelTableDiff $modifiedTable)
     {
@@ -244,7 +241,7 @@ class PropelDatabaseDiff
         $diff->setAddedTables($this->getRemovedTables());
         // idMethod is not set for tables build from reverse engineering
         // FIXME: this should be handled by reverse classes
-        foreach ($diff->getAddedTables() as $name => $table) {
+        foreach ($diff->getAddedTables() as $table) {
             if ($table->getIdMethod() == IDMethod::NO_ID_METHOD) {
                 $table->setIdMethod(IDMethod::NATIVE);
             }
@@ -301,7 +298,7 @@ class PropelDatabaseDiff
         }
         if ($modifiedTables = $this->getModifiedTables()) {
             $ret .= "modifiedTables:\n";
-            foreach ($modifiedTables as $tableName => $tableDiff) {
+            foreach ($modifiedTables as $tableDiff) {
                 $ret .= $tableDiff->__toString();
             }
         }

@@ -20,7 +20,7 @@ class MojaviLogAdapter implements BasicLogger
     /**
      * Instance of mojavi logger
      */
-    private $logger = null;
+    private ?\ErrorLog $logger;
 
     /**
      * constructor for setting up Mojavi log adapter

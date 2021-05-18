@@ -15,7 +15,7 @@ class PropelQuickBuilder
 {
     protected $schema, $platform, $config, $database;
 
-    protected $classTargets = array('tablemap', 'peer', 'object', 'query', 'peerstub', 'objectstub', 'querystub');
+    protected array $classTargets = array('tablemap', 'peer', 'object', 'query', 'peerstub', 'objectstub', 'querystub');
 
     public function setClassTargets(array $targets)
     {
@@ -54,8 +54,6 @@ class PropelQuickBuilder
 
     /**
      * Setter for the config property
-     *
-     * @param GeneratorConfigInterface $config
      */
     public function setConfig(GeneratorConfigInterface $config)
     {
@@ -132,10 +130,8 @@ class PropelQuickBuilder
                 continue;
             }
             $stmt = $con->prepare($statement);
-            if ($stmt instanceof PDOStatement) {
-                // only execute if has no error
-                $stmt->execute();
-            }
+            // only execute if has no error
+            $stmt->execute();
         }
 
         return count($statements);

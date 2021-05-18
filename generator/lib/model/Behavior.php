@@ -21,13 +21,13 @@ require_once dirname(__FILE__) . '/../builder/util/PropelTemplate.php';
 class Behavior extends XMLElement
 {
 
-    protected $table;
-    protected $database;
+    protected ?\Table $table;
+    protected ?\Database $database;
     protected $name;
     protected $parameters = array();
-    protected $isTableModified = false;
-    protected $dirname;
-    protected $additionalBuilders = array();
+    protected bool $isTableModified = false;
+    protected ?string $dirname;
+    protected array $additionalBuilders = array();
     protected $tableModificationOrder = 50;
 
     /**

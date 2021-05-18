@@ -29,7 +29,7 @@ class AppData
      *
      * @var        Database[]
      */
-    private $dbList = array();
+    private array $dbList = array();
 
     /**
      * The platform class for our database(s).
@@ -49,14 +49,12 @@ class AppData
      * Name of the database. Only one database definition
      * is allowed in one XML descriptor.
      */
-    private $name;
+    private ?string $name;
 
     /**
      * Flag to ensure that initialization is performed only once.
-     *
-     * @var        boolean
      */
-    private $isInitialized = false;
+    private bool $isInitialized = false;
 
     /**
      * Creates a new instance for the specified database type.
@@ -72,8 +70,6 @@ class AppData
 
     /**
      * Sets the platform object to use for any databases added to this application model.
-     *
-     * @param PropelPlatformInterface $defaultPlatform
      */
     public function setPlatform(PropelPlatformInterface $defaultPlatform)
     {
@@ -92,8 +88,6 @@ class AppData
 
     /**
      * Set the generator configuration
-     *
-     * @param GeneratorConfigInterface $generatorConfig
      */
     public function setGeneratorConfig(GeneratorConfigInterface $generatorConfig)
     {
@@ -326,9 +320,8 @@ class AppData
         if ($this->dbList) {
             $result .= "\n";
         }
-        $result .= "</app-data>";
 
-        return $result;
+        return $result . "</app-data>";
     }
 
     /**

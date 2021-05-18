@@ -27,10 +27,8 @@ abstract class DataModelBuilder
 
     /**
      * The current table.
-     *
-     * @var        Table
      */
-    private $table;
+    private \Table $table;
 
     /**
      * The generator config object holding build properties, etc.
@@ -44,133 +42,97 @@ abstract class DataModelBuilder
      *
      * @var        array string[]
      */
-    private $warnings = array();
+    private array $warnings = array();
 
     /**
      * Peer builder class for current table.
-     *
-     * @var        DataModelBuilder
      */
-    private $peerBuilder;
+    private ?\DataModelBuilder $peerBuilder;
 
     /**
      * Stub Peer builder class for current table.
-     *
-     * @var        DataModelBuilder
      */
-    private $stubPeerBuilder;
+    private ?\DataModelBuilder $stubPeerBuilder;
 
     /**
      * Object builder class for current table.
-     *
-     * @var        DataModelBuilder
      */
-    private $objectBuilder;
+    private ?\DataModelBuilder $objectBuilder;
 
     /**
      * Stub Object builder class for current table.
-     *
-     * @var        DataModelBuilder
      */
-    private $stubObjectBuilder;
+    private ?\DataModelBuilder $stubObjectBuilder;
 
     /**
      * Query builder class for current table.
-     *
-     * @var        DataModelBuilder
      */
-    private $queryBuilder;
+    private ?\DataModelBuilder $queryBuilder;
 
     /**
      * Stub Query builder class for current table.
-     *
-     * @var        DataModelBuilder
      */
-    private $stubQueryBuilder;
+    private ?\DataModelBuilder $stubQueryBuilder;
 
     /**
      * TableMap builder class for current table.
-     *
-     * @var        DataModelBuilder
      */
-    protected $tablemapBuilder;
+    protected ?\DataModelBuilder $tablemapBuilder;
 
     /**
      * Stub Interface builder class for current table.
-     *
-     * @var        DataModelBuilder
      */
-    private $interfaceBuilder;
+    private ?\DataModelBuilder $interfaceBuilder;
 
     /**
      * Stub child object for current table.
-     *
-     * @var        DataModelBuilder
      */
-    private $multiExtendObjectBuilder;
+    private ?\DataModelBuilder $multiExtendObjectBuilder;
 
     /**
      * Node object builder for current table.
-     *
-     * @var        DataModelBuilder
      */
-    private $nodeBuilder;
+    private ?\DataModelBuilder $nodeBuilder;
 
     /**
      * Node peer builder for current table.
-     *
-     * @var        DataModelBuilder
      */
-    private $nodePeerBuilder;
+    private ?\DataModelBuilder $nodePeerBuilder;
 
     /**
      * Stub node object builder for current table.
-     *
-     * @var        DataModelBuilder
      */
-    private $stubNodeBuilder;
+    private ?\DataModelBuilder $stubNodeBuilder;
 
     /**
      * Stub node peer builder for current table.
-     *
-     * @var        DataModelBuilder
      */
-    private $stubNodePeerBuilder;
+    private ?\DataModelBuilder $stubNodePeerBuilder;
 
     /**
      * NestedSet object builder for current table.
-     *
-     * @var        DataModelBuilder
      */
-    private $nestedSetBuilder;
+    private ?\DataModelBuilder $nestedSetBuilder;
 
     /**
      * NestedSet peer builder for current table.
-     *
-     * @var        DataModelBuilder
      */
-    private $nestedSetPeerBuilder;
+    private ?\DataModelBuilder $nestedSetPeerBuilder;
 
     /**
      * The Data-SQL builder for current table.
-     *
-     * @var        DataSQLBuilder
      */
-    private $dataSqlBuilder;
+    private ?\DataModelBuilder $dataSqlBuilder;
 
     /**
      * The Pluralizer class to use.
-     *
-     * @var        Pluralizer
      */
-    private $pluralizer;
+    private ?\Pluralizer $pluralizer;
 
     /**
      * The platform class
-     *
-     * @var            PropelPlatformInterface
      */
-    protected $platform;
+    protected ?\PropelPlatformInterface $platform;
 
     /**
      * Creates new instance of DataModelBuilder subclass.
@@ -423,9 +385,7 @@ abstract class DataModelBuilder
     /**
      * Gets a new data model builder class for specified table and classname.
      *
-     * @param Table  $table
      * @param string $classname The class of builder
-     *
      * @return DataModelBuilder
      */
     public function getNewBuilder(Table $table, $classname)
@@ -442,7 +402,6 @@ abstract class DataModelBuilder
      * This is used very frequently from the peer and object builders to get
      * a peer builder for a RELATED table.
      *
-     * @param Table $table
      *
      * @return PeerBuilder
      */
@@ -457,7 +416,6 @@ abstract class DataModelBuilder
      * This is used from the peer and object builders to get
      * a peer builder for a RELATED table.
      *
-     * @param Table $table
      *
      * @return PeerBuilder
      */
@@ -472,7 +430,6 @@ abstract class DataModelBuilder
      * This is used very frequently from the peer and object builders to get
      * an object builder for a RELATED table.
      *
-     * @param Table $table
      *
      * @return ObjectBuilder
      */
@@ -487,7 +444,6 @@ abstract class DataModelBuilder
      * This is used from the query builders to get
      * an object builder for a RELATED table.
      *
-     * @param Table $table
      *
      * @return ObjectBuilder
      */
@@ -502,7 +458,6 @@ abstract class DataModelBuilder
      * This is used from the query builders to get
      * a query builder for a RELATED table.
      *
-     * @param Table $table
      *
      * @return QueryBuilder
      */
@@ -517,7 +472,6 @@ abstract class DataModelBuilder
      * This is used from the query builders to get
      * a query builder for a RELATED table.
      *
-     * @param Table $table
      *
      * @return QueryBuilder
      */
@@ -590,8 +544,6 @@ abstract class DataModelBuilder
 
     /**
      * Sets the table for this builder.
-     *
-     * @param Table $table
      */
     public function setTable(Table $table)
     {
@@ -627,8 +579,6 @@ abstract class DataModelBuilder
 
     /**
      * Platform setter
-     *
-     * @param PropelPlatformInterface $platform
      */
     public function setPlatform(PropelPlatformInterface $platform)
     {

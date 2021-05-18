@@ -20,30 +20,28 @@ require_once dirname(__FILE__) . '/PropelColumnDiff.php';
  */
 class PropelTableDiff
 {
-    protected $fromTable;
-    protected $toTable;
+    protected ?\Table $fromTable;
+    protected ?\Table $toTable;
 
-    protected $addedColumns = array();
-    protected $removedColumns = array();
-    protected $modifiedColumns = array();
-    protected $renamedColumns = array();
+    protected array $addedColumns = array();
+    protected array $removedColumns = array();
+    protected array $modifiedColumns = array();
+    protected array $renamedColumns = array();
 
-    protected $addedPkColumns = array();
-    protected $removedPkColumns = array();
-    protected $renamedPkColumns = array();
+    protected array $addedPkColumns = array();
+    protected array $removedPkColumns = array();
+    protected array $renamedPkColumns = array();
 
-    protected $addedIndices = array();
-    protected $removedIndices = array();
-    protected $modifiedIndices = array();
+    protected array $addedIndices = array();
+    protected array $removedIndices = array();
+    protected array $modifiedIndices = array();
 
-    protected $addedFks = array();
-    protected $removedFks = array();
-    protected $modifiedFks = array();
+    protected array $addedFks = array();
+    protected array $removedFks = array();
+    protected array $modifiedFks = array();
 
     /**
      * Setter for the fromTable property
-     *
-     * @param Table $fromTable
      */
     public function setFromTable(Table $fromTable)
     {
@@ -62,8 +60,6 @@ class PropelTableDiff
 
     /**
      * Setter for the toTable property
-     *
-     * @param Table $toTable
      */
     public function setToTable(Table $toTable)
     {
@@ -94,7 +90,6 @@ class PropelTableDiff
      * Add an added column
      *
      * @param string $columnName
-     * @param Column $addedColumn
      */
     public function addAddedColumn($columnName, Column $addedColumn)
     {
@@ -147,7 +142,6 @@ class PropelTableDiff
      * Add a removed column
      *
      * @param string $columnName
-     * @param Column $removedColumn
      */
     public function addRemovedColumn($columnName, Column $removedColumn)
     {
@@ -200,7 +194,6 @@ class PropelTableDiff
      * Add a column difference
      *
      * @param string           $columnName
-     * @param PropelColumnDiff $modifiedColumn
      */
     public function addModifiedColumn($columnName, PropelColumnDiff $modifiedColumn)
     {
@@ -262,7 +255,6 @@ class PropelTableDiff
      * Add an added Pk column
      *
      * @param string $columnName
-     * @param Column $addedPkColumn
      */
     public function addAddedPkColumn($columnName, Column $addedPkColumn)
     {
@@ -385,7 +377,6 @@ class PropelTableDiff
      * Add an added Index
      *
      * @param string $indexName
-     * @param Index  $addedIndex
      */
     public function addAddedIndex($indexName, Index $addedIndex)
     {
@@ -416,7 +407,6 @@ class PropelTableDiff
      * Add a removed Index
      *
      * @param string $indexName
-     * @param Index  $removedIndex
      */
     public function addRemovedIndex($indexName, Index $removedIndex)
     {
@@ -447,8 +437,6 @@ class PropelTableDiff
      * Add a modified Index
      *
      * @param string $indexName
-     * @param Index  $fromIndex
-     * @param Index  $toIndex
      */
     public function addModifiedIndex($indexName, Index $fromIndex, Index $toIndex)
     {
@@ -479,7 +467,6 @@ class PropelTableDiff
      * Add an added Fk column
      *
      * @param string     $fkName
-     * @param ForeignKey $addedFk
      */
     public function addAddedFk($fkName, ForeignKey $addedFk)
     {
@@ -561,8 +548,6 @@ class PropelTableDiff
      * Add a modified Fk
      *
      * @param string     $fkName
-     * @param ForeignKey $fromFk
-     * @param ForeignKey $toFk
      */
     public function addModifiedFk($fkName, ForeignKey $fromFk, ForeignKey $toFk)
     {
@@ -654,7 +639,7 @@ class PropelTableDiff
         }
         if ($modifiedColumns = $this->getModifiedColumns()) {
             $ret .= "    modifiedColumns:\n";
-            foreach ($modifiedColumns as $colname => $colDiff) {
+            foreach ($modifiedColumns as $colDiff) {
                 $ret .= $colDiff->__toString();
             }
         }

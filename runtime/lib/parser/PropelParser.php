@@ -65,9 +65,8 @@ abstract class PropelParser
         }
         ob_start();
         include($path);
-        $contents = ob_get_clean();
 
-        return $contents;
+        return ob_get_clean();
     }
 
     /**

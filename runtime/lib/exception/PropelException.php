@@ -19,16 +19,13 @@ class PropelException extends Exception
 {
     /**
      * The nested "cause" exception.
-     *
-     * @var       Exception
      */
-    protected $cause;
+    protected ?\Exception $cause;
 
     /**
      * Emulates wrapped exceptions for PHP < 5.3
      *
      * @param string    $message
-     * @param Exception $previous
      *
      * @return PropelException
      */

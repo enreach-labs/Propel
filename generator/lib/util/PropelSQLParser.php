@@ -17,12 +17,12 @@
  */
 class PropelSQLParser
 {
-    protected $delimiter = ';';
+    protected string $delimiter = ';';
     protected $delimiterLength = 1;
 
-    protected $sql = '';
+    protected string $sql = '';
     protected $len = 0;
-    protected $pos = 0;
+    protected int $pos = 0;
 
     /**
      * Sets the inner SQL string for this object.
@@ -88,10 +88,8 @@ class PropelSQLParser
     {
         foreach ($statements as $statement) {
             $stmt = $connection->prepare($statement);
-            if ($stmt instanceof PDOStatement) {
-                // only execute if has no error
-                $stmt->execute();
-            }
+            // only execute if has no error
+            $stmt->execute();
         }
 
         return count($statements);

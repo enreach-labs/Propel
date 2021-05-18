@@ -27,8 +27,8 @@ class MysqlPlatform extends DefaultPlatform
      */
     protected $isIdentifierQuotingEnabled = true;
 
-    protected $tableEngineKeyword = 'ENGINE'; // overwritten in build.properties
-    protected $defaultTableEngine = 'MyISAM'; // overwritten in build.properties
+    protected string $tableEngineKeyword = 'ENGINE'; // overwritten in build.properties
+    protected string $defaultTableEngine = 'MyISAM'; // overwritten in build.properties
 
     /**
      * Initializes db specific domain mapping.
@@ -137,9 +137,8 @@ class MysqlPlatform extends DefaultPlatform
             $ret .= $this->getDropTableDDL($table);
             $ret .= $this->getAddTableDDL($table);
         }
-        $ret .= $this->getEndDDL();
 
-        return $ret;
+        return $ret . $this->getEndDDL();
     }
 
     public function getBeginDDL()
@@ -381,7 +380,6 @@ DROP TABLE IF EXISTS " . $this->quoteIdentifier($table->getName()) . ";
      * For MySQL unique indexes there is the option of specifying size, so we cannot simply use
      * the getColumnsList() method.
      *
-     * @param Index $index
      *
      * @return string
      */
@@ -398,7 +396,6 @@ DROP TABLE IF EXISTS " . $this->quoteIdentifier($table->getName()) . ";
     /**
      * Builds the DDL SQL to drop the primary key of a table.
      *
-     * @param Table $table
      *
      * @return string
      */
@@ -416,7 +413,6 @@ ALTER TABLE %s DROP PRIMARY KEY;
     /**
      * Builds the DDL SQL to add an Index.
      *
-     * @param Index $index
      *
      * @return string
      */
@@ -437,7 +433,6 @@ CREATE %sINDEX %s ON %s (%s);
     /**
      * Builds the DDL SQL to drop an Index.
      *
-     * @param Index $index
      *
      * @return string
      */
@@ -563,9 +558,7 @@ ALTER TABLE %s DROP FOREIGN KEY %s;
             $ret .= $this->getAddTableDDL($table);
         }
 
-        $ret .= $this->getEndDDL();
-
-        return $ret;
+        return $ret . $this->getEndDDL();
     }
 
     /**

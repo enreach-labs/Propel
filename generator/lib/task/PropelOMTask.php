@@ -23,10 +23,8 @@ class PropelOMTask extends AbstractPropelDataModelTask
 
     /**
      * The platform (php4, php5, etc.) for which the om is being built.
-     *
-     * @var        string
      */
-    private $targetPlatform;
+    private ?string $targetPlatform;
 
     /**
      * Sets the platform (php4, php5, etc.) for which the om is being built.
@@ -69,7 +67,6 @@ class PropelOMTask extends AbstractPropelDataModelTask
      * Uses a builder class to create the output class.
      * This method assumes that the DataModelBuilder class has been initialized with the build properties.
      *
-     * @param OMBuilder $builder
      * @param boolean   $overwrite Whether to overwrite existing files with te new ones (default is YES).
      *
      * @todo       -cPropelOMTask Consider refactoring build() method into AbstractPropelDataModelTask (would need to be more generic).

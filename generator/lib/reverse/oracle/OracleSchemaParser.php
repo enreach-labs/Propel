@@ -22,23 +22,21 @@ class OracleSchemaParser extends BaseSchemaParser
 {
 
     /**
-     * Map Oracle native types to Propel types.
-     *
-     * There really aren't any Oracle native types, so we're just
-     * using the MySQL ones here.
-     *
-     * Left as unsupported:
-     *   BFILE,
-     *   RAW,
-     *   ROWID
-     *
-     * Supported but non existant as a specific type in Oracle:
-     *   DECIMAL (NUMBER with scale),
-     *   DOUBLE (FLOAT with precision = 126)
-     *
-     * @var        array
-     */
-    private static $oracleTypeMap = array(
+				 * Map Oracle native types to Propel types.
+				 *
+				 * There really aren't any Oracle native types, so we're just
+				 * using the MySQL ones here.
+				 *
+				 * Left as unsupported:
+				 *   BFILE,
+				 *   RAW,
+				 *   ROWID
+				 *
+				 * Supported but non existant as a specific type in Oracle:
+				 *   DECIMAL (NUMBER with scale),
+				 *   DOUBLE (FLOAT with precision = 126)
+				 */
+				private static array $oracleTypeMap = array(
         'BLOB'		=> PropelTypes::BLOB,
         'CHAR'		=> PropelTypes::CHAR,
         'CLOB'		=> PropelTypes::CLOB,
@@ -67,14 +65,13 @@ class OracleSchemaParser extends BaseSchemaParser
     }
 
     /**
-     * Searches for tables in the database. Maybe we want to search also the views.
-     *
-     * @param Database $database The Database model class to add tables to.
-     * @param Task     $task
-     *
-     * @return int
-     */
-    public function parse(Database $database, Task $task = null)
+				 * Searches for tables in the database. Maybe we want to search also the views.
+				 *
+				 * @param Database $database The Database model class to add tables to.
+				 *
+				 * @return int
+				 */
+				public function parse(Database $database, Task $task = null)
     {
         $tables = array();
         $stmt = $this->dbh->query("SELECT OBJECT_NAME FROM USER_OBJECTS WHERE OBJECT_TYPE = 'TABLE'");

@@ -29,7 +29,6 @@ class DBOracle extends DBAdapter
      *
      * @see       parent::initConnection()
      *
-     * @param PDO   $con
      * @param array $settings A $PDO PDO connection instance
      */
     public function initConnection(PDO $con, array $settings)
@@ -146,7 +145,6 @@ class DBOracle extends DBAdapter
     }
 
     /**
-     * @param PDO    $con
      * @param string $name
      *
      * @throws PropelException
@@ -180,7 +178,6 @@ class DBOracle extends DBAdapter
      *
      * @see http://propel.phpdb.org/trac/ticket/795
      *
-     * @param Criteria $criteria
      *
      * @return Criteria The input, with Select columns replaced by aliases
      */
@@ -219,10 +216,8 @@ class DBOracle extends DBAdapter
      * Warning: duplicates logic from OraclePlatform::getColumnBindingPHP().
      * Any code modification here must be ported there.
      *
-     * @param PDOStatement $stmt
      * @param string       $parameter
      * @param mixed        $value
-     * @param ColumnMap    $cMap
      * @param null|integer $position
      *
      * @return boolean

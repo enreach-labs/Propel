@@ -153,8 +153,8 @@ class DBMySQL extends DBAdapter
      */
     public function applyLimit(&$sql, $offset, $limit)
     {
-        $offset = (int) $offset;
-        $limit = (int) $limit;
+        $offset = (int)$offset;
+        $limit = (int)$limit;
 
         if ($limit > 0) {
             $sql .= " LIMIT " . ($offset > 0 ? $offset . ", " : "") . $limit;
@@ -178,10 +178,8 @@ class DBMySQL extends DBAdapter
     /**
      * @see       DBAdapter::bindValue()
      *
-     * @param PDOStatement $stmt
      * @param string       $parameter
      * @param mixed        $value
-     * @param ColumnMap    $cMap
      * @param null|integer $position
      *
      * @return boolean
@@ -241,22 +239,9 @@ class DBMySQL extends DBAdapter
         );
 
         if (isset($params['settings']['charset']['value'])) {
-            if (version_compare(PHP_VERSION, '5.3.6', '<')) {
-                $charset = strtoupper($params['settings']['charset']['value']);
-
-                if (!in_array($charset, $whitelist)) {
-                    throw new PropelException(<<<EXCEPTION
-Connection option "charset" cannot be used for MySQL connections in PHP versions older than 5.3.6.
-    Please refer to http://www.propelorm.org/ticket/1360 for instructions and details about the implications of
-    using a SET NAMES statement in the "queries" setting.
-EXCEPTION
-                );
-                }
-            } else {
-                if (strpos($params['dsn'], ';charset=') === false) {
-                    $params['dsn'] .= ';charset=' . $params['settings']['charset']['value'];
-                    unset($params['settings']['charset']);
-                }
+            if (strpos($params['dsn'], ';charset=') === false) {
+                $params['dsn'] .= ';charset=' . $params['settings']['charset']['value'];
+                unset($params['settings']['charset']);
             }
         }
 

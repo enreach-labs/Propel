@@ -50,8 +50,6 @@ interface PropelPlatformInterface
 
     /**
      * Sets the GeneratorConfigInterface which contains any generator build properties.
-     *
-     * @param GeneratorConfigInterface $config
      */
     public function setGeneratorConfig(GeneratorConfigInterface $config);
 

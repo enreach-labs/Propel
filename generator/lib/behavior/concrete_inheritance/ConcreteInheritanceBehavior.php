@@ -140,22 +140,18 @@ class ConcreteInheritanceBehavior extends Behavior
                 $builder->declareClass($objectBuilder->getFullyQualifiedClassname());
 
                 return $objectBuilder->getClassname();
-                break;
             case 'QueryBuilder':
                 $queryBuilder = $builder->getNewStubQueryBuilder($parentTable);
                 $builder->declareClass($queryBuilder->getFullyQualifiedClassname());
 
                 return $queryBuilder->getClassname();
-                break;
             case 'PHP5PeerBuilder':
                 $peerBuilder = $builder->getNewStubPeerBuilder($parentTable);
                 $builder->declareClass($peerBuilder->getFullyQualifiedClassname());
 
                 return $peerBuilder->getClassname();
-                break;
             default:
                 return null;
-                break;
         }
     }
 

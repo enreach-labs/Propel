@@ -32,40 +32,25 @@ abstract class BaseObject
 
     /**
      * attribute to determine if this object has previously been saved.
-     *
-     * @var        boolean
      */
-    protected $_new = true;
+    protected bool $_new = true;
 
     /**
      * attribute to determine whether this object has been deleted.
-     *
-     * @var        boolean
      */
-    protected $_deleted = false;
+    protected bool $_deleted = false;
 
     /**
      * The columns that have been modified in current object.
      * Tracking modified columns allows us to only update modified columns.
-     *
-     * @var        array
      */
-    protected $modifiedColumns = array();
+    protected array $modifiedColumns = array();
 
     /**
      * The (virtual) columns that are added at runtime
      * The formatters can add supplementary columns based on a resultset
-     *
-     * @var        array
      */
-    protected $virtualColumns = array();
-
-    /**
-     * Empty constructor (this allows people with their own BaseObject implementation to use its constructor)
-     */
-    public function __construct()
-    {
-    }
+    protected array $virtualColumns = array();
 
     /**
      * Returns whether the object has been modified.
@@ -120,7 +105,7 @@ abstract class BaseObject
      */
     public function setNew($b)
     {
-        $this->_new = (boolean) $b;
+        $this->_new = (boolean) (boolean) $b;
 
         return $this;
     }
@@ -144,7 +129,7 @@ abstract class BaseObject
      */
     public function setDeleted($b)
     {
-        $this->_deleted = (boolean) $b;
+        $this->_deleted = (boolean) (boolean) $b;
 
         return $this;
     }
@@ -152,7 +137,6 @@ abstract class BaseObject
     /**
      * Code to be run before persisting the object
      *
-     * @param PropelPDO $con
      *
      * @return boolean
      */
@@ -163,8 +147,6 @@ abstract class BaseObject
 
     /**
      * Code to be run after persisting the object
-     *
-     * @param PropelPDO $con
      */
     public function postSave(PropelPDO $con = null)
     {
@@ -173,7 +155,6 @@ abstract class BaseObject
     /**
      * Code to be run before inserting to database
      *
-     * @param PropelPDO $con
      *
      * @return boolean
      */
@@ -184,8 +165,6 @@ abstract class BaseObject
 
     /**
      * Code to be run after inserting to database
-     *
-     * @param PropelPDO $con
      */
     public function postInsert(PropelPDO $con = null)
     {
@@ -194,7 +173,6 @@ abstract class BaseObject
     /**
      * Code to be run before updating the object in database
      *
-     * @param PropelPDO $con
      *
      * @return boolean
      */
@@ -205,8 +183,6 @@ abstract class BaseObject
 
     /**
      * Code to be run after updating the object in database
-     *
-     * @param PropelPDO $con
      */
     public function postUpdate(PropelPDO $con = null)
     {
@@ -215,7 +191,6 @@ abstract class BaseObject
     /**
      * Code to be run before deleting the object in database
      *
-     * @param PropelPDO $con
      *
      * @return boolean
      */
@@ -226,8 +201,6 @@ abstract class BaseObject
 
     /**
      * Code to be run after deleting the object in database
-     *
-     * @param PropelPDO $con
      */
     public function postDelete(PropelPDO $con = null)
     {

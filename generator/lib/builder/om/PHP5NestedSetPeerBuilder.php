@@ -1521,7 +1521,7 @@ abstract class " . $this->getClassname() . " extends " . $this->getPeerBuilder()
 ";
         } else {
             $fields = array();
-            foreach ($table->getPrimaryKey() as $k => $col) {
+            foreach ($table->getPrimaryKey() as $col) {
                 $fields[] = $this->getColumnConstant($col);
             };
             $script .= "

@@ -22,10 +22,10 @@ require_once dirname(__FILE__) . '/../../../runtime/lib/Propel.php';
  */
 class PropelMigrationManager
 {
-    protected $connections;
-    protected $pdoConnections = array();
-    protected $migrationTable = 'propel_migration';
-    protected $migrationDir;
+    protected ?array $connections;
+    protected array $pdoConnections = array();
+    protected string $migrationTable = 'propel_migration';
+    protected ?string $migrationDir;
 
     /**
      * Set the database connection settings
@@ -291,7 +291,8 @@ class PropelMigrationManager
         $migrationClassName = $this->getMigrationClassName($timestamp);
         $migrationUpString = var_export($migrationsUp, true);
         $migrationDownString = var_export($migrationsDown, true);
-        $migrationClassBody = <<<EOP
+
+        return <<<EOP
 <?php
 
 /**
@@ -346,8 +347,6 @@ class $migrationClassName
 
 }
 EOP;
-
-        return $migrationClassBody;
     }
 
     public static function getMigrationFileName($timestamp)

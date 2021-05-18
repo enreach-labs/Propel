@@ -27,15 +27,11 @@ interface SchemaParser
 
     /**
      * Sets the database connection.
-     *
-     * @param PDO $dbh
      */
     public function setConnection(PDO $dbh);
 
     /**
      * Sets the GeneratorConfig to use in the parsing.
-     *
-     * @param GeneratorConfigInterface $config
      */
     public function setGeneratorConfig(GeneratorConfigInterface $config);
 
@@ -58,8 +54,6 @@ interface SchemaParser
     /**
      * Parse the schema and populate passed-in Database model object.
      *
-     * @param Database $database
-     * @param Task     $task
      *
      * @return int number of generated tables
      */

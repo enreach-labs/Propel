@@ -25,8 +25,8 @@
  */
 class PropelSchemaValidator
 {
-    protected $appData;
-    protected $errors = array();
+    protected \AppData $appData;
+    protected array $errors = array();
 
     public function __construct(AppData $appData)
     {

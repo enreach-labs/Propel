@@ -27,43 +27,43 @@ class ColumnMap
 {
 
     // Propel type of the column
-    protected $type;
+    protected ?string $type;
 
     // Size of the column
-    protected $size = 0;
+    protected int $size = 0;
 
     // Is it a primary key?
-    protected $pk = false;
+    protected bool $pk = false;
 
     // Is null value allowed?
-    protected $notNull = false;
+    protected bool $notNull = false;
 
     // The default value for this column
     protected $defaultValue;
 
     // Name of the table that this column is related to
-    protected $relatedTableName = "";
+    protected string $relatedTableName = "";
 
     // Name of the column that this column is related to
-    protected $relatedColumnName = "";
+    protected string $relatedColumnName = "";
 
     // The TableMap for this column
-    protected $table;
+    protected \TableMap $table;
 
     // The name of the column
-    protected $columnName;
+    protected string $columnName;
 
     // The php name of the column
-    protected $phpName;
+    protected ?string $phpName;
 
     // The validators for this column
-    protected $validators = array();
+    protected array $validators = array();
 
     // The allowed values for an ENUM column
-    protected $valueSet = array();
+    protected array $valueSet = array();
 
     // Is this a primaryString column?
-    protected $isPkString = false;
+    protected bool $isPkString = false;
 
     /**
      * Constructor.
@@ -367,7 +367,7 @@ class ColumnMap
         if (!$this->relatedTableName) {
             return null;
         }
-        foreach ($this->getTable()->getRelations() as $name => $relation) {
+        foreach ($this->getTable()->getRelations() as $relation) {
             if ($relation->getType() == RelationMap::MANY_TO_ONE) {
                 if ($relation->getForeignTable()->getName() == $this->getRelatedTableName() && array_key_exists($this->getFullyQualifiedName(), $relation->getColumnMappings())) {
                     return $relation;
@@ -481,7 +481,6 @@ class ColumnMap
      * Performs DB-specific ignore case, but only if the column type necessitates it.
      *
      * @param string    $str The expression we want to apply the ignore case formatting to (e.g. the column name).
-     * @param DBAdapter $db
      *
      * @return string
      */
@@ -519,7 +518,7 @@ class ColumnMap
      */
     public function setPrimaryString($pkString)
     {
-        $this->isPkString = (bool) $pkString;
+        $this->isPkString = (bool) (bool) $pkString;
     }
 
     /**

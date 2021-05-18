@@ -22,17 +22,15 @@ abstract class XMLElement
 
     /**
      * The name => value attributes from XML.
-     *
-     * @var array
      */
-    protected $attributes = array();
+    protected array $attributes = array();
 
     /**
      * Any associated vendor-specific information objects.
      *
      * @var VendorInfo[]
      */
-    protected $vendorInfos = array();
+    protected array $vendorInfos = array();
 
     /**
      * Replaces the old loadFromXML() so that we can use loadFromXML() to load the attribs into the class.
@@ -119,8 +117,6 @@ abstract class XMLElement
 
     /**
      * Appends DOM elements to represent this object in XML.
-     *
-     * @param DOMNode $node
      */
     abstract public function appendXml(DOMNode $node);
 

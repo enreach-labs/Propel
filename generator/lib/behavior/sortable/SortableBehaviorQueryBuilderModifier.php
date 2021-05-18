@@ -16,30 +16,15 @@
  */
 class SortableBehaviorQueryBuilderModifier
 {
-    /**
-     * @var SortableBehavior
-     */
-    protected $behavior;
+    protected \SortableBehavior $behavior;
 
-    /**
-     * @var Table
-     */
-    protected $table;
+    protected \Table $table;
 
-    /**
-     * @var OMBuilder
-     */
-    protected $builder;
+    protected \OMBuilder $builder;
 
-    /**
-     * @var String
-     */
-    protected $objectClassname;
+    protected string $objectClassname;
 
-    /**
-     * @var String
-     */
-    protected $peerClassname;
+    protected string $peerClassname;
 
     public function __construct($behavior)
     {

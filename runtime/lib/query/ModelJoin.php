@@ -16,20 +16,11 @@
  */
 class ModelJoin extends Join
 {
-    /**
-     * @var RelationMap
-     */
-    protected $relationMap;
+    protected ?\RelationMap $relationMap;
 
-    /**
-     * @var TableMap
-     */
-    protected $tableMap;
+    protected ?\TableMap $tableMap;
 
-    /**
-     * @var ModelJoin
-     */
-    protected $previousJoin;
+    protected ?\ModelJoin $previousJoin;
 
     public function setRelationMap(RelationMap $relationMap, $leftTableAlias = null, $relationAlias = null)
     {
@@ -81,8 +72,6 @@ class ModelJoin extends Join
     }
 
     /**
-     * @param ModelJoin $join
-     *
      * @return ModelJoin
      */
     public function setPreviousJoin(ModelJoin $join)

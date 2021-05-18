@@ -99,11 +99,9 @@ class DBPostgres extends DBAdapter
      * Warning: duplicates logic from PgsqlPlatform::getIdentifierPhp().
      * Any code modification here must be ported there.
      *
-     * @param PDO    $con
      * @param string $name
      *
      * @return integer
-     *
      * @throws PropelException
      */
     public function getId(PDO $con, $name = null)

@@ -113,7 +113,6 @@ class PHP5ObjectBuilder extends ObjectBuilder
     /**
      * Returns the appropriate formatter (from platform) for a date/time column.
      *
-     * @param Column $col
      *
      * @return string
      */
@@ -457,7 +456,6 @@ abstract class " . $this->getClassname() . " extends " . $parentClass . " ";
      * Add comment about the attribute (variable) that stores column values
      *
      * @param string &$script The script will be modified in this method.
-     * @param Column $col
      **/
     protected function addColumnAttributeComment(&$script, Column $col)
     {
@@ -485,7 +483,6 @@ abstract class " . $this->getClassname() . " extends " . $parentClass . " ";
      * Adds the declaration of a column value storage attribute
      *
      * @param string &$script The script will be modified in this method.
-     * @param Column $col
      **/
     protected function addColumnAttributeDeclaration(&$script, Column $col)
     {
@@ -499,7 +496,6 @@ abstract class " . $this->getClassname() . " extends " . $parentClass . " ";
      * Adds the comment about the attribute keeping track if an attribute value has been loaded
      *
      * @param string &$script The script will be modified in this method.
-     * @param Column $col
      **/
     protected function addColumnAttributeLoaderComment(&$script, Column $col)
     {
@@ -516,7 +512,6 @@ abstract class " . $this->getClassname() . " extends " . $parentClass . " ";
      * Adds the declaration of the attribute keeping track of an attribute's loaded state
      *
      * @param string &$script The script will be modified in this method.
-     * @param Column $col
      **/
     protected function addColumnAttributeLoaderDeclaration(&$script, Column $col)
     {
@@ -530,7 +525,6 @@ abstract class " . $this->getClassname() . " extends " . $parentClass . " ";
      * Adds the comment about the serialized attribute
      *
      * @param string &$script The script will be modified in this method.
-     * @param Column $col
      **/
     protected function addColumnAttributeUnserializedComment(&$script, Column $col)
     {
@@ -547,7 +541,6 @@ abstract class " . $this->getClassname() . " extends " . $parentClass . " ";
      * Adds the declaration of the serialized attribute
      *
      * @param string &$script The script will be modified in this method.
-     * @param Column $col
      **/
     protected function addColumnAttributeUnserializedDeclaration(&$script, Column $col)
     {
@@ -3293,15 +3286,12 @@ abstract class " . $this->getClassname() . " extends " . $parentClass . " ";
     }
 ";
     } // addIsPrimaryKeyKeyNull
-
     // --------------------------------------------------------------------
     // Complex OM Methods
     // --------------------------------------------------------------------
-
     /**
      * Constructs variable name for fkey-related objects.
      *
-     * @param ForeignKey $fk
      *
      * @return string
      */
@@ -3313,7 +3303,6 @@ abstract class " . $this->getClassname() . " extends " . $parentClass . " ";
     /**
      * Constructs variable name for objects which referencing current table by specified foreign key.
      *
-     * @param ForeignKey $fk
      *
      * @return string
      */
@@ -3326,7 +3315,6 @@ abstract class " . $this->getClassname() . " extends " . $parentClass . " ";
      * Constructs variable name for single object which references current table by specified foreign key
      * which is ALSO a primary key (hence one-to-one relationship).
      *
-     * @param ForeignKey $fk
      *
      * @return string
      */
@@ -4619,8 +4607,6 @@ abstract class " . $this->getClassname() . " extends " . $parentClass . " ";
 
     /**
      * @param string     &$script The script will be modified in this method.
-     * @param ForeignKey $refFK
-     * @param ForeignKey $crossFK
      */
     protected function addCrossFKDoAdd(&$script, ForeignKey $refFK, ForeignKey $crossFK)
     {
@@ -4903,12 +4889,11 @@ abstract class " . $this->getClassname() . " extends " . $parentClass . " ";
         } else {
             $script .= $this->addDoInsertBodyRaw();
         }
-        $script .= "
+
+        return $script . "
         \$this->setNew(false);
     }
 ";
-
-        return $script;
     }
 
     protected function addDoInsertBodyStandard()

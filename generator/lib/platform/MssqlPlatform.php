@@ -21,7 +21,7 @@ require_once dirname(__FILE__) . '/../model/Domain.php';
  */
 class MssqlPlatform extends DefaultPlatform
 {
-    protected static $dropCount = 0;
+    protected static int $dropCount = 0;
 
     /**
      * Initializes db specific domain mapping.
@@ -80,7 +80,7 @@ IF EXISTS (SELECT 1 FROM sysobjects WHERE type ='RI' AND name='" . $fk->getName(
 
         self::$dropCount++;
 
-        $ret .= "
+        return $ret . ("
 IF EXISTS (SELECT 1 FROM sysobjects WHERE type = 'U' AND name = '" . $table->getName() . "')
 BEGIN
     DECLARE @reftable_" . self::$dropCount . " nvarchar(60), @constraintname_" . self::$dropCount . " nvarchar(60)
@@ -105,9 +105,7 @@ BEGIN
     DEALLOCATE refcursor
     DROP TABLE " . $this->quoteIdentifier($table->getName()) . "
 END
-";
-
-        return $ret;
+");
     }
 
     public function getPrimaryKeyDDL(Table $table)

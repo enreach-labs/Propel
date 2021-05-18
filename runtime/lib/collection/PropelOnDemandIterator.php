@@ -16,34 +16,18 @@
  */
 class PropelOnDemandIterator implements Iterator
 {
-    /**
-     * @var PropelObjectFormatter
-     */
-    protected $formatter;
+    protected \PropelFormatter $formatter;
 
-    /**
-     * @var PDOStatement
-     */
-    protected $stmt;
+    protected \PDOStatement $stmt;
 
     protected $currentRow;
 
     protected $currentKey = -1;
 
-    /**
-     * @var boolean|null
-     */
-    protected $isValid = null;
+    protected ?bool $isValid;
 
-    /**
-     * @var boolean
-     */
-    protected $enableInstancePoolingOnFinish = false;
+    protected bool $enableInstancePoolingOnFinish = false;
 
-    /**
-     * @param PropelFormatter $formatter
-     * @param PDOStatement    $stmt
-     */
     public function __construct(PropelFormatter $formatter, PDOStatement $stmt)
     {
         $this->formatter = $formatter;
