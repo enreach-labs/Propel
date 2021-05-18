@@ -260,7 +260,7 @@ class GeneratorConfig implements GeneratorConfigInterface
 
     public function getBuildConnections()
     {
-        if (isset($this->buildConnections)) {
+        if (!isset($this->buildConnections)) {
             $buildTimeConfigPath = $this->getBuildProperty('buildtimeConfFile') ? $this->getBuildProperty('projectDir') . DIRECTORY_SEPARATOR . $this->getBuildProperty('buildtimeConfFile') : null;
             if ($buildTimeConfigString = $this->getBuildProperty('buildtimeConf')) {
                 // configuration passed as propel.buildtimeConf string

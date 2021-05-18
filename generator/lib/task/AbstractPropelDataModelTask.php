@@ -563,7 +563,7 @@ abstract class AbstractPropelDataModelTask extends AbstractPropelTask
      */
     protected function getGeneratorConfig()
     {
-        if (isset($this->generatorConfig)) {
+        if (!isset($this->generatorConfig)) {
             $this->generatorConfig = new GeneratorConfig();
             $this->generatorConfig->setBuildProperties($this->getProject()->getProperties());
         }
