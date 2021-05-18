@@ -93,7 +93,7 @@ class Table extends ScopedElement implements IDMethod
     /**
      * Table description.
      */
-    private string $description;
+    private ?string $description;
 
     /**
      * phpName for the table.
@@ -132,52 +132,52 @@ class Table extends ScopedElement implements IDMethod
      *
      * @var string[]
      */
-    private ?array $foreignTableNames;
+    private ?array $foreignTableNames = null;
 
     /**
      * Whether this table contains a foreign primary key.
      */
-    private ?bool $containsForeignPK;
+    private ?bool $containsForeignPK = null;
 
     /**
      * The inheritance column for this table (if any).
      */
-    private ?\Column $inheritanceColumn;
+    private ?\Column $inheritanceColumn = null;
 
     /**
      * Whether to skip generation of SQL for this table.
      */
-    private ?bool $skipSql;
+    private ?bool $skipSql = null;
 
     /**
      * Whether this table is "read-only".
      */
-    private ?bool $readOnly;
+    private ?bool $readOnly = null;
 
     /**
      * Whether this table should result in abstract OM classes.
      */
-    private ?bool $abstractValue;
+    private ?bool $abstractValue = null;
 
     /**
      * Whether this table is an alias for another table.
      */
-    private ?string $alias;
+    private ?string $alias = null;
 
     /**
      * The interface that the generated "object" class should implement.
      */
-    private ?string $interface;
+    private ?string $interface = null;
 
     /**
      * The base class to extend for the generated "object" class.
      */
-    private string $baseClass;
+    private ?string $baseClass = null;
 
     /**
      * The base peer class to extend for generated "peer" class.
      */
-    private string $basePeer;
+    private ?string $basePeer = null;
 
     /**
      * Map of columns by name.
@@ -205,32 +205,32 @@ class Table extends ScopedElement implements IDMethod
      *
      * @deprecated
      */
-    private string $needsTransactionInPostgres;
+    private ?string $needsTransactionInPostgres = null;
 
     /**
      * Whether to perform additional indexing on this table.
      */
-    private ?bool $heavyIndexing;
+    private ?bool $heavyIndexing = null;
 
     /**
      * Whether this table is for reference only.
      */
-    private ?bool $forReferenceOnly;
+    private ?bool $forReferenceOnly = null;
 
     /**
      * The tree mode (nested set, etc.) implemented by this table.
      */
-    private ?string $treeMode;
+    private ?string $treeMode = null;
 
     /**
      * Whether to reload the rows in this table after insert.
      */
-    private ?bool $reloadOnInsert;
+    private ?bool $reloadOnInsert = null;
 
     /**
      * Whether to reload the rows in this table after update.
      */
-    private ?bool $reloadOnUpdate;
+    private ?bool $reloadOnUpdate = null;
 
     /**
      * List of behaviors registered for this table

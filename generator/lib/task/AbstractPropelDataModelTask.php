@@ -70,9 +70,9 @@ abstract class AbstractPropelDataModelTask extends AbstractPropelTask
     /**
      * Target PHP package to place the generated files in.
      */
-    protected ?string $targetPackage;
+    protected ?string $targetPackage = null;
 
-    protected ?\Mapper $mapperElement;
+    protected ?\Mapper $mapperElement = null;
 
     /**
      * Destination directory for results of template scripts.
@@ -84,37 +84,37 @@ abstract class AbstractPropelDataModelTask extends AbstractPropelTask
     /**
      * Whether to package the datamodels or not
      */
-    protected ?bool $packageObjectModel;
+    protected ?bool $packageObjectModel = null;
 
     /**
      * Whether to perform validation (XSD) on the schema.xml file(s).
      */
-    protected ?bool $validate;
+    protected ?bool $validate = null;
 
     /**
      * The XSD schema file to use for validation.
      */
-    protected ?\PhingFile $xsdFile;
+    protected ?\PhingFile $xsdFile = null;
 
     /**
      * XSL file to use to normalize (or otherwise transform) schema before validation.
      */
-    protected ?\PhingFile $xslFile;
+    protected ?\PhingFile $xslFile = null;
 
     /**
      * Optional database connection url.
      */
-    private ?string $url;
+    private ?string $url = null;
 
     /**
      * Optional database connection user name.
      */
-    private ?string $userId;
+    private ?string $userId = null;
 
     /**
      * Optional database connection password.
      */
-    private ?string $password;
+    private ?string $password = null;
 
     /**
      * PDO Connection.

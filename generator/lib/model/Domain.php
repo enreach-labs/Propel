@@ -24,12 +24,12 @@ class Domain extends XMLElement
     /**
      * @var        string The name of this domain
      */
-    private ?string $name;
+    private ?string $name = null;
 
     /**
      * @var        string Description for this domain.
      */
-    private ?string $description;
+    private ?string $description = null;
 
     /**
      * @var        int Size
@@ -54,7 +54,7 @@ class Domain extends XMLElement
     /**
      * @var        ColumnDefaultValue A default value
      */
-    private ?\ColumnDefaultValue $defaultValue;
+    private ?\ColumnDefaultValue $defaultValue = null;
 
     private ?\Database $database;
 

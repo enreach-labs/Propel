@@ -47,92 +47,92 @@ abstract class DataModelBuilder
     /**
      * Peer builder class for current table.
      */
-    private ?\DataModelBuilder $peerBuilder;
+    private ?\DataModelBuilder $peerBuilder = null;
 
     /**
      * Stub Peer builder class for current table.
      */
-    private ?\DataModelBuilder $stubPeerBuilder;
+    private ?\DataModelBuilder $stubPeerBuilder = null;
 
     /**
      * Object builder class for current table.
      */
-    private ?\DataModelBuilder $objectBuilder;
+    private ?\DataModelBuilder $objectBuilder = null;
 
     /**
      * Stub Object builder class for current table.
      */
-    private ?\DataModelBuilder $stubObjectBuilder;
+    private ?\DataModelBuilder $stubObjectBuilder = null;
 
     /**
      * Query builder class for current table.
      */
-    private ?\DataModelBuilder $queryBuilder;
+    private ?\DataModelBuilder $queryBuilder = null;
 
     /**
      * Stub Query builder class for current table.
      */
-    private ?\DataModelBuilder $stubQueryBuilder;
+    private ?\DataModelBuilder $stubQueryBuilder = null;
 
     /**
      * TableMap builder class for current table.
      */
-    protected ?\DataModelBuilder $tablemapBuilder;
+    protected ?\DataModelBuilder $tablemapBuilder = null;
 
     /**
      * Stub Interface builder class for current table.
      */
-    private ?\DataModelBuilder $interfaceBuilder;
+    private ?\DataModelBuilder $interfaceBuilder = null;
 
     /**
      * Stub child object for current table.
      */
-    private ?\DataModelBuilder $multiExtendObjectBuilder;
+    private ?\DataModelBuilder $multiExtendObjectBuilder = null;
 
     /**
      * Node object builder for current table.
      */
-    private ?\DataModelBuilder $nodeBuilder;
+    private ?\DataModelBuilder $nodeBuilder = null;
 
     /**
      * Node peer builder for current table.
      */
-    private ?\DataModelBuilder $nodePeerBuilder;
+    private ?\DataModelBuilder $nodePeerBuilder = null;
 
     /**
      * Stub node object builder for current table.
      */
-    private ?\DataModelBuilder $stubNodeBuilder;
+    private ?\DataModelBuilder $stubNodeBuilder = null;
 
     /**
      * Stub node peer builder for current table.
      */
-    private ?\DataModelBuilder $stubNodePeerBuilder;
+    private ?\DataModelBuilder $stubNodePeerBuilder = null;
 
     /**
      * NestedSet object builder for current table.
      */
-    private ?\DataModelBuilder $nestedSetBuilder;
+    private ?\DataModelBuilder $nestedSetBuilder = null;
 
     /**
      * NestedSet peer builder for current table.
      */
-    private ?\DataModelBuilder $nestedSetPeerBuilder;
+    private ?\DataModelBuilder $nestedSetPeerBuilder = null;
 
     /**
      * The Data-SQL builder for current table.
      */
-    private ?\DataModelBuilder $dataSqlBuilder;
+    private ?\DataModelBuilder $dataSqlBuilder = null;
 
     /**
      * The Pluralizer class to use.
      */
-    private ?\Pluralizer $pluralizer;
+    private ?\Pluralizer $pluralizer = null;
 
     /**
      * The platform class
      */
-    protected ?\PropelPlatformInterface $platform;
+    protected ?\PropelPlatformInterface $platform = null;
 
     /**
      * Creates new instance of DataModelBuilder subclass.

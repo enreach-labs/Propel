@@ -48,14 +48,14 @@ class Column extends XMLElement
      * The name to use for the Peer constant that identifies this column.
      * (Will be converted to all-uppercase in the templates.)
      */
-    private string $peerName;
+    private ?string $peerName = null;
 
     /**
      * Native PHP type (scalar or class name)
      *
      * @var string "string", "boolean", "int", "double"
      */
-    private string $phpType;
+    private ?string $phpType = null;
 
     private ?\Table $parentTable;
 
@@ -69,7 +69,7 @@ class Column extends XMLElement
     private bool $isUnique = false;
     private bool $isAutoIncrement = false;
     private bool $isLazyLoad = false;
-    private ?array $referrers;
+    private ?array $referrers = null;
     private bool $isPrimaryString = false;
 
     // only one type is supported currently, which assumes the
@@ -77,10 +77,10 @@ class Column extends XMLElement
     // classnames specified in the schema.  Others may be
     // supported later.
     private $inheritanceType;
-    private ?bool $isInheritance;
-    private ?bool $isEnumeratedClasses;
-    private ?array $inheritanceList;
-    private ?bool $needsTransactionInPostgres; //maybe this can be retrieved from vendorSpecificInfo
+    private ?bool $isInheritance = null;
+    private ?bool $isEnumeratedClasses = null;
+    private ?array $inheritanceList = null;
+    private ?bool $needsTransactionInPostgres = false; //maybe this can be retrieved from vendorSpecificInfo
     /**
      * Stores the possible values of an ENUM column.
      */
@@ -252,7 +252,7 @@ class Column extends XMLElement
      */
     public function getDomain()
     {
-        if ($this->domain === null) {
+        if (!isset($this->domain)) {
             $this->domain = new Domain();
         }
 

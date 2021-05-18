@@ -28,7 +28,7 @@ class ForeignKey extends XMLElement
     protected ?string $name;
     protected ?string $phpName;
     protected ?string $refPhpName;
-    protected string $defaultJoin;
+    protected ?string $defaultJoin = null;
     protected string $onUpdate = '';
     protected string $onDelete = '';
 

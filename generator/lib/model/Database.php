@@ -29,7 +29,7 @@ require_once dirname(__FILE__) . '/Behavior.php';
 class Database extends ScopedElement
 {
 
-    private ?\PropelPlatformInterface $platform;
+    private ?\PropelPlatformInterface $platform = null;
 
     /**
      * @var Table[]
@@ -44,7 +44,7 @@ class Database extends ScopedElement
     private ?string $defaultPhpNamingMethod = null;
     private ?string $defaultTranslateMethod = null;
 
-    private ?\AppData $dbParent;
+    private ?\AppData $dbParent = null;
 
     /**
      * @var Table[]
@@ -62,7 +62,7 @@ class Database extends ScopedElement
     private array $tablesByPhpName = array();
 
     private ?bool $heavyIndexing;
-    protected string $tablePrefix = '';
+    protected ?string $tablePrefix = '';
 
     /**
      * The default string format for objects based on this database
