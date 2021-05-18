@@ -38,11 +38,11 @@ class Database extends ScopedElement
 
     private ?string $name;
 
-    private ?string $baseClass;
-    private ?string $basePeer;
-    private ?string $defaultIdMethod;
-    private ?string $defaultPhpNamingMethod;
-    private ?string $defaultTranslateMethod;
+    private ?string $baseClass = null;
+    private ?string $basePeer = null;
+    private ?string $defaultIdMethod = null;
+    private ?string $defaultPhpNamingMethod = null;
+    private ?string $defaultTranslateMethod = null;
 
     private ?\AppData $dbParent;
 
@@ -81,10 +81,8 @@ class Database extends ScopedElement
 
     /**
      * Constructs a new Database object.
-     *
-     * @param string $name
      */
-    public function __construct($name = null)
+    public function __construct(string $name = null)
     {
         $this->name = $name;
     }
