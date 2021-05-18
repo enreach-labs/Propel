@@ -24,10 +24,10 @@ class GeneratorConfig implements GeneratorConfigInterface
     /**
      * The build properties.
      */
-    private array $buildProperties = array();
+    private array $buildProperties = [];
 
-    protected ?array $buildConnections;
-    protected ?string $defaultBuildConnection;
+    protected ?array $buildConnections = [];
+    protected ?string $defaultBuildConnection = null;
 
     /**
      * Construct a new GeneratorConfig.
@@ -270,8 +270,6 @@ class GeneratorConfig implements GeneratorConfigInterface
             } elseif (file_exists($buildTimeConfigPath)) {
                 // configuration stored in a buildtime-conf.xml file
                 $this->parseBuildConnections(file_get_contents($buildTimeConfigPath));
-            } else {
-                $this->buildConnections = array();
             }
         }
 
