@@ -21,11 +21,11 @@ require_once dirname(__FILE__) . '/XMLElement.php';
 class Inheritance extends XMLElement
 {
 
-    private ?string $key;
-    private ?string $className;
-    private ?string $pkg;
-    private ?string $ancestor;
-    private ?\Column $parent;
+    private ?string $key = null;
+    private ?string $className = null;
+    private ?string $pkg = null;
+    private ?string $ancestor = null;
+    private ?\Column $parent = null;
 
     /**
      * Sets up the Inheritance object based on the attributes that were passed to loadFromXML().

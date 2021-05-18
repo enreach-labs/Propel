@@ -23,16 +23,16 @@ require_once dirname(__FILE__) . '/XMLElement.php';
 class ForeignKey extends XMLElement
 {
 
-    protected ?string $foreignTableCommonName;
+    protected ?string $foreignTableCommonName = null;
     protected $foreignSchemaName;
-    protected ?string $name;
-    protected ?string $phpName;
-    protected ?string $refPhpName;
+    protected ?string $name = null;
+    protected ?string $phpName = null;
+    protected ?string $refPhpName = null;
     protected ?string $defaultJoin = null;
     protected string $onUpdate = '';
     protected string $onDelete = '';
 
-    protected ?\Table $parentTable;
+    protected ?\Table $parentTable = null;
 
     /**
      * @var Column[]

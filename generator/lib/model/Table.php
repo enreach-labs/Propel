@@ -83,22 +83,22 @@ class Table extends ScopedElement implements IDMethod
     /**
      * Table name (with prefix if it has one).
      */
-    private ?string $commonName;
+    private ?string $commonName = null;
 
     /**
      * Table name without prefix.  Only used for phpName generation.
      */
-    private ?string $nonPrefixedName;
+    private ?string $nonPrefixedName = null;
 
     /**
      * Table description.
      */
-    private ?string $description;
+    private ?string $description = null;
 
     /**
      * phpName for the table.
      */
-    private ?string $phpName;
+    private ?string $phpName = null;
 
     /**
      * ID method for the table (e.g. IDMethod::NATIVE, IDMethod::NONE).
@@ -108,7 +108,7 @@ class Table extends ScopedElement implements IDMethod
     /**
      * Whether an INSERT with set PK is allowed on tables with IDMethod::NATIVE
      */
-    private ?bool $allowPkInsert;
+    private ?bool $allowPkInsert = null;
 
     /**
      * Strategy to use for converting column name to phpName.
@@ -118,7 +118,7 @@ class Table extends ScopedElement implements IDMethod
     /**
      * The Database that this table belongs to.
      */
-    private ?\Database $database;
+    private ?\Database $database = null;
 
     /**
      * Foreign Keys that refer to this table.

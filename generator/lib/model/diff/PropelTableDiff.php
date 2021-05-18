@@ -20,8 +20,8 @@ require_once dirname(__FILE__) . '/PropelColumnDiff.php';
  */
 class PropelTableDiff
 {
-    protected ?\Table $fromTable;
-    protected ?\Table $toTable;
+    protected ?\Table $fromTable = null;
+    protected ?\Table $toTable = null;
 
     protected array $addedColumns = array();
     protected array $removedColumns = array();

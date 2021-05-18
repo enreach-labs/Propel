@@ -16,11 +16,11 @@
  */
 class ModelJoin extends Join
 {
-    protected ?\RelationMap $relationMap;
+    protected ?\RelationMap $relationMap = null;
 
-    protected ?\TableMap $tableMap;
+    protected ?\TableMap $tableMap = null;
 
-    protected ?\ModelJoin $previousJoin;
+    protected ?\ModelJoin $previousJoin = null;
 
     public function setRelationMap(RelationMap $relationMap, $leftTableAlias = null, $relationAlias = null)
     {

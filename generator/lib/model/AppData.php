@@ -49,7 +49,7 @@ class AppData
      * Name of the database. Only one database definition
      * is allowed in one XML descriptor.
      */
-    private ?string $name;
+    private ?string $name = null;
 
     /**
      * Flag to ensure that initialization is performed only once.

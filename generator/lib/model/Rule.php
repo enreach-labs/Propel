@@ -21,11 +21,11 @@ require_once dirname(__FILE__) . '/XMLElement.php';
 class Rule extends XMLElement
 {
 
-    private ?string $name;
-    private ?string $value;
-    private ?string $message;
-    private ?\Validator $validator;
-    private ?string $classname;
+    private ?string $name = null;
+    private ?string $value = null;
+    private ?string $message = null;
+    private ?\Validator $validator = null;
+    private ?string $classname = null;
 
     /**
      * Sets up the Rule object based on the attributes that were passed to loadFromXML().

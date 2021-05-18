@@ -24,7 +24,7 @@ class VendorInfo extends XMLElement
     /**
      * The vendor RDBMS type.
      */
-    private ?string $type;
+    private ?string $type = null;
 
     /**
      * Vendor parameters.

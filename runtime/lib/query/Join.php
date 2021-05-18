@@ -41,20 +41,20 @@ class Join
     protected array $operator = array();
 
     // the type of the join (LEFT JOIN, ...)
-    protected ?string $joinType;
+    protected ?string $joinType = null;
 
     // the number of conditions in the join
     protected int $count = 0;
 
     // the database adapter
-    protected ?\DBAdapter $db;
+    protected ?\DBAdapter $db = null;
 
-    protected ?string $leftTableName;
-    protected ?string $rightTableName;
-    protected ?string $leftTableAlias;
-    protected ?string $rightTableAlias;
+    protected ?string $leftTableName = null;
+    protected ?string $rightTableName = null;
+    protected ?string $leftTableAlias = null;
+    protected ?string $rightTableAlias = null;
 
-    protected ?\Criterion $joinCondition;
+    protected ?\Criterion $joinCondition = null;
 
     /**
      * Constructor

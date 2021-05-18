@@ -29,7 +29,7 @@ class Validator extends XMLElement
     /**
      * The column this validator applies to.
      */
-    private ?\Column $column;
+    private ?\Column $column = null;
 
     /**
      * The rules for the validation.
@@ -41,12 +41,12 @@ class Validator extends XMLElement
     /**
      * The translation mode.
      */
-    private ?string $translate;
+    private ?string $translate = null;
 
     /**
      * Parent table.
      */
-    private ?\Table $table;
+    private ?\Table $table = null;
 
     /**
      * Sets up the Validator object based on the attributes that were passed to loadFromXML().

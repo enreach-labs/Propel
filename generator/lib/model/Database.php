@@ -36,7 +36,7 @@ class Database extends ScopedElement
      */
     private array $tableList = array();
 
-    private ?string $name;
+    private ?string $name = null;
 
     private ?string $baseClass = null;
     private ?string $basePeer = null;
@@ -61,7 +61,7 @@ class Database extends ScopedElement
      */
     private array $tablesByPhpName = array();
 
-    private ?bool $heavyIndexing;
+    private ?bool $heavyIndexing = null;
     protected ?string $tablePrefix = '';
 
     /**

@@ -35,14 +35,14 @@ class Column extends XMLElement
     const DEFAULT_VISIBILITY = 'public';
     public static array $valid_visibilities = array('public', 'protected', 'private');
 
-    private ?string $name;
+    private ?string $name = null;
     private $description;
-    private ?string $phpName;
+    private ?string $phpName = null;
     private $phpNamingMethod;
     private bool $isNotNull = false;
-    private ?string $namePrefix;
-    private ?string $accessorVisibility;
-    private ?string $mutatorVisibility;
+    private ?string $namePrefix = null;
+    private ?string $accessorVisibility = null;
+    private ?string $mutatorVisibility = null;
 
     /**
      * The name to use for the Peer constant that identifies this column.
@@ -57,12 +57,12 @@ class Column extends XMLElement
      */
     private ?string $phpType = null;
 
-    private ?\Table $parentTable;
+    private ?\Table $parentTable = null;
 
-    private ?int $position;
+    private ?int $position = null;
     private bool $isPrimaryKey = false;
     private bool $isNodeKey = false;
-    private ?string $nodeKeySep;
+    private ?string $nodeKeySep = null;
     private bool $isNestedSetLeftKey = false;
     private bool $isNestedSetRightKey = false;
     private bool $isTreeScopeKey = false;
@@ -89,7 +89,7 @@ class Column extends XMLElement
     /**
      * The domain object associated with this Column.
      */
-    private ?\Domain $domain;
+    private ?\Domain $domain = null;
 
     /**
      * Creates a new column and set the name

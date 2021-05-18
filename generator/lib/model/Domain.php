@@ -49,14 +49,14 @@ class Domain extends XMLElement
     /**
      * @var        string The SQL type to use for this column
      */
-    private ?string $sqlType;
+    private ?string $sqlType = null;
 
     /**
      * @var        ColumnDefaultValue A default value
      */
     private ?\ColumnDefaultValue $defaultValue = null;
 
-    private ?\Database $database;
+    private ?\Database $database = null;
 
     /**
      * Creates a new Domain object.
