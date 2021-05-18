@@ -28,112 +28,112 @@ class Criteria implements IteratorAggregate
 {
 
     /** Comparison type. */
-    const EQUAL = "=";
+    public const EQUAL = "=";
 
     /** Comparison type. */
-    const NOT_EQUAL = "<>";
+    public const NOT_EQUAL = "<>";
 
     /** Comparison type. */
-    const ALT_NOT_EQUAL = "!=";
+    public const ALT_NOT_EQUAL = "!=";
 
     /** Comparison type. */
-    const GREATER_THAN = ">";
+    public const GREATER_THAN = ">";
 
     /** Comparison type. */
-    const LESS_THAN = "<";
+    public const LESS_THAN = "<";
 
     /** Comparison type. */
-    const GREATER_EQUAL = ">=";
+    public const GREATER_EQUAL = ">=";
 
     /** Comparison type. */
-    const LESS_EQUAL = "<=";
+    public const LESS_EQUAL = "<=";
 
     /** Comparison type. */
-    const LIKE = " LIKE ";
+    public const LIKE = " LIKE ";
 
     /** Comparison type. */
-    const NOT_LIKE = " NOT LIKE ";
+    public const NOT_LIKE = " NOT LIKE ";
 
     /** Comparison for array column types */
-    const CONTAINS_ALL = "CONTAINS_ALL";
+    public const CONTAINS_ALL = "CONTAINS_ALL";
 
     /** Comparison for array column types */
-    const CONTAINS_SOME = "CONTAINS_SOME";
+    public const CONTAINS_SOME = "CONTAINS_SOME";
 
     /** Comparison for array column types */
-    const CONTAINS_NONE = "CONTAINS_NONE";
+    public const CONTAINS_NONE = "CONTAINS_NONE";
 
     /** PostgreSQL comparison type */
-    const ILIKE = " ILIKE ";
+    public const ILIKE = " ILIKE ";
 
     /** PostgreSQL comparison type */
-    const NOT_ILIKE = " NOT ILIKE ";
+    public const NOT_ILIKE = " NOT ILIKE ";
 
     /** Comparison type. */
-    const CUSTOM = "CUSTOM";
+    public const CUSTOM = "CUSTOM";
 
     /** Comparison type */
-    const RAW = "RAW";
+    public const RAW = "RAW";
 
     /** Comparison type for update */
-    const CUSTOM_EQUAL = "CUSTOM_EQUAL";
+    public const CUSTOM_EQUAL = "CUSTOM_EQUAL";
 
     /** Comparison type. */
-    const DISTINCT = "DISTINCT";
+    public const DISTINCT = "DISTINCT";
 
     /** Comparison type. */
-    const IN = " IN ";
+    public const IN = " IN ";
 
     /** Comparison type. */
-    const NOT_IN = " NOT IN ";
+    public const NOT_IN = " NOT IN ";
 
     /** Comparison type. */
-    const ALL = "ALL";
+    public const ALL = "ALL";
 
     /** Comparison type. */
-    const JOIN = "JOIN";
+    public const JOIN = "JOIN";
 
     /** Binary math operator: AND */
-    const BINARY_AND = "&";
+    public const BINARY_AND = "&";
 
     /** Binary math operator: OR */
-    const BINARY_OR = "|";
+    public const BINARY_OR = "|";
 
     /** "Order by" qualifier - ascending */
-    const ASC = "ASC";
+    public const ASC = "ASC";
 
     /** "Order by" qualifier - descending */
-    const DESC = "DESC";
+    public const DESC = "DESC";
 
     /** "IS NULL" null comparison */
-    const ISNULL = " IS NULL ";
+    public const ISNULL = " IS NULL ";
 
     /** "IS NOT NULL" null comparison */
-    const ISNOTNULL = " IS NOT NULL ";
+    public const ISNOTNULL = " IS NOT NULL ";
 
     /** "CURRENT_DATE" ANSI SQL function */
-    const CURRENT_DATE = "CURRENT_DATE";
+    public const CURRENT_DATE = "CURRENT_DATE";
 
     /** "CURRENT_TIME" ANSI SQL function */
-    const CURRENT_TIME = "CURRENT_TIME";
+    public const CURRENT_TIME = "CURRENT_TIME";
 
     /** "CURRENT_TIMESTAMP" ANSI SQL function */
-    const CURRENT_TIMESTAMP = "CURRENT_TIMESTAMP";
+    public const CURRENT_TIMESTAMP = "CURRENT_TIMESTAMP";
 
     /** "LEFT JOIN" SQL statement */
-    const LEFT_JOIN = "LEFT JOIN";
+    public const LEFT_JOIN = "LEFT JOIN";
 
     /** "RIGHT JOIN" SQL statement */
-    const RIGHT_JOIN = "RIGHT JOIN";
+    public const RIGHT_JOIN = "RIGHT JOIN";
 
     /** "INNER JOIN" SQL statement */
-    const INNER_JOIN = "INNER JOIN";
+    public const INNER_JOIN = "INNER JOIN";
 
     /** logical OR operator */
-    const LOGICAL_OR = "OR";
+    public const LOGICAL_OR = "OR";
 
     /** logical AND operator */
-    const LOGICAL_AND = "AND";
+    public const LOGICAL_AND = "AND";
 
     protected bool $ignoreCase = false;
     protected bool $singleRecord = false;
@@ -173,7 +173,7 @@ class Criteria implements IteratorAggregate
     /**
      * Storage of having data.
      */
-    protected ?\Criterion $having;
+    protected ?\Criterion $having = null;
 
     /**
      * Storage of join data. collection of Join objects.
@@ -188,17 +188,17 @@ class Criteria implements IteratorAggregate
     /**
      * The name of the database.
      */
-    protected ?string $dbName;
+    protected ?string $dbName = null;
 
     /**
      * The primary table for this Criteria.
      * Useful in cases where there are no select or where
      * columns.
      */
-    protected ?string $primaryTableName;
+    protected ?string $primaryTableName = null;
 
     /** The name of the database as given in the constructor. */
-    protected ?string $originalDbName;
+    protected ?string $originalDbName = null;
 
     /**
      * To limit the number of rows to return.  <code>0</code> means return all
@@ -212,7 +212,7 @@ class Criteria implements IteratorAggregate
     /**
      * Comment to add to the SQL query
      */
-    protected ?string $queryComment;
+    protected ?string $queryComment = null;
 
     // flag to note that the criteria involves a blob.
     protected $blobFlag;
