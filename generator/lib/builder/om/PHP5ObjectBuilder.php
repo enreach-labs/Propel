@@ -4606,39 +4606,30 @@ abstract class " . $this->getClassname() . " extends " . $parentClass . " ";
     }
 
     /**
-     * @param string     &$script The script will be modified in this method.
+     * @param        string &$script The script will be modified in this method.
+     * @param ForeignKey $refFK
+     * @param ForeignKey $crossFK
      */
     protected function addCrossFKDoAdd(&$script, ForeignKey $refFK, ForeignKey $crossFK)
     {
         $relatedObjectClassName = $this->getFKPhpNameAffix($crossFK, $plural = false);
-        $relatedObjectName = $this->getNewStubObjectBuilder($crossFK->getForeignTable())->getClassname();
-
-        $selfRelationNamePlural = $this->getFKPhpNameAffix($refFK, $plural = true);
 
         $lowerRelatedObjectClassName = lcfirst($relatedObjectClassName);
 
         $joinedTableObjectBuilder = $this->getNewObjectBuilder($refFK->getTable());
         $className = $joinedTableObjectBuilder->getObjectClassname();
         $refKObjectClassName = $this->getRefFKPhpNameAffix($refFK, $plural = false);
-
         $tblFK = $refFK->getTable();
         $foreignObjectName = '$' . $tblFK->getStudlyPhpName();
-
         $script .= "
     /**
      * @param	{$relatedObjectClassName} \${$lowerRelatedObjectClassName} The $lowerRelatedObjectClassName object to add.
      */
-    protected function doAdd{$relatedObjectClassName}({$relatedObjectName} \${$lowerRelatedObjectClassName})
+    protected function doAdd{$relatedObjectClassName}(\${$lowerRelatedObjectClassName})
     {
-        // set the back reference to this object directly as using provided method either results
-        // in endless loop or in multiple relations
-        if (!\${$lowerRelatedObjectClassName}->get{$selfRelationNamePlural}()->contains(\$this)) { {$foreignObjectName} = new {$className}();
-            {$foreignObjectName}->set{$relatedObjectClassName}(\${$lowerRelatedObjectClassName});
-            \$this->add{$refKObjectClassName}({$foreignObjectName});
-
-            \$foreignCollection = \${$lowerRelatedObjectClassName}->get{$selfRelationNamePlural}();
-            \$foreignCollection[] = \$this;
-        }
+        {$foreignObjectName} = new {$className}();
+        {$foreignObjectName}->set{$relatedObjectClassName}(\${$lowerRelatedObjectClassName});
+        \$this->add{$refKObjectClassName}({$foreignObjectName});
     }
 ";
     }
