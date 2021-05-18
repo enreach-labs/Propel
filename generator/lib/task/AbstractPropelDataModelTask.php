@@ -126,7 +126,7 @@ abstract class AbstractPropelDataModelTask extends AbstractPropelTask
     /**
      * An initialized GeneratorConfig object containing the converted Phing props.
      */
-    private ?\GeneratorConfig $generatorConfig;
+    private ?\GeneratorConfig $generatorConfig = null;
 
     /**
      * Return the data models that have been
