@@ -126,7 +126,7 @@ abstract class AbstractPropelDataModelTask extends AbstractPropelTask
     /**
      * An initialized GeneratorConfig object containing the converted Phing props.
      */
-    private ?\GeneratorConfig $generatorConfig = null;
+    private ?\GeneratorConfig $generatorConfig;
 
     /**
      * Return the data models that have been
@@ -563,7 +563,7 @@ abstract class AbstractPropelDataModelTask extends AbstractPropelTask
      */
     protected function getGeneratorConfig()
     {
-        if ($this->generatorConfig === null) {
+        if (is_null($this->generatorConfig)) {
             $this->generatorConfig = new GeneratorConfig();
             $this->generatorConfig->setBuildProperties($this->getProject()->getProperties());
         }
