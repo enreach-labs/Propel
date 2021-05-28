@@ -237,7 +237,7 @@ class Criteria implements IteratorAggregate
     /**
      * Flags for boolean functions
      */
-    protected ?\PropelConditionalProxy $conditionalProxy;
+    protected ?\PropelConditionalProxy $conditionalProxy = null;
 
     /**
      * Creates a new instance with the default capacity which corresponds to
