@@ -21,10 +21,10 @@ require_once dirname(__FILE__) . '/PropelSQLParser.php';
  */
 class PropelMigrationManager
 {
-	protected $connections;
-	protected $pdoConnections = array();
-	protected $migrationTable = 'propel_migration';
-	protected $migrationDir;
+	protected ?array $connections = null;
+	protected array $pdoConnections = array();
+	protected string $migrationTable = 'propel_migration';
+	protected ?string $migrationDir = null;
 
 	/**
 	 * Set the database connection settings

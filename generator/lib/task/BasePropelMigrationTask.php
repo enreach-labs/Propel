@@ -26,16 +26,13 @@ abstract class BasePropelMigrationTask extends Task
 
 	/**
 	 * An initialized GeneratorConfig object containing the converted Phing props.
-	 *
-	 * @var        GeneratorConfig
 	 */
-	protected $generatorConfig;
+	protected ?\GeneratorConfig $generatorConfig = null;
 
 	/**
 	 * The migration table name
-	 * @var string
 	 */
-	protected $migrationTable = 'propel_migration';
+	protected string $migrationTable = 'propel_migration';
 
 	/**
 	 * Set the migration Table name

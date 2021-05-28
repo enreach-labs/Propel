@@ -17,14 +17,14 @@
  */
 class ModelWith
 {
-	protected $modelName = '';
-	protected $modelPeerName = '';
-	protected $isSingleTableInheritance = false;
-	protected $isAdd = false;
-	protected $isWithOneToMany = false;
-	protected $relationName = '';
-	protected $relationMethod = '';
-	protected $initMethod = '';
+	protected string $modelName = '';
+	protected string $modelPeerName = '';
+	protected bool $isSingleTableInheritance = false;
+	protected bool $isAdd = false;
+	protected bool $isWithOneToMany = false;
+	protected string $relationName = '';
+	protected string $relationMethod = '';
+	protected string $initMethod = '';
 	protected $leftPhpName;
 	protected $rightPhpName;
 

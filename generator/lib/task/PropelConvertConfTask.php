@@ -25,17 +25,17 @@ class PropelConvertConfTask extends AbstractPropelDataModelTask
 	/**
 	 * @var        PhingFile The XML runtime configuration file to be converted.
 	 */
-	private $xmlConfFile;
+	private ?\PhingFile $xmlConfFile = null;
 
 	/**
 	 * @var        string This is the file where the converted conf array dump will be placed.
 	 */
-	private $outputFile;
+	private ?string $outputFile = null;
 
 	/**
 	 * @var        string This is the file where the classmap manifest converted conf array dump will be placed.
 	 */
-	private $outputClassmapFile;
+	private ?string $outputClassmapFile = null;
 
 	/**
 	 * [REQUIRED] Set the input XML runtime conf file.

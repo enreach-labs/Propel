@@ -29,7 +29,7 @@ class XmlToAppData
 	/** enables debug output */
 	const DEBUG = false;
 
-	private $app;
+	private \AppData $app;
 	private $currDB;
 	private $currTable;
 	private $currColumn;
@@ -40,17 +40,17 @@ class XmlToAppData
 	private $currBehavior;
 	private $currVendorObject;
 
-	private $isForReferenceOnly;
-	private $currentPackage;
-	private $currentXmlFile;
-	private $defaultPackage;
+	private ?bool $isForReferenceOnly = null;
+	private ?string $currentPackage = null;
+	private ?string $currentXmlFile = null;
+	private ?string $defaultPackage = null;
 
-	private $encoding;
+	private string $encoding;
 
 	/** two-dimensional array,
 		first dimension is for schemas(key is the path to the schema file),
 		second is for tags within the schema */
-	private $schemasTagsStack = array();
+	private array $schemasTagsStack = array();
 
 	/**
 	 * Creates a new instance for the specified database type.

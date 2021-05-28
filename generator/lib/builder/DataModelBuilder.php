@@ -27,9 +27,8 @@ abstract class DataModelBuilder
 
 	/**
 	 * The current table.
-	 * @var        Table
 	 */
-	private $table;
+	private \Table $table;
 
 	/**
 	 * The generator config object holding build properties, etc.
@@ -42,115 +41,97 @@ abstract class DataModelBuilder
 	 * An array of warning messages that can be retrieved for display (e.g. as part of phing build process).
 	 * @var        array string[]
 	 */
-	private $warnings = array();
+	private array $warnings = array();
 
 	/**
 	 * Peer builder class for current table.
-	 * @var        DataModelBuilder
 	 */
-	private $peerBuilder;
+	private ?\DataModelBuilder $peerBuilder = null;
 
 	/**
 	 * Stub Peer builder class for current table.
-	 * @var        DataModelBuilder
 	 */
-	private $stubPeerBuilder;
+	private ?\DataModelBuilder $stubPeerBuilder = null;
 
 	/**
 	 * Object builder class for current table.
-	 * @var        DataModelBuilder
 	 */
-	private $objectBuilder;
+	private ?\DataModelBuilder $objectBuilder = null;
 
 	/**
 	 * Stub Object builder class for current table.
-	 * @var        DataModelBuilder
 	 */
-	private $stubObjectBuilder;
+	private ?\DataModelBuilder $stubObjectBuilder = null;
 
 	/**
 	 * Query builder class for current table.
-	 * @var        DataModelBuilder
 	 */
-	private $queryBuilder;
+	private ?\DataModelBuilder $queryBuilder = null;
 
 	/**
 	 * Stub Query builder class for current table.
-	 * @var        DataModelBuilder
 	 */
-	private $stubQueryBuilder;
+	private ?\DataModelBuilder $stubQueryBuilder = null;
 
 	/**
 	 * TableMap builder class for current table.
-	 * @var        DataModelBuilder
 	 */
-	protected $tablemapBuilder;
+	protected ?\DataModelBuilder $tablemapBuilder = null;
 
 	/**
 	 * Stub Interface builder class for current table.
-	 * @var        DataModelBuilder
 	 */
-	private $interfaceBuilder;
+	private ?\DataModelBuilder $interfaceBuilder = null;
 
 	/**
 	 * Stub child object for current table.
-	 * @var        DataModelBuilder
 	 */
-	private $multiExtendObjectBuilder;
+	private ?\DataModelBuilder $multiExtendObjectBuilder = null;
 
 	/**
 	 * Node object builder for current table.
-	 * @var        DataModelBuilder
 	 */
-	private $nodeBuilder;
+	private ?\DataModelBuilder $nodeBuilder = null;
 
 	/**
 	 * Node peer builder for current table.
-	 * @var        DataModelBuilder
 	 */
-	private $nodePeerBuilder;
+	private ?\DataModelBuilder $nodePeerBuilder = null;
 
 	/**
 	 * Stub node object builder for current table.
-	 * @var        DataModelBuilder
 	 */
-	private $stubNodeBuilder;
+	private ?\DataModelBuilder $stubNodeBuilder = null;
 
 	/**
 	 * Stub node peer builder for current table.
-	 * @var        DataModelBuilder
 	 */
-	private $stubNodePeerBuilder;
+	private ?\DataModelBuilder $stubNodePeerBuilder = null;
 
 	/**
 	 * NestedSet object builder for current table.
-	 * @var        DataModelBuilder
 	 */
-	private $nestedSetBuilder;
+	private ?\DataModelBuilder $nestedSetBuilder = null;
 
 	/**
 	 * NestedSet peer builder for current table.
-	 * @var        DataModelBuilder
 	 */
-	private $nestedSetPeerBuilder;
+	private ?\DataModelBuilder $nestedSetPeerBuilder = null;
 
 	/**
 	 * The Data-SQL builder for current table.
-	 * @var        DataSQLBuilder
 	 */
-	private $dataSqlBuilder;
+	private ?\DataModelBuilder $dataSqlBuilder = null;
 
 	/**
 	 * The Pluralizer class to use.
-	 * @var        Pluralizer
 	 */
-	private $pluralizer;
+	private ?\Pluralizer $pluralizer = null;
 
 	/**
 	 * The platform class
-	 * @var 			PropelPlatformInterface
 	 */
-	protected $platform;
+	protected ?\PropelPlatformInterface $platform = null;
 
 	/**
 	 * Creates new instance of DataModelBuilder subclass.

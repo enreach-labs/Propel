@@ -110,27 +110,27 @@ class Propel
 	/**
 	 * @var        array The global cache of database maps
 	 */
-	private static $dbMaps = array();
+	private static array $dbMaps = array();
 
 	/**
 	 * @var        array The cache of DB adapter keys
 	 */
-	private static $adapterMap = array();
+	private static array $adapterMap = array();
 
 	/**
 	 * @var        array Cache of established connections (to eliminate overhead).
 	 */
-	private static $connectionMap = array();
+	private static array $connectionMap = array();
 
 	/**
 	 * @var        PropelConfiguration Propel-specific configuration.
 	 */
-	private static $configuration;
+	private static \PropelConfiguration $configuration;
 
 	/**
 	 * @var        bool flag to set to true once this class has been initialized
 	 */
-	private static $isInit = false;
+	private static bool $isInit = false;
 
 	/**
 	 * @var        Log optional logger
@@ -140,27 +140,27 @@ class Propel
 	/**
 	 * @var        string The name of the database mapper class
 	 */
-	private static $databaseMapClass = 'DatabaseMap';
+	private static string $databaseMapClass = 'DatabaseMap';
 
 	/**
 	 * @var        bool Whether the object instance pooling is enabled
 	 */
-	private static $instancePoolingEnabled = true;
+	private static bool $instancePoolingEnabled = true;
 
 	/**
 	 * @var        bool For replication, whether to force the use of master connection.
 	 */
-	private static $forceMasterConnection = false;
+	private static bool $forceMasterConnection = false;
 
 	/**
 	 * @var        string Base directory to use for autoloading. Initialized in self::initBaseDir()
 	 */
-	protected static $baseDir;
+	protected static ?string $baseDir = null;
 
 	/**
 	 * @var        array A map of class names and their file paths for autoloading
 	 */
-	protected static $autoloadMap = array(
+	protected static array $autoloadMap = array(
 
 		'DBAdapter'           => 'adapter/DBAdapter.php',
 		'DBMSSQL'             => 'adapter/DBMSSQL.php',
@@ -168,7 +168,6 @@ class Propel
 		'MssqlDebugPDO'       => 'adapter/MSSQL/MssqlDebugPDO.php',
 		'MssqlDateTime'       => 'adapter/MSSQL/MssqlDateTime.class.php',
 		'DBMySQL'             => 'adapter/DBMySQL.php',
-		'DBMySQLi'            => 'adapter/DBMySQLi.php',
 		'DBNone'              => 'adapter/DBNone.php',
 		'DBOracle'            => 'adapter/DBOracle.php',
 		'DBPostgres'          => 'adapter/DBPostgres.php',

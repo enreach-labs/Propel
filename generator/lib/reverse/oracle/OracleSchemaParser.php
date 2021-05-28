@@ -35,10 +35,8 @@ class OracleSchemaParser extends BaseSchemaParser
 	 * Supported but non existant as a specific type in Oracle:
 	 *   DECIMAL (NUMBER with scale),
 	 *   DOUBLE (FLOAT with precision = 126)
-	 *
-	 * @var        array
 	 */
-	private static $oracleTypeMap = array(
+	private static array $oracleTypeMap = array(
 		'BLOB'		=> PropelTypes::BLOB,
 		'CHAR'		=> PropelTypes::CHAR,
 		'CLOB'		=> PropelTypes::CLOB,

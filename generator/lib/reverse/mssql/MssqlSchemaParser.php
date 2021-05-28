@@ -22,9 +22,8 @@ class MssqlSchemaParser extends BaseSchemaParser
 
 	/**
 	 * Map MSSQL native types to Propel types.
-	 * @var        array
 	 */
-	private static $mssqlTypeMap = array(
+	private static array $mssqlTypeMap = array(
 		"binary" => PropelTypes::BINARY,
 		"bit" => PropelTypes::BOOLEAN,
 		"char" => PropelTypes::CHAR,

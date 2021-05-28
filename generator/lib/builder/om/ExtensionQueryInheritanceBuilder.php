@@ -26,7 +26,7 @@ class ExtensionQueryInheritanceBuilder extends OMBuilder
 	/**
 	 * The current child "object" we are operating on.
 	 */
-	protected $child;
+	protected ?\Inheritance $child = null;
 
 	/**
 	 * Returns the name of the current class being built.

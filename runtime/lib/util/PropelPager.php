@@ -95,22 +95,22 @@ class PropelPager implements Countable, Iterator
 
 	private $recordCount;
 	private $pages;
-	private $peerClass;
-	private $peerSelectMethod;
-	private $peerCountMethod;
-	private $criteria;
+	private ?string $peerClass = null;
+	private ?string $peerSelectMethod = null;
+	private ?string $peerCountMethod = null;
+	private ?\Criteria $criteria = null;
 	private $countCriteria;
-	private $page;
+	private ?int $page = null;
 	private $rs = null;
 
 	//Iterator vars
-	private $currentKey = 0;
+	private int $currentKey = 0;
 
 	/** @var        int Start row (offset) */
 	protected $start = 0;
 
 	/** @var        int Max rows to return (0 means all) */
-	protected $max = 0;
+	protected int $max = 0;
 
 	/**
 	 * Create a new Propel Pager.

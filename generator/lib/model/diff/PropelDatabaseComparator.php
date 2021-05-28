@@ -22,8 +22,8 @@ require_once dirname(__FILE__) . '/PropelTableComparator.php';
 class PropelDatabaseComparator
 {
 	protected $databaseDiff;
-	protected $fromDatabase;
-	protected $toDatabase;
+	protected ?\Database $fromDatabase = null;
+	protected ?\Database $toDatabase = null;
 
 	public function __construct($databaseDiff = null)
 	{

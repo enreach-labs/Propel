@@ -27,43 +27,43 @@ class ColumnMap
 {
 
   // Propel type of the column
-  protected $type;
+  protected ?string $type = null;
 
   // Size of the column
-  protected $size = 0;
+  protected ?int $size = 0;
 
   // Is it a primary key?
-  protected $pk = false;
+  protected bool $pk = false;
 
   // Is null value allowed?
-  protected $notNull = false;
+  protected bool $notNull = false;
 
   // The default value for this column
   protected $defaultValue;
 
   // Name of the table that this column is related to
-  protected $relatedTableName = "";
+  protected string $relatedTableName = "";
 
   // Name of the column that this column is related to
-  protected $relatedColumnName = "";
+  protected string $relatedColumnName = "";
 
   // The TableMap for this column
-  protected $table;
+  protected \TableMap $table;
 
   // The name of the column
-  protected $columnName;
+  protected string $columnName;
 
   // The php name of the column
-  protected $phpName;
+  protected ?string $phpName = null;
 
   // The validators for this column
-  protected $validators = array();
+  protected array $validators = array();
 
   // The allowed values for an ENUM column
-  protected $valueSet = array();
+  protected array $valueSet = array();
 
   // Is this a primaryString column?
-  protected $isPkString = false;
+  protected bool $isPkString = false;
 
   /**
    * Constructor.

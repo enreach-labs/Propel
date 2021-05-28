@@ -29,39 +29,35 @@ require_once dirname(__FILE__) . '/Behavior.php';
 class Database extends ScopedElement
 {
 
-	private $platform;
-	private $tableList = array();
+	private ?\PropelPlatformInterface $platform = null;
+	private array $tableList = array();
 	private $curColumn;
-	private $name;
+	private ?string $name = null;
 
 	private $baseClass;
 	private $basePeer;
 	private $defaultIdMethod;
-	private $defaultPhpNamingMethod;
-	private $defaultTranslateMethod;
-	private $dbParent;
-	private $tablesByName = array();
-	private $tablesByLowercaseName = array();
-	private $tablesByPhpName = array();
-	private $heavyIndexing;
-	protected $tablePrefix = '';
+	private ?string $defaultPhpNamingMethod = null;
+	private ?string $defaultTranslateMethod = null;
+	private ?\AppData $dbParent = null;
+	private array $tablesByName = array();
+	private array $tablesByLowercaseName = array();
+	private array $tablesByPhpName = array();
+	private ?bool $heavyIndexing = null;
+	protected string $tablePrefix = '';
 
 	/**
 	 * The default string format for objects based on this database
 	 * (e.g. 'XML', 'YAML', 'CSV', 'JSON')
-	 *
-	 * @var       string
 	 */
-	protected $defaultStringFormat;
+	protected ?string $defaultStringFormat = null;
 
-	private $domainMap = array();
+	private array $domainMap = array();
 
 	/**
 	 * List of behaviors registered for this table
-	 *
-	 * @var array
 	 */
-	protected $behaviors = array();
+	protected array $behaviors = array();
 
 	/**
 	 * Constructs a new Database object.

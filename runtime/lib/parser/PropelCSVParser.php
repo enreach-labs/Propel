@@ -25,11 +25,11 @@ class PropelCSVParser extends PropelParser
 
 	// these settings are predefined for Excel CSV format
 
-	public $delimiter = ',';
-	public $lineTerminator = "\r\n";
-	public $quotechar = '"';
-	public $escapechar = "\\";
-	public $quoting = self::QUOTE_MINIMAL;
+	public string $delimiter = ',';
+	public string $lineTerminator = "\r\n";
+	public string $quotechar = '"';
+	public string $escapechar = "\\";
+	public int $quoting = self::QUOTE_MINIMAL;
 
 	/**
 	 * Converts data from an associative array to CSV.

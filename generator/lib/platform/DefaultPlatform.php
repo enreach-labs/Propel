@@ -26,15 +26,13 @@ class DefaultPlatform implements PropelPlatformInterface
 
 	/**
 	 * Mapping from Propel types to Domain objects.
-	 *
-	 * @var        array
 	 */
-	protected $schemaDomainMap;
+	protected ?array $schemaDomainMap = null;
 
 	/**
 	 * @var        PDO Database connection.
 	 */
-	protected $con;
+	protected ?\PDO $con = null;
 
 	/**
 	 * @var        boolean whether the identifier quoting is enabled

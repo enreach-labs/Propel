@@ -30,21 +30,17 @@ abstract class ScopedElement extends XMLElement
 	 * Whether the package was automatically overridden.
 	 * If propel.schema.autoPackage or propel.namespace.AutoPackage is true.
 	 */
-	protected $pkgOverridden = false;
+	protected bool $pkgOverridden = false;
 
 	/**
 	 * Namespace for the generated OM.
-	 *
-	 * @var       string
 	 */
-	protected $namespace;
+	protected ?string $namespace = null;
 
 	/**
 	 * Schema this element belongs to.
-	 *
-	 * @var       string
 	 */
-	protected $schema;
+	protected string $schema;
 
 	/**
 	 * retrieves a build property.

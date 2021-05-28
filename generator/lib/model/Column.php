@@ -33,59 +33,55 @@ class Column extends XMLElement
 
 	const DEFAULT_TYPE = "VARCHAR";
 	const DEFAULT_VISIBILITY = 'public';
-	public static $valid_visibilities = array('public', 'protected', 'private');
+	public static array $valid_visibilities = array('public', 'protected', 'private');
 
 	private $name;
 	private $description;
-	private $phpName = null;
+	private ?string $phpName = null;
 	private $phpNamingMethod;
-	private $isNotNull = false;
+	private bool $isNotNull = false;
 	private $size;
-	private $namePrefix;
-	private $accessorVisibility;
-	private $mutatorVisibility;
+	private ?string $namePrefix = null;
+	private ?string $accessorVisibility = null;
+	private ?string $mutatorVisibility = null;
 
 	/**
 	 * The name to use for the Peer constant that identifies this column.
 	 * (Will be converted to all-uppercase in the templates.)
-	 * @var				 string
 	 */
-	private $peerName;
+	private string $peerName;
 
 	/**
 	 * Native PHP type (scalar or class name)
 	 * @var				 string "string", "boolean", "int", "double"
 	 */
-	private $phpType;
+	private string $phpType;
 
-	/**
-	 * @var				 Table
-	 */
-	private $parentTable;
+	private ?\Table $parentTable = null;
 
-	private $position;
-	private $isPrimaryKey = false;
-	private $isNodeKey = false;
-	private $nodeKeySep;
-	private $isNestedSetLeftKey = false;
-	private $isNestedSetRightKey = false;
-	private $isTreeScopeKey = false;
-	private $isUnique = false;
-	private $isAutoIncrement = false;
-	private $isLazyLoad = false;
+	private ?int $position = null;
+	private bool $isPrimaryKey = false;
+	private bool $isNodeKey = false;
+	private ?string $nodeKeySep = null;
+	private bool $isNestedSetLeftKey = false;
+	private bool $isNestedSetRightKey = false;
+	private bool $isTreeScopeKey = false;
+	private bool $isUnique = false;
+	private bool $isAutoIncrement = false;
+	private bool $isLazyLoad = false;
 	private $defaultValue;
-	private $referrers;
-	private $isPrimaryString = false;
+	private ?array $referrers = null;
+	private bool $isPrimaryString = false;
 
 	// only one type is supported currently, which assumes the
 	// column either contains the classnames or a key to
 	// classnames specified in the schema.	Others may be
 	// supported later.
 	private $inheritanceType;
-	private $isInheritance;
-	private $isEnumeratedClasses;
-	private $inheritanceList;
-	private $needsTransactionInPostgres; //maybe this can be retrieved from vendorSpecificInfo
+	private ?bool $isInheritance = null;
+	private ?bool $isEnumeratedClasses = null;
+	private ?array $inheritanceList = null;
+	private ?bool $needsTransactionInPostgres = null; //maybe this can be retrieved from vendorSpecificInfo
 
 	/**
 	 * @var stores the possible values of an ENUM column
@@ -95,7 +91,7 @@ class Column extends XMLElement
 	/**
 	 * @var				 Domain The domain object associated with this Column.
 	 */
-	private $domain;
+	private ?\Domain $domain = null;
 
 	/**
 	 * Creates a new column and set the name

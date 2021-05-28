@@ -25,15 +25,13 @@ class PropelDateTime extends DateTime
 
 	/**
 	 * A string representation of the date, for serialization.
-	 * @var        string
 	 */
-	private $dateString;
+	private ?string $dateString = null;
 
 	/**
 	 * A string representation of the time zone, for serialization.
-	 * @var        string
 	 */
-	private $tzString;
+	private ?string $tzString = null;
 
 	protected static function isTimestamp($value)
 	{

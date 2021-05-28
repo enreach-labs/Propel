@@ -38,9 +38,8 @@ abstract class DBAdapter
 
 	/**
 	 * Propel driver to Propel adapter map.
-	 * @var array
 	 */
-	private static $adapters = array(
+	private static array $adapters = array(
 		'mysql'  => 'DBMySQL',
 		'mysqli' => 'DBMySQLi',
 		'mssql'  => 'DBMSSQL',

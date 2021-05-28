@@ -20,7 +20,7 @@
 class PropelOnDemandFormatter extends PropelObjectFormatter
 {
 	protected $collectionName = 'PropelOnDemandCollection';
-	protected $isSingleTableInheritance = false;
+	protected bool $isSingleTableInheritance = false;
 
 	public function init(ModelCriteria $criteria)
 	{

@@ -19,9 +19,9 @@ require_once dirname(__FILE__) . '/../Column.php';
  */
 class PropelColumnDiff
 {
-	protected $changedProperties = array();
-	protected $fromColumn;
-	protected $toColumn;
+	protected array $changedProperties = array();
+	protected ?\Column $fromColumn = null;
+	protected ?\Column $toColumn = null;
 
 	/**
 	 * Setter for the changedProperties property

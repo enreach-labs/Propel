@@ -23,13 +23,11 @@ class GeneratorConfig implements GeneratorConfigInterface
 
 	/**
 	 * The build properties.
-	 *
-	 * @var        array
 	 */
-	private $buildProperties = array();
+	private array $buildProperties = array();
 
-	protected $buildConnections = null;
-	protected $defaultBuildConnection = null;
+	protected ?array $buildConnections = null;
+	protected ?string $defaultBuildConnection = null;
 
 	/**
 	 * Construct a new GeneratorConfig.

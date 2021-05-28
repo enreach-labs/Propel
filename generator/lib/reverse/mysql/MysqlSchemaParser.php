@@ -20,16 +20,12 @@ require_once dirname(__FILE__) . '/../BaseSchemaParser.php';
 class MysqlSchemaParser extends BaseSchemaParser
 {
 
-	/**
-	 * @var        boolean
-	 */
-	private $addVendorInfo = false;
+	private bool $addVendorInfo = false;
 
 	/**
 	 * Map MySQL native types to Propel types.
-	 * @var        array
 	 */
-	private static $mysqlTypeMap = array(
+	private static array $mysqlTypeMap = array(
 		'tinyint' => PropelTypes::TINYINT,
 		'smallint' => PropelTypes::SMALLINT,
 		'mediumint' => PropelTypes::SMALLINT,
@@ -61,7 +57,7 @@ class MysqlSchemaParser extends BaseSchemaParser
 		'set' => PropelTypes::CHAR,
 	);
 
-	protected static $defaultTypeSizes = array(
+	protected static array $defaultTypeSizes = array(
 		'char'     => 1,
 		'tinyint'  => 4,
 		'smallint' => 6,

@@ -31,10 +31,10 @@ class BasePeer
 {
 
 	/** Array (hash) that contains the cached mapBuilders. */
-	private static $mapBuilders = array();
+	private static array $mapBuilders = array();
 
 	/** Array (hash) that contains cached validators */
-	private static $validatorMap = array();
+	private static array $validatorMap = array();
 
 	/**
 	 * phpname type

@@ -33,7 +33,7 @@ else {
 class PropelPHPParser
 {
 	protected $code;
-	protected $isAddPhp = false;
+	protected bool $isAddPhp = false;
 
 	/**
 	 * Parser constructor

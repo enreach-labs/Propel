@@ -20,10 +20,10 @@ require_once dirname(__FILE__) . '/PropelTableDiff.php';
  */
 class PropelDatabaseDiff
 {
-	protected $addedTables = array();
-	protected $removedTables = array();
-	protected $modifiedTables = array();
-	protected $renamedTables = array();
+	protected array $addedTables = array();
+	protected array $removedTables = array();
+	protected array $modifiedTables = array();
+	protected array $renamedTables = array();
 
 	/**
 	 * Setter for the addedTables property

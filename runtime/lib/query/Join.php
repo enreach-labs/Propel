@@ -32,29 +32,29 @@ class Join
 	const INNER_JOIN = 'INNER JOIN';
 
 	// the left parts of the join condition
-	protected $left = array();
+	protected array $left = array();
 
 	// the right parts of the join condition
-	protected $right = array();
+	protected array $right = array();
 
 	// the comparison operators for each pair of columns in the join condition
-	protected $operator = array();
+	protected array $operator = array();
 
 	// the type of the join (LEFT JOIN, ...)
-	protected $joinType;
+	protected ?string $joinType = null;
 
 	// the number of conditions in the join
-	protected $count = 0;
+	protected int $count = 0;
 
 	// the database adapter
-	protected $db;
+	protected ?\DBAdapter $db = null;
 
-	protected $leftTableName;
-	protected $rightTableName;
-	protected $leftTableAlias;
-	protected $rightTableAlias;
+	protected ?string $leftTableName = null;
+	protected ?string $rightTableName = null;
+	protected ?string $leftTableAlias = null;
+	protected ?string $rightTableAlias = null;
 
-	protected $joinCondition;
+	protected ?\Criterion $joinCondition = null;
 
 	/**
 	 * Constructor

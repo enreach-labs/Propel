@@ -16,15 +16,9 @@
  */
 class PropelOnDemandIterator implements Iterator
 {
-	/**
-	 * @var       PropelObjectFormatter
-	 */
-	protected $formatter;
+	protected \PropelFormatter $formatter;
 
-	/**
-	 * @var       PDOStatement
-	 */
-	protected $stmt;
+	protected \PDOStatement $stmt;
 
 	protected
 		$currentRow,

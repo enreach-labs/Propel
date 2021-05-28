@@ -25,7 +25,7 @@ class Inheritance extends XMLElement
 	private $className;
 	private $pkg;
 	private $ancestor;
-	private $parent;
+	private ?\Column $parent = null;
 
 	/**
 	 * Sets up the Inheritance object based on the attributes that were passed to loadFromXML().

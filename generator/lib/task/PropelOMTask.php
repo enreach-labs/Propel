@@ -23,9 +23,8 @@ class PropelOMTask extends AbstractPropelDataModelTask
 
 	/**
 	 * The platform (php4, php5, etc.) for which the om is being built.
-	 * @var        string
 	 */
-	private $targetPlatform;
+	private ?string $targetPlatform = null;
 
 	/**
 	 * Sets the platform (php4, php5, etc.) for which the om is being built.

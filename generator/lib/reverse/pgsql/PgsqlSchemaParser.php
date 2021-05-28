@@ -25,7 +25,7 @@ class PgsqlSchemaParser extends BaseSchemaParser
 	 * @var        array
 	 */
 	 /** Map MySQL native types to Propel (JDBC) types. */
-	private static $pgsqlTypeMap = array(
+	private static array $pgsqlTypeMap = array(
 				'bool' => PropelTypes::BOOLEAN,
 				'boolean' => PropelTypes::BOOLEAN,
 				'tinyint' => PropelTypes::TINYINT,

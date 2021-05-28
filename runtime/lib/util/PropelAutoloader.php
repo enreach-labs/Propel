@@ -20,9 +20,9 @@
 class PropelAutoloader
 {
 
-	static protected $instance = null;
+	static protected ?\PropelAutoloader $instance = null;
 
-	protected $classes = array();
+	protected array $classes = array();
 
 	/**
 	 * Retrieves the singleton instance of this class.

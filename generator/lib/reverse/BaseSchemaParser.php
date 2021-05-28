@@ -22,16 +22,15 @@ abstract class BaseSchemaParser implements SchemaParser
 
 	/**
 	 * The database connection.
-	 * @var        PDO
 	 */
-	protected $dbh;
+	protected ?\PDO $dbh = null;
 
 	/**
 	 * Stack of warnings.
 	 *
 	 * @var        array string[]
 	 */
-	protected $warnings = array();
+	protected array $warnings = array();
 
 	/**
 	 * GeneratorConfig object holding build properties.
@@ -43,23 +42,18 @@ abstract class BaseSchemaParser implements SchemaParser
 	/**
 	 * Map native DB types to Propel types.
 	 * (Override in subclasses.)
-	 * @var        array
 	 */
-	protected $nativeToPropelTypeMap;
+	protected ?array $nativeToPropelTypeMap = null;
 
 	/**
 	 * Map to hold reverse type mapping (initialized on-demand).
-	 *
-	 * @var        array
 	 */
-	protected $reverseTypeMap;
+	protected ?array $reverseTypeMap = null;
 
 	/**
 	 * Name of the propel migration table - to be ignored in reverse
-	 *
-	 * @var string
 	 */
-	protected $migrationTable = 'propel_migration';
+	protected string $migrationTable = 'propel_migration';
 
 	protected $platform;
 

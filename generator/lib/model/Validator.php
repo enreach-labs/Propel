@@ -28,31 +28,25 @@ class Validator extends XMLElement
 
 	/**
 	 * The column this validator applies to.
-	 *
-	 * @var        Column
 	 */
-	private $column;
+	private ?\Column $column = null;
 
 	/**
 	 * The rules for the validation.
 	 *
 	 * @var        array Rule[]
 	 */
-	private $ruleList = array();
+	private array $ruleList = array();
 
 	/**
 	 * The translation mode.
-	 *
-	 * @var        string
 	 */
-	private $translate;
+	private ?string $translate = null;
 
 	/**
 	 * Parent table.
-	 *
-	 * @var        Table
 	 */
-	private $table;
+	private ?\Table $table = null;
 
 	/**
 	 * Sets up the Validator object based on the attributes that were passed to loadFromXML().

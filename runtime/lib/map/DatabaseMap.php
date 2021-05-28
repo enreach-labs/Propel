@@ -28,13 +28,13 @@ class DatabaseMap
 {
 
   /** @var string Name of the database. */
-  protected $name;
+  protected string $name;
 
   /** @var array TableMap[] Tables in the database, using table name as key */
-  protected $tables = array();
+  protected array $tables = array();
 
   /** @var array TableMap[] Tables in the database, using table phpName as key */
-  protected $tablesByPhpName = array();
+  protected array $tablesByPhpName = array();
 
   /**
    * Constructor.

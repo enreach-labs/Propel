@@ -32,28 +32,28 @@ class Criterion
 	protected $comparison;
 
 	/** Table name. */
-	protected $table;
+	protected ?string $table = null;
 
 	/** Real table name */
 	protected $realtable;
 
 	/** Column name. */
-	protected $column;
+	protected ?string $column = null;
 
 	/** flag to ignore case in comparison */
-	protected $ignoreStringCase = false;
+	protected bool $ignoreStringCase = false;
 
 	/**
 	 * The DBAdaptor which might be used to get db specific
 	 * variations of sql.
 	 */
-	protected $db;
+	protected ?\DBAdapter $db = null;
 
 	/**
 	 * other connected criteria and their conjunctions.
 	 */
-	protected $clauses = array();
-	protected $conjunctions = array();
+	protected array $clauses = array();
+	protected array $conjunctions = array();
 
 	/** "Parent" Criteria class */
 	protected $parent;

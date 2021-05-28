@@ -24,10 +24,9 @@ abstract class OMBuilder extends DataModelBuilder
 {
 	/**
 	 * Declared fully qualified classnames, to build the 'namespace' statements
-   * according to this table's namespace.
-   * @var array
+	 * according to this table's namespace.
 	 */
-	protected $declaredClasses = array();
+	protected array $declaredClasses = array();
 
 	/**
 	 * Builds the PHP source for current class and returns it as a string.

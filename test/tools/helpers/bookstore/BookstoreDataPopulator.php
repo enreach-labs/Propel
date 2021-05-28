@@ -181,7 +181,7 @@ class BookstoreDataPopulator
 
 		$store = new Bookstore();
 		$store->setStoreName("Amazon");
-		$store->setPopulationServed(5000000000); // world population
+		$store->setPopulationServed(5_000_000_000); // world population
 		$store->setTotalBooks(300);
 		$store->save($con);
 

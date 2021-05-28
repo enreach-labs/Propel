@@ -28,7 +28,7 @@ class AppData
 	 * The list of databases for this application.
 	 * @var        array Database[]
 	 */
-	private $dbList = array();
+	private array $dbList = array();
 
 	/**
 	 * The platform class for our database(s).
@@ -38,21 +38,19 @@ class AppData
 
 	/**
 	 * The generator configuration
-	 * @var        GeneratorConfig
 	 */
-	protected $generatorConfig;
+	protected ?\GeneratorConfig $generatorConfig = null;
 
 	/**
 	 * Name of the database. Only one database definition
 	 * is allowed in one XML descriptor.
 	 */
-	private $name;
+	private string $name;
 
 	/**
 	 * Flag to ensure that initialization is performed only once.
-	 * @var        boolean
 	 */
-	private $isInitialized = false;
+	private bool $isInitialized = false;
 
 	/**
 	 * Creates a new instance for the specified database type.

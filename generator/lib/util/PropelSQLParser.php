@@ -17,11 +17,11 @@
  */
 class PropelSQLParser
 {
-	protected $delimiter = ';';
+	protected string $delimiter = ';';
 
-	protected $sql = '';
+	protected string $sql = '';
 	protected $len = 0;
-	protected $pos = 0;
+	protected int $pos = 0;
 
 	/**
 	 * Sets the inner SQL string for this object.

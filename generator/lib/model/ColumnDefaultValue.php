@@ -24,12 +24,12 @@ class ColumnDefaultValue
 	/**
 	 * @var        string The default value, as specified in the schema.
 	 */
-	private $value;
+	private ?string $value = null;
 
 	/**
 	 * @var        string The type of value represented by this object (DefaultValue::TYPE_VALUE or DefaultValue::TYPE_EXPR).
 	 */
-	private $type = ColumnDefaultValue::TYPE_VALUE;
+	private string $type = ColumnDefaultValue::TYPE_VALUE;
 
 	/**
 	 * Creates a new DefaultValue object.

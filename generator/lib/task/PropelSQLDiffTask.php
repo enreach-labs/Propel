@@ -22,9 +22,9 @@ require_once dirname(__FILE__) . '/../util/PropelMigrationManager.php';
  */
 class PropelSQLDiffTask extends AbstractPropelDataModelTask
 {
-	protected $databaseName;
-	protected $editorCmd;
-	protected $isCaseInsensitive = false;
+	protected ?string $databaseName = null;
+	protected ?string $editorCmd = null;
+	protected bool $isCaseInsensitive = false;
 
 	/**
 	 * Sets the datasource name.

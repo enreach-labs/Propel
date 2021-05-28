@@ -23,19 +23,18 @@ class PropelGraphvizTask extends AbstractPropelDataModelTask
 
 	/**
 	 * The properties file that maps an SQL file to a particular database.
-	 * @var        PhingFile
 	 */
-	private $sqldbmap;
+	private ?\PhingFile $sqldbmap = null;
 
 	/**
 	 * Name of the database.
 	 */
-	private $database;
+	private ?string $database = null;
 
 	/**
 	 * Name of the output directory.
 	 */
-	private $outDir;
+	private ?\PhingFile $outDir = null;
 
 
 	/**

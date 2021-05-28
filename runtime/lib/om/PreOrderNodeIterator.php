@@ -21,7 +21,7 @@ class PreOrderNodeIterator implements Iterator
 
 	private $curNode = null;
 
-	private $querydb = false;
+	private bool $querydb = false;
 
 	private $con = null;
 

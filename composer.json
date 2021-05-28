@@ -19,6 +19,7 @@
     }
   },
   "require": {
+    "phing/phing": "~2.4",
     "php": "7.4"
   },
   "require-dev": {

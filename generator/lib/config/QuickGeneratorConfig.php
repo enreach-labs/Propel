@@ -17,7 +17,7 @@ require_once dirname(__FILE__) . '/GeneratorConfigInterface.php';
  */
 class QuickGeneratorConfig implements GeneratorConfigInterface
 {
-	protected $builders = array(
+	protected array $builders = array(
 		'peer'					=> 'PHP5PeerBuilder',
 		'object'				=> 'PHP5ObjectBuilder',
 		'objectstub'		=> 'PHP5ExtensionObjectBuilder',
@@ -37,7 +37,7 @@ class QuickGeneratorConfig implements GeneratorConfigInterface
 		'nestedsetpeer' => 'PHP5NestedSetPeerBuilder',
 	);
 
-	protected $buildProperties = array();
+	protected array $buildProperties = array();
 
 	public function __construct()
 	{

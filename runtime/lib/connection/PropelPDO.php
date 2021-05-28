@@ -40,43 +40,36 @@ class PropelPDO extends PDO
 
 	/**
 	 * The current transaction depth.
-	 * @var       integer
 	 */
-	protected $nestedTransactionCount = 0;
+	protected int $nestedTransactionCount = 0;
 
 	/**
 	 * Cache of prepared statements (PDOStatement) keyed by md5 of SQL.
 	 *
 	 * @var       array  [md5(sql) => PDOStatement]
 	 */
-	protected $preparedStatements = array();
+	protected array $preparedStatements = array();
 
 	/**
 	 * Whether to cache prepared statements.
-	 *
-	 * @var       boolean
 	 */
-	protected $cachePreparedStatements = false;
+	protected bool $cachePreparedStatements = false;
 
 	/**
 	 * Whether the final commit is possible
 	 * Is false if a nested transaction is rolled back
 	 */
-	protected $isUncommitable = false;
+	protected bool $isUncommitable = false;
 
 	/**
 	 * Count of queries performed.
-	 *
-	 * @var       integer
 	 */
-	protected $queryCount = 0;
+	protected int $queryCount = 0;
 
 	/**
 	 * SQL code of the latest performed query.
-	 *
-	 * @var       string
 	 */
-	protected $lastExecutedQuery;
+	protected ?string $lastExecutedQuery = null;
 
 	/**
 	 * Whether or not the debug is enabled
@@ -87,31 +80,23 @@ class PropelPDO extends PDO
 
 	/**
 	 * Configured BasicLogger (or compatible) logger.
-	 *
-	 * @var       BasicLogger
 	 */
-	protected $logger;
+	protected ?\BasicLogger $logger = null;
 
 	/**
 	 * The log level to use for logging.
-	 *
-	 * @var       integer
 	 */
-	private $logLevel = Propel::LOG_DEBUG;
+	private int $logLevel = Propel::LOG_DEBUG;
 
 	/**
 	 * The runtime configuration
-	 *
-	 * @var       PropelConfiguration
 	 */
-	protected $configuration;
+	protected ?\PropelConfiguration $configuration = null;
 
 	/**
 	 * The default value for runtime config item "debugpdo.logging.methods".
-	 *
-	 * @var       array
 	 */
-	protected static $defaultLogMethods = array(
+	protected static array $defaultLogMethods = array(
 		'PropelPDO::exec',
 		'PropelPDO::query',
 		'DebugPDOStatement::execute',

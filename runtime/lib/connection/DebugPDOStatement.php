@@ -22,19 +22,16 @@ class DebugPDOStatement extends PDOStatement
 {
 	/**
 	 * The PDO connection from which this instance was created.
-	 *
-	 * @var       PropelPDO
 	 */
-	protected $pdo;
+	protected \PropelPDO $pdo;
 
 	/**
 	 * Hashmap for resolving the PDO::PARAM_* class constants to their human-readable names.
 	 * This is only used in logging the binding of variables.
 	 *
 	 * @see       self::bindValue()
-	 * @var       array
 	 */
-	protected static $typeMap = array(
+	protected static array $typeMap = array(
 		PDO::PARAM_BOOL => "PDO::PARAM_BOOL",
 		PDO::PARAM_INT => "PDO::PARAM_INT",
 		PDO::PARAM_STR => "PDO::PARAM_STR",
@@ -45,7 +42,7 @@ class DebugPDOStatement extends PDOStatement
 	/**
 	 * @var       array  The values that have been bound
 	 */
-	protected $boundValues = array();
+	protected array $boundValues = array();
 
 	/**
 	 * Construct a new statement class with reference to main DebugPDO object from

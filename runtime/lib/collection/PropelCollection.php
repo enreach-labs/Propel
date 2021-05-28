@@ -27,20 +27,14 @@
  */
 class PropelCollection extends ArrayObject implements Serializable
 {
-	/**
-	 * @var       string
-	 */
-	protected $model = '';
+	protected string $model = '';
 
 	/**
 	 * @var       ArrayIterator
 	 */
 	protected $iterator;
 
-	/**
-	 * @var       PropelFormatter
-	 */
-	protected $formatter;
+	protected ?\PropelFormatter $formatter = null;
 
 	// Generic Collection methods
 

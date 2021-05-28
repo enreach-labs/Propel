@@ -18,8 +18,8 @@
  */
 class PropelArrayFormatter extends PropelFormatter
 {
-	protected $collectionName = 'PropelArrayCollection';
-	protected $alreadyHydratedObjects = array();
+	protected string $collectionName = 'PropelArrayCollection';
+	protected array $alreadyHydratedObjects = array();
 	protected $emptyVariable;
 
 	public function format(PDOStatement $stmt)

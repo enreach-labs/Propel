@@ -16,9 +16,9 @@
  */
 class ModelJoin extends Join
 {
-	protected $relationMap;
-	protected $tableMap;
-	protected $previousJoin;
+	protected ?\RelationMap $relationMap = null;
+	protected ?\TableMap $tableMap = null;
+	protected ?\ModelJoin $previousJoin = null;
 
 	public function setRelationMap(RelationMap $relationMap, $leftTableAlias = null, $relationAlias = null)
 	{

@@ -20,26 +20,11 @@ require_once dirname(__FILE__) . '/../util/PropelSQLParser.php';
  */
 class PropelSqlManager
 {
-	/**
-	 * @var array
-	 */
-	protected $connections;
-	/**
-	 * @var GeneratorConfigInterface
-	 */
-	protected $generatorConfig;
-	/**
-	 * @var array
-	 */
-	protected $dataModels;
-	/**
-	 * @var array
-	 */
-	protected $databases = null;
-	/**
-	 * @var string
-	 */
-	protected $workingDirectory;
+	protected ?array $connections = null;
+	protected ?\GeneratorConfigInterface $generatorConfig = null;
+	protected ?array $dataModels = null;
+	protected ?array $databases = null;
+	protected ?string $workingDirectory = null;
 
 	/**
 	 * Set the database connection settings

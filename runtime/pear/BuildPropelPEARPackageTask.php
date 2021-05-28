@@ -22,16 +22,16 @@ class BuildPropelPEARPackageTask extends MatchingTask
 {
 
 	/** Base directory for reading files. */
-	private $dir;
+	private ?\PhingFile $dir = null;
 
-	private $version;
-	private $state = 'stable';
-	private $notes;
+	private ?string $version = null;
+	private string $state = 'stable';
+	private ?string $notes = null;
 
-	private $filesets = array();
+	private array $filesets = array();
 
 	/** Package file */
-	private $packageFile;
+	private ?\PhingFile $packageFile = null;
 
 	public function init()
 	{

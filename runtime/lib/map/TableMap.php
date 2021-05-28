@@ -31,46 +31,46 @@ class TableMap
    * Columns in the table
    * @var array TableMap[]
    */
-  protected $columns = array();
+  protected array $columns = array();
 
   /**
    * Columns in the table, using table phpName as key
    * @var array TableMap[]
    */
-  protected $columnsByPhpName = array();
+  protected array $columnsByPhpName = array();
 
   // The database this table belongs to
-  protected $dbMap;
+  protected ?\DatabaseMap $dbMap = null;
 
   // The name of the table
-  protected $tableName;
+  protected ?string $tableName = null;
 
   // The PHP name of the table
-  protected $phpName;
+  protected ?string $phpName = null;
 
   // The Classname for this table
-  protected $classname;
+  protected ?string $classname = null;
 
   // The Package for this table
-  protected $package;
+  protected ?string $package = null;
 
   // Whether to use an id generator for pkey
-  protected $useIdGenerator;
+  protected ?bool $useIdGenerator = null;
 
   // Whether the table uses single table inheritance
-  protected $isSingleTableInheritance = false;
+  protected bool $isSingleTableInheritance = false;
 
   // The primary key columns in the table
-  protected $primaryKeys = array();
+  protected array $primaryKeys = array();
 
   // The foreign key columns in the table
-  protected $foreignKeys = array();
+  protected array $foreignKeys = array();
 
   // The relationships in the table
-  protected $relations = array();
+  protected array $relations = array();
 
   // Relations are lazy loaded. This property tells if the relations are loaded or not
-  protected $relationsBuilt = false;
+  protected bool $relationsBuilt = false;
 
   // Object to store information that is needed if the for generating primary keys
   protected $pkInfo;
@@ -656,7 +656,7 @@ class TableMap
    * The prefix on the table name.
    * @deprecated Not used anywhere in Propel
    */
-  private $prefix;
+  private ?string $prefix = null;
 
   /**
    * Get table prefix name.

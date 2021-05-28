@@ -26,9 +26,9 @@ class PropelConfiguration implements ArrayAccess
 	const TYPE_ARRAY_FLAT = 2;
 	const TYPE_OBJECT = 3;
 
-	protected $parameters = array();
-	protected $flattenedParameters = array();
-	protected $isFlattened = false;
+	protected array $parameters = array();
+	protected array $flattenedParameters = array();
+	protected bool $isFlattened = false;
 
 	/**
 	 * Construct a new configuration container

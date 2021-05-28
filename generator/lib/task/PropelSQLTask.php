@@ -23,14 +23,13 @@ class PropelSQLTask extends AbstractPropelDataModelTask
 
 	/**
 	 * The properties file that maps an SQL file to a particular database.
-	 * @var        PhingFile
 	 */
-	private $sqldbmap;
+	private ?\PhingFile $sqldbmap = null;
 
 	/**
 	 * Name of the database.
 	 */
-	private $database;
+	private ?string $database = null;
 
 	/**
 	 * Set the sqldbmap.

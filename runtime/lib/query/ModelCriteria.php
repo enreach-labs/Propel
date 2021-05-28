@@ -37,18 +37,18 @@ class ModelCriteria extends Criteria
 	const FORMAT_OBJECT = 'PropelObjectFormatter';
 	const FORMAT_ON_DEMAND = 'PropelOnDemandFormatter';
 
-	protected $modelName;
-	protected $modelPeerName;
-	protected $modelAlias;
-	protected $useAliasInSQL = false;
-	protected $tableMap;
-	protected $primaryCriteria;
-	protected $formatter;
-	protected $defaultFormatterClass = ModelCriteria::FORMAT_OBJECT;
-	protected $with = array();
-	protected $isWithOneToMany = false;
-	protected $previousJoin = null; // this is introduced to prevent useQuery->join from going wrong
-	protected $isKeepQuery = true; // whether to clone the current object before termination methods
+	protected string $modelName;
+	protected string $modelPeerName;
+	protected ?string $modelAlias = null;
+	protected bool $useAliasInSQL = false;
+	protected \TableMap $tableMap;
+	protected ?\ModelCriteria $primaryCriteria = null;
+	protected ?\PropelFormatter $formatter = null;
+	protected string $defaultFormatterClass = ModelCriteria::FORMAT_OBJECT;
+	protected array $with = array();
+	protected bool $isWithOneToMany = false;
+	protected ?\Join $previousJoin = null; // this is introduced to prevent useQuery->join from going wrong
+	protected bool $isKeepQuery = true; // whether to clone the current object before termination methods
 	protected $select = null;  // this is for the select method
 
 	/**

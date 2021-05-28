@@ -17,15 +17,9 @@ require_once 'phing/Task.php';
  */
 class DefineTask extends Task {
 
-	/**
-	 * @var        string
-	 */
-	private $name;
+	private ?string $name = null;
 
-	/**
-	 * @var        string
-	 */
-	private $value;
+	private ?string $value = null;
 
 	/**
 	 * Sets the name for the constant.

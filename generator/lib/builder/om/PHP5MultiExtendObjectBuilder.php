@@ -25,7 +25,7 @@ class PHP5MultiExtendObjectBuilder extends ObjectBuilder
 	/**
 	 * The current child "object" we are operating on.
 	 */
-	private $child;
+	private ?\Inheritance $child = null;
 
 	/**
 	 * Returns the name of the current class being built.

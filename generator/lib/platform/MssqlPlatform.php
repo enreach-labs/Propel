@@ -21,7 +21,7 @@ require_once dirname(__FILE__) . '/../model/Domain.php';
  */
 class MssqlPlatform extends DefaultPlatform
 {
-	protected static $dropCount = 0;
+	protected static int $dropCount = 0;
 
 	/**
 	 * Initializes db specific domain mapping.

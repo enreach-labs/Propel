@@ -30,41 +30,39 @@ require_once dirname(__FILE__) . '/../util/PropelSQLParser.php';
 class PropelSQLExec extends Task
 {
 
-	private $goodSql = 0;
-	private $totalSql = 0;
+	private int $goodSql = 0;
+	private int $totalSql = 0;
 
 	//private static $errorActions = array("continue", "stop", "abort");
 
 	/** PDO Database connection */
-	private $conn = null;
+	private ?\PDO $conn = null;
 
 	/** Autocommit flag. Default value is false */
-	private $autocommit = false;
+	private bool $autocommit = false;
 
 	/** DB url. */
-	private $url = null;
+	private ?string $url = null;
 
 	/** User name. */
-	private $userId = null;
+	private ?string $userId = null;
 
 	/** Password */
-	private $password = null;
+	private ?string $password = null;
 
 	/** Action to perform if an error is found */
-	private $onError = "abort";
+	private string $onError = "abort";
 
 	/** Src directory for the files listed in the sqldbmap. */
-	private $srcDir;
+	private ?\PhingFile $srcDir = null;
 
 	/** Properties file that maps an individual SQL file to a database. */
-	private $sqldbmap;
+	private ?\PhingFile $sqldbmap = null;
 
 	/**
 	 * The buildtime connection settings
-	 *
-	 * @var        Array
 	 */
-	protected $buildConnections = array();
+	protected array $buildConnections = array();
 
 	/**
 	 * Set the sqldbmap properties file.
